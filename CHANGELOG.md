@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.12] - 2025-03-30
+
+### Fixed
+- Corrected tag page translation logic in `tag.hbs` to use `{{t "Collection"}} {{plural ...}}` structure.
+- Added missing "Collection" and "0 posts" keys to `locales/en.json` and `locales/pl.json`.
+- Corrected `partials/card.hbs` structure again to fix tag duplication and ensure FEATURED tag/styling only appears on home page.
+
 ## [1.3.11] - 2025-03-30
 
 ### Fixed
