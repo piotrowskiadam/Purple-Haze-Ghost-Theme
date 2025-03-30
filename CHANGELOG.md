@@ -1,15 +1,15 @@
 # Changelog
 
-## [1.3.19] - 2025-03-30
+## [1.3.21] - 2025-03-30
+
+### Fixed
+- Added horizontal scroll (`overflow-x: auto`) to tables in `content.css` to improve responsiveness.
+
+## [1.3.20] - 2025-03-30
 
 ### Fixed
 - Added conditional link wrapper `{{#is "home"}}{{#if featured}}<a href="{{url}}">...</a>{{/if}}{{/is}}` around `.gh-card-content` in `partials/card.hbs` to make featured card background image clickable on homepage.
 - Made post content width (`--main` variable in `content.css`) responsive, applying wider `75ch` only above 740px.
-
-## [1.3.19] - 2025-03-30
-
-### Fixed
-- Corrected `partials/card.hbs` structure to ensure featured card content is wrapped in a link, making the background image clickable.
 
 ## [1.3.18] - 2025-03-30
 

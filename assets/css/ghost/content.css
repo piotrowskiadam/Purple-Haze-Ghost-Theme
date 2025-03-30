@@ -251,6 +251,8 @@ figcaption strong {
 /* ---------------------------------------------------------- */
 
 .gh-content table {
+    display: block; /* Allow overflow scrolling */
+    overflow-x: auto; /* Enable horizontal scrolling */
     border-collapse: separate; /* Use separate for spacing/rounding */
     width: 100%;
     border-radius: 0.5rem; /* Reduced rounding */
