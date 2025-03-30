@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.3.1] - 2025-03-30
+
+### Changed
+- Updated base text color (`--color-base`) to `#FFFEFE` (near white) for main text, titles, and excerpts.
+
 ## [1.3.0] - 2025-03-30
 
 ### Added
