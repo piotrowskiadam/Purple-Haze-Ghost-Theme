@@ -1,0 +1,41 @@
+/* Variables
+/* ---------------------------------------------------------- */
+
+:root {
+
+    /* Colours */
+    --color-primary: var(--ghost-accent-color, #7B3FE4); /* Purple Accent */
+    --color-base: #FFFFFF; /* Primary Text (White) */
+    --color-secondary-text: #D0D0D0; /* Secondary Text (Light Gray) */
+    --color-border: #333333; /* Border for dark theme */
+    --color-bg: #040404; /* Darker Background */
+    --color-success: #80b912; /* Keep default success */
+    --color-error: #f05230; /* Keep default error */
+
+    /* Fonts */
+    --font-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; /* Base stack */
+    --font-serif: Georgia, Times, serif;
+    --font-mono: Menlo, Courier, monospace;
+
+    /* Ghost Font Settings Variables (https://ghost.org/docs/themes/structure/#font-settings) */
+    --gh-font-heading: var(--font-sans-serif); /* Default heading font */
+    --gh-font-body: var(--font-sans-serif); /* Default body font */
+
+    --font-light: 100;
+    --font-normal: 400;
+    --font-bold: 700;
+    --font-heavy: 800;
+
+    /* Breakpoints */
+    --xlarge: 1680px;
+    --large: 1280px;
+    --medium: 980px;
+    --small: 740px;
+    --xsmall: 480px;
+
+    /* Sizes */
+    --height: 4rem; /* Keep default height */
+    --margin: 2rem; /* Keep default margin */
+    --radius: 1rem; /* Updated border radius */
+
+}

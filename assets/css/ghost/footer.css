@@ -1,0 +1,93 @@
+/* Global Footer
+/* ---------------------------------------------------------- */
+
+.gh-foot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4vmin; /* Reduced padding */
+    background-color: var(--color-bg); /* Match theme background */
+    color: var(--color-secondary-text); /* Use light gray text */
+    /* border-top: 1px solid var(--color-border); Removed top border */
+}
+
+.gh-foot .gh-container {
+    width: 100%; /* Allow container to span width */
+    max-width: var(--container-width, 1200px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gh-foot a {
+    color: inherit;
+    transition: color 0.2s ease-in-out;
+}
+
+.gh-foot a:hover {
+    color: var(--color-primary); /* Purple hover for links */
+}
+
+.gh-foot-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gh-foot-menu .nav {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    font-size: 1.8rem;
+}
+
+.gh-foot-menu .nav li {
+    margin: 0 1.5vmin;
+    padding: 0;
+}
+
+.gh-foot-menu .nav a {
+    display: inline-block;
+    padding: 3px 0;
+    text-decoration: none;
+    box-shadow: 0 -1px 0 0 currentcolor inset;
+}
+
+.gh-foot-meta {
+    margin: 2rem 0;
+    font-size: 1.5rem;
+    text-align: center;
+    opacity: 0.75;
+}
+
+.gh-foot-social {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem; /* Spacing between icons */
+    margin: 1.5rem 0;
+}
+
+.gh-foot-social a {
+    display: inline-block;
+    color: var(--color-base); /* White icons */
+}
+
+.gh-foot-social a svg {
+    height: 2rem; /* Icon size */
+    width: auto;
+    fill: currentColor;
+    transition: color 0.2s ease-in-out;
+}
+
+.gh-foot-social a:hover {
+    color: var(--color-primary); /* Purple hover */
+}
+
+
+@media (max-width: 700px) {
+    .gh-foot-menu .nav {
+        font-size: 1.6rem;
+    }
+}

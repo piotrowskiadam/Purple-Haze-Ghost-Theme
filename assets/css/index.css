@@ -1,0 +1,562 @@
+/*
+
+This is a development CSS file that is compiled to a minified
+production stylesheet in assets/built/screen.css using: npm run dev
+
+*/
+
+/* Lib - Local component imports
+/* ---------------------------------------------------------- */
+
+/* Base components */
+@import "vars.css";
+@import "components/global.css";
+@import "components/forms.css";
+@import "components/buttons.css";
+
+/* Ghost components */
+@import "ghost/header.css";
+@import "ghost/content.css";
+@import "ghost/readmore.css";
+@import "ghost/members.css";
+@import "ghost/errors.css";
+@import "ghost/footer.css";
+@import "ghost/badge.css";
+@import "ghost/pagination.css";
+@import "ghost/comments.css";
+
+
+
+/* Main - Your styles here! Edit below
+/* ---------------------------------------------------------- */
+
+html,
+.gh-viewport {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--color-bg); /* Use dark background */
+    position: relative; /* Needed for viewport-based pseudo-element */
+}
+
+.gh-main {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    position: relative; /* Needed for absolute positioning of pseudo-element */
+}
+
+.gh-page {
+    padding: 0 4vmin;
+}
+
+.gh-article {
+    padding: 8vmin 0;
+}
+.gh-postfeed {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
+    gap: 6vmin 5vmin; /* Increased gap */
+    padding: 8vmin 0;
+}
+
+/* Removed rule making first post full-width */
+/* .gh-postfeed > *:first-child {
+    grid-column: 1 / -1;
+} */
+
+.gh-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gh-head-actions a:not(.gh-button) {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    padding: 10px;
+}
+
+.gh-head-actions a svg {
+    height: 1.8rem;
+    fill: currentcolor;
+}
+
+.gh-head-actions a:first-child svg {
+    margin-left: 20px;
+}
+
+.gh-head-actions a:last-child svg {
+    height: 2rem;
+}
+
+/* Index
+/* ---------------------------------------------------------- */
+
+.gh-card {
+    display: block;
+    /* Removed card background, padding, shadow, and overflow */
+    /* background-color: #1A1A1A; */
+    /* border-radius: var(--radius); */
+    /* padding: 2rem; */
+    /* box-shadow: 0 0 10px rgba(123, 63, 228, 0.2); */
+    /* overflow: hidden; */
+    color: var(--color-secondary-text); /* Ensure text uses light gray */
+}
+
+/* Adjust spacing for content within the now background-less card */
+.gh-card .gh-card-content {
+    padding-top: 1rem; /* Add some space above content */
+}
+
+
+.gh-card--featured {
+    padding: 0; /* Remove padding from card itself */
+    color: #fff; /* White text for overlay */
+    background-size: cover;
+    background-position: center center;
+    aspect-ratio: 1200 / 630; /* Set desired aspect ratio */
+    display: flex; /* Use flex to align content */
+    flex-direction: column; /* Stack link vertically */
+    justify-content: flex-end; /* Push content to bottom */
+    position: relative; /* For absolute positioning of overlay if needed */
+    border-radius: var(--radius); /* Add rounded corners */
+    overflow: hidden; /* Ensure background image respects radius */
+}
+
+.gh-card--featured .gh-card-link {
+    width: 100%;
+    height: 100%; /* Make link fill the card */
+    display: flex; /* Use flex for link content */
+    flex-direction: column;
+    justify-content: flex-end; /* Align content within link to bottom */
+    text-decoration: none; /* Remove underline from link */
+}
+
+.gh-card--featured .gh-card-picture {
+    display: none; /* Hide the picture element, we use background */
+}
+
+.gh-card--featured .gh-card-content {
+    width: 100%; /* Ensure content spans full width */
+    max-width: 100%; /* Override any potential max-width */
+    text-align: left; /* Align text left */
+    background: linear-gradient(to top, color-mix(in srgb, var(--featured-overlay-color, #000) 80%, transparent) 0%, color-mix(in srgb, var(--featured-overlay-color, #000) 70%, transparent) 20%, transparent 100%); /* Use variable for gradient */
+    padding: 2rem; /* Padding inside the content box */
+    border-radius: 0; /* Remove rounding from content box itself */
+    color: #fff; /* Ensure content text is white */
+    margin-top: auto; /* Push to bottom */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.gh-card--featured .gh-card-title {
+    color: #fff; /* Ensure title is white */
+    font-size: 3.2rem; /* Larger title for featured */
+}
+
+.gh-card--featured .gh-card-meta,
+.gh-card--featured p,
+.gh-card--featured strong {
+    color: rgba(255, 255, 255, 0.8); /* Slightly transparent white for meta/excerpt */
+}
+
+.gh-card--featured strong {
+    box-shadow: 0 -1px 0 0 inset #fff; /* White underline for read more */
+    opacity: 1;
+}
+
+
+/* .gh-card:not(:first-child) {
+    margin: 8vmin auto 0;
+} */
+
+.gh-card-link {
+    display: flex;
+    flex-direction: column;
+}
+
+.gh-card-image {
+    width: 100%;
+    /* max-height: 700px; */
+    object-fit: cover;
+    margin-bottom: 1rem; /* Consistent spacing */
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius); /* Add rounded corners */
+    overflow: hidden; /* Ensure image respects radius */
+}
+
+.gh-card-image:first-of-type {
+    aspect-ratio: 16 / 9;
+}
+
+.gh-card-tags {
+    margin-top: 1rem; /* Consistent spacing */
+    margin-bottom: 1rem; /* Consistent spacing */
+    line-height: 1; /* Prevent extra space from inline-block */
+}
+
+.gh-card-tag {
+    display: inline-block; /* Needed for margin/padding */
+    background-color: var(--ghost-accent-color, #7B3FE4); /* Use Ghost Accent Color */
+    color: var(--tag-text-color, #D0B8FB); /* Use variable */
+    padding: 0.3em 0.6em; /* Further adjust padding */
+    border-radius: 0.4em; /* Slightly more rounding */
+    font-size: 1.2rem; /* Increased font size for prominence */
+    font-weight: 600; /* Bold */
+    line-height: 1.4; /* Adjust line height */
+    text-transform: uppercase;
+    margin-right: 0.6em; /* Slightly more spacing */
+    margin-bottom: 0.5em; /* Allow wrapping */
+}
+
+.gh-card-tag-more { /* Style for the '...' tag */
+     background-color: var(--color-border);
+     color: var(--color-secondary-text);
+     /* Inherits padding/radius/etc from .gh-card-tag */
+}
+
+/* Removed .gh-card-featured-badge rule */
+
+/* Add margin to card titles */
+.gh-card-title {
+    margin-top: 0; /* Remove default heading margin */
+    margin-bottom: 1rem; /* Consistent spacing */
+}
+
+
+.gh-card-meta {
+    display: block;
+    margin: 0 0 1rem; /* Consistent spacing */
+    font-size: 1.4rem;
+    line-height: 1.2em;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.gh-card-content {
+    max-width: 720px;
+    margin: 0 auto; /* Keep centering the block */
+    text-align: left; /* Left-align text by default */
+    font-size: 1.6rem;
+}
+
+.gh-card-content p {
+    margin: 0 0 1rem; /* Consistent spacing */
+    /* padding: 0 3vmin; Removed horizontal padding */
+}
+
+.gh-card-content > strong {
+    display: inline-block;
+    margin-top: 1rem; /* Consistent spacing */
+    margin-bottom: 0; /* Remove any default bottom margin */
+    padding: 1px 0;
+    font-weight: 500;
+    box-shadow: 0 -1px 0 0 inset currentColor;
+    opacity: 0.75;
+}
+
+
+/* Page
+/* ---------------------------------------------------------- */
+
+.gh-page-head {
+    margin: 0 auto;
+    padding: 8vmin 0 4vmin;
+    text-align: center;
+}
+
+.gh-page-image {
+    margin: 4vmin 0 0 0;
+}
+
+.gh-page-head > p {
+    max-width: 720px;
+    margin: 0.3em auto 0;
+    padding: 0 6vmin;
+    font-size: 1.3em;
+    line-height: 1.4em;
+    opacity: 0.5;
+}
+
+@media (max-width: 700px) {
+    .gh-page-head > p {
+        font-size: 1.6rem;
+    }
+}
+
+
+/* Post
+/* ---------------------------------------------------------- */
+
+.gh-header {
+    padding: 0 0 2vmin 0; /* Further reduced bottom padding */
+    /* text-align: center; Removed */
+}
+
+.gh-post-meta {
+    display: block;
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.gh-excerpt {
+    margin: 1rem 0 0 0;
+}
+
+.gh-feature-image {
+    /* grid-column: wide-start / wide-end; Now handled by kg-width-wide in post.hbs */
+    width: 100%;
+    margin: 0 0 4vmin; /* Add bottom margin, remove top margin */
+    border-radius: var(--radius); /* Add rounded corners */
+    overflow: hidden; /* Ensure image respects border radius */
+}
+
+.gh-feature-image img {
+    margin-inline: auto;
+    width: 100%;
+}
+
+.gh-post-footer {
+    margin: 2rem 0;
+}
+
+
+/* Author Archive
+/* ---------------------------------------------------------- */
+
+.gh-author-image {
+    height: 12vmin;
+    width: 12vmin;
+    margin: 0 auto 1.5em;
+    border-radius: 100%;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.gh-author-meta {
+    margin: 2vmin 0 0 0;
+    font-size: 1.2em;
+}
+
+.gh-author-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gh-author-links a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    margin: 0 0.75vmin;
+}
+
+.gh-author-links a + a:before {
+    display: block;
+    content: "";
+    margin: 0 1.25vmin 0 0;
+    height: 1em;
+    width: 1px;
+    background: rgba(0,0,0,0.3);
+    transform: rotate(20deg);
+}
+
+@media (max-width: 700px) {
+    .gh-author-meta {
+        font-size: 1.6rem;
+    }
+}
+
+/* Custom Layouts (from interpretation doc) */
+/* ---------------------------------------------------------- */
+
+.img-text-row {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin: 4vmin 0; /* Add some vertical spacing */
+}
+.img-text-row .side-image { /* Use class selector */
+  width: 40%;
+  border-radius: var(--radius); /* Use theme radius */
+  object-fit: cover; /* Ensure image covers area */
+}
+.img-text-row .text-content { /* Use class selector */
+  width: 60%;
+}
+
+/* Responsive stacking for image+text */
+@media (max-width: 700px) {
+    .img-text-row {
+        flex-direction: column;
+    }
+    .img-text-row .side-image,
+    .img-text-row .text-content {
+        width: 100%;
+    }
+}
+
+.custom-code-tabs {
+    display: flex;
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius);
+    background-color: #1A1A1A; /* Match code block background */
+    overflow: hidden;
+    margin: 4vmin 0;
+}
+
+.code-tabs-nav {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--color-primary);
+    flex-shrink: 0;
+}
+
+.code-tab-button {
+    background: none;
+    border: none;
+    padding: 1em 1.5em;
+    color: var(--color-secondary-text);
+    cursor: pointer;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.code-tab-button:last-child {
+    border-bottom: none;
+}
+
+.code-tab-button:hover,
+.code-tab-button.active { /* Add .active class via JS */
+    background-color: color-mix(in srgb, var(--color-primary) 20%, transparent);
+    color: var(--color-base);
+}
+
+.code-tab-content {
+    padding: 1.5em;
+    flex-grow: 1;
+    overflow: auto; /* Allow scrolling for content */
+}
+
+/* Hide inactive tab content panels (requires JS to toggle display) */
+.code-tab-content-panel:not(.active) {
+    display: none;
+}
+
+
+/* Subscribe Form Styles */
+/* ---------------------------------------------------------- */
+
+.gh-subscribe {
+    padding: 4vmin;
+    margin: 12vmin 0 8vmin; /* Increased top margin */
+    background-color: #1A1A1A; /* Match card background */
+    border-radius: var(--radius);
+    text-align: center;
+    box-shadow: 0 0 10px rgba(123, 63, 228, 0.2); /* Match card shadow */
+}
+
+.gh-subscribe-title {
+    color: var(--color-base); /* White title */
+    margin-bottom: 0.5em;
+}
+
+.gh-subscribe p {
+    color: var(--color-secondary-text); /* Light gray text */
+    margin-bottom: 1.5em;
+    font-size: 1.6rem;
+}
+
+.gh-subscribe .subscribe-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px; /* Limit form width */
+    margin: 0 auto;
+}
+
+.gh-subscribe .subscribe-email {
+    padding: 0.8em 1em;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    background-color: var(--color-bg); /* Dark background for input */
+    color: var(--color-base); /* White text */
+    font-size: 1.6rem;
+}
+
+.gh-subscribe .subscribe-email::placeholder {
+    color: var(--color-secondary-text);
+    opacity: 0.7;
+}
+
+.gh-subscribe .subscribe-button {
+    width: 100%; /* Full width button */
+    /* Use existing .gh-button and .gh-button-primary styles */
+}
+
+
+/* Gradient Mist Effect */
+/* ---------------------------------------------------------- */
+
+/* Remove from .gh-main */
+/* .gh-main::after { ... } */
+
+/* Apply to viewport */
+.gh-viewport::after {
+    content: "";
+    position: absolute; /* Position relative to viewport */
+    bottom: 0; /* Stick to bottom */
+    left: 0;
+    right: 0;
+    height: 250px; /* Increased height */
+    background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--ghost-accent-color, #7B3FE4) 15%, transparent)); /* Use Accent Color */
+    pointer-events: none; /* Ensure it doesn't block interactions */
+    /* z-index: -1; Removed again */
+}
+
+
+/* Custom About Page Template Styles */
+/* ---------------------------------------------------------- */
+
+.gh-header--about {
+    text-align: center;
+    padding-bottom: 4vmin; /* Less padding than default post */
+}
+
+.gh-feature-image--about {
+    grid-column: main-start / main-end; /* Keep image in main column */
+    width: 150px; /* Fixed size for circle */
+    height: 150px;
+    margin: 0 auto 4vmin; /* Center horizontally */
+    border-radius: 50%; /* Make it circular */
+    border: 5px solid var(--color-primary); /* Purple border */
+    background-color: var(--color-primary); /* Purple background */
+    overflow: hidden;
+    padding: 5px; /* Padding inside border */
+    box-sizing: border-box;
+}
+
+.gh-feature-image--about img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%; /* Ensure image inside is also circular */
+}
+
+.gh-content--about {
+    --main: 40ch; /* Narrower width for about text */
+    text-align: center; /* Center align text blocks */
+}
+
+.gh-content--about > * {
+   text-align: center; /* Center align inner elements like p */
+   margin-left: auto;
+   margin-right: auto;
+}

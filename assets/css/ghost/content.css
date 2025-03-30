@@ -1,0 +1,293 @@
+
+
+/* Content grid
+/* ---------------------------------------------------------- */
+
+.gh-canvas,
+.kg-width-full.kg-content-wide {
+    --gap: 4vw;
+    --main: min(var(--content-width, 720px), 100% - var(--gap) * 2);
+    --wide: minmax(0, calc((var(--container-width, 1200px) - var(--content-width, 720px)) / 2));
+    --full: minmax(var(--gap), 1fr);
+
+    display: grid;
+    grid-template-columns:
+        [full-start] var(--full)
+        [wide-start] var(--wide)
+        [main-start] var(--main) [main-end]
+        var(--wide) [wide-end]
+        var(--full) [full-end];
+}
+
+.gh-content.gh-canvas {
+   --main: 60ch; /* Override main content width for post body */
+}
+
+.gh-canvas > * {
+   grid-column: main-start / main-end;
+}
+
+.kg-width-wide,
+.kg-content-wide > div {
+    grid-column: wide-start / wide-end;
+}
+
+.kg-width-full {
+    grid-column: full-start / full-end;
+}
+
+.kg-width-full img {
+    width: 100%;
+}
+
+
+/* Content & Typography
+/* ---------------------------------------------------------- */
+
+.gh-content > * + * {
+    margin-top: 4vmin; /* Keep default spacing for most elements */
+}
+
+.gh-content > p + p {
+    margin-top: 1.5rem; /* Specific spacing for paragraphs */
+}
+
+.gh-content [id]:not(:first-child) {
+    margin: 1.5em 0 0;
+}
+
+.gh-content > [id] + * {
+    margin-top: 1.5rem;
+}
+
+.gh-content [id] + .kg-card,
+.gh-content blockquote + .kg-card {
+    margin-top: 6vmin;
+}
+
+.gh-canvas > blockquote,
+.gh-canvas > ol,
+.gh-canvas > ul,
+.gh-canvas > dl,
+.gh-canvas > p {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 1.6em;
+}
+
+.gh-content > ul,
+.gh-content > ol,
+.gh-content > dl {
+    padding-left: 1.9em;
+}
+
+.gh-content hr {
+    margin-top: 6vmin;
+}
+
+.gh-content hr + * {
+    margin-top: 6vmin !important;
+}
+
+.gh-content blockquote {
+    position: relative;
+    font-style: normal; /* Remove italic */
+    font-weight: bold; /* Bold text */
+    color: var(--color-base); /* White text */
+    background-color: color-mix(in srgb, var(--color-primary) 30%, var(--color-bg)); /* Dark purple background */
+    padding: 1.5em 2em 1.5em 3.5em; /* Add padding */
+    border-radius: var(--radius); /* Rounded corners */
+    margin-left: -1.5em; /* Adjust margin to align quote mark */
+}
+
+.gh-content blockquote::before {
+    content: "“"; /* Use large quote character */
+    position: absolute;
+    left: 0.5em; /* Position quote mark */
+    top: 0.3em;
+    font-size: 4em; /* Large quote mark */
+    line-height: 1;
+    color: var(--color-primary); /* Purple quote mark */
+    font-family: var(--font-serif); /* Use serif for quote */
+    font-style: normal;
+    font-weight: bold;
+}
+
+@media (max-width: 650px) {
+    .gh-canvas blockquote,
+    .gh-canvas ol,
+    .gh-canvas ul,
+    .gh-canvas dl,
+    .gh-canvas p {
+        font-size: 1.8rem;
+    }
+
+    .gh-content blockquote::before {
+        left: -4vmin;
+    }
+}
+
+
+/* Cards
+/* ---------------------------------------------------------- */
+
+.gh-content :not(.kg-card):not([id]) + .kg-card {
+    margin-top: 6vmin;
+}
+
+.gh-content .kg-card + :not(.kg-card) {
+    margin-top: 6vmin;
+}
+
+figcaption {
+    padding: 1rem 1.5rem 0; /* Adjusted padding */
+    text-align: center;
+    color: color-mix(in srgb, var(--color-secondary-text) 70%, transparent); /* Lighter gray, less prominent */
+    /* opacity: 0.8; Removed opacity, using color mix instead */
+    font-weight: 400; /* Normal weight */
+    font-size: 1.3rem; /* Slightly smaller */
+    line-height: 1.5em;
+}
+
+figcaption strong {
+    color: rgba(0,0,0,0.8);
+}
+
+.gh-canvas :not(pre) code {
+    vertical-align: middle;
+    padding: 0.15em 0.4em 0.15em;
+    border: 1px solid color-mix(in srgb, var(--color-primary) 50%, transparent); /* Subtle purple border */
+    font-weight: 400 !important;
+    font-size: 0.9em;
+    line-height: 1em;
+    color: var(--color-secondary-text); /* Light gray text */
+    background: #1A1A1A; /* Dark background */
+    border-radius: 0.25em;
+}
+
+.gh-canvas > pre {
+    overflow: auto; /* Use auto instead of scroll */
+    padding: 1.5em; /* Use em for padding */
+    background: #1A1A1A; /* Dark background */
+    border-radius: var(--radius); /* Rounded corners */
+    border: 1px solid var(--color-primary); /* Purple border */
+    color: var(--color-secondary-text); /* Light gray text */
+    box-shadow: none; /* Remove default shadow */
+}
+
+/* Ensure code inside pre uses the correct font */
+.gh-canvas > pre code {
+    font-family: var(--font-mono);
+    font-size: 1.4rem; /* Adjust size as needed */
+    line-height: 1.5em;
+    background: none; /* Remove background from inline code style */
+    border: none; /* Remove border from inline code style */
+    padding: 0; /* Remove padding from inline code style */
+    color: inherit; /* Inherit color from pre */
+}
+
+
+.kg-embed-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Default to 16 / 9 aspect ratio for YouTube & Vimeo embeds  */
+.kg-embed-card > :where(iframe[src*="youtube.com"],iframe[src*="vimeo.com"]) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+}
+
+.kg-image-card { /* Apply border to the figure */
+    border-radius: var(--radius);
+    border: 1px solid var(--color-primary); /* Purple border like design */
+    overflow: hidden;
+    margin: 4vmin auto; /* Add vertical margin */
+}
+
+.kg-image-card img {
+    margin: auto;
+    display: block; /* Ensure image behaves as block */
+    /* Removed border/radius from img itself */
+}
+
+
+/* Card captions
+/* ---------------------------------------------------------- */
+
+.kg-width-full.kg-card-hascaption {
+    display: grid;
+    grid-template-columns: inherit;
+}
+
+.kg-width-wide.kg-card-hascaption img {
+    grid-column: wide-start / wide-end;
+}
+.kg-width-full.kg-card-hascaption img {
+    grid-column: 1 / -1;
+}
+
+.kg-width-full.kg-card-hascaption figcaption {
+    grid-column: main-start / main-end;
+}
+
+
+/* Tables
+/* ---------------------------------------------------------- */
+
+.gh-content table {
+    border-collapse: separate; /* Use separate for spacing/rounding */
+    width: 100%;
+    border-radius: 0.5rem; /* Reduced rounding */
+    overflow: hidden; /* Clip content to rounded corners */
+    border-spacing: 0; /* Remove spacing between cells */
+    /* border: 1px solid var(--color-border); Removed outer border */
+}
+
+.gh-content th {
+    padding: 1em 1.2em; /* Padding */
+    text-align: left;
+    font-size: .9em; /* Slightly larger font */
+    text-transform: uppercase;
+    background-color: var(--color-primary); /* Purple background */
+    color: var(--color-base); /* White text */
+    font-weight: bold; /* Bold text */
+    border: none; /* Remove individual th borders */
+    border-bottom: 1px solid color-mix(in srgb, var(--color-base) 20%, transparent); /* More subtle white border below header */
+}
+/* Add vertical border to TH except first */
+.gh-content th + th {
+    border-left: 1px solid color-mix(in srgb, var(--color-base) 20%, transparent); /* More subtle white border */
+}
+
+.gh-content td {
+    padding: 1em 1.2em; /* Padding */
+    border: none; /* Remove individual cell borders */
+    border-bottom: 1px solid color-mix(in srgb, var(--color-secondary-text) 20%, transparent); /* Subtle separator */
+}
+/* Add vertical border to TD except first */
+.gh-content td + td {
+    border-left: 1px solid color-mix(in srgb, var(--color-secondary-text) 20%, transparent); /* Subtle separator */
+}
+
+/* Set consistent background for body rows */
+.gh-content tbody tr {
+     background-color: #120F18; /* Specific dark background */
+}
+/* Remove alternating color rule */
+/* .gh-content tbody tr:nth-child(even) { ... } */
+
+/* Remove specific shadows and borders from original theme */
+.gh-content tbody tr:nth-child(2n + 2) td:last-child,
+.gh-content tbody tr:nth-child(2n + 2) td {
+    box-shadow: none;
+}
+
+/* Ensure last row doesn't have a bottom border */
+.gh-content tbody tr:last-child td {
+    border-bottom: none;
+}
