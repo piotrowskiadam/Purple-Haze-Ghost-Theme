@@ -61,12 +61,8 @@ Re-usable card for linking to posts
                     {{/foreach}}
                 {{/if}}
             </div>
-            {{!-- Title --}}
-            {{#if featured}} {{!-- Check 'featured' property --}}
-                <h2 class="gh-card-title">{{title}}</h2>
-            {{else}}
-                <h4 class="gh-card-title">{{title}}</h4>
-            {{/if}}
+            {{!-- Title - Always use h4 within card partial --}}
+            <h4 class="gh-card-title">{{title}}</h4>
             {{!-- Excerpt --}}
             <p>{{excerpt words="30"}}...</p> {{!-- Limit by words (increased) and add ellipsis --}}
             {{!-- Meta moved after excerpt --}}

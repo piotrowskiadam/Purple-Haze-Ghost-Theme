@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.9] - 2025-03-30
+
+### Fixed
+- Updated `tag.hbs` to use the `{{t}}` helper for "A collection of % posts" text, enabling translation.
+- Removed conditional `featured` logic for title (`h2`/`h4`) within `partials/card.hbs` to ensure consistent card display on archive pages.
+
 ## [1.3.8] - 2025-03-30
 
 ### Added
