@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.3.11] - 2025-03-30
+
+### Fixed
+- Corrected translation helper usage in `tag.hbs` for "A collection of % posts".
+- Corrected `partials/card.hbs` structure:
+    - Removed duplicated tags block.
+    - Ensured tags are rendered inside `.gh-card-content`.
+    - Wrapped "FEATURED" tag span with `{{#is "home"}}` helper.
+    - Kept conditional logic on `<article>` to only apply `.gh-card--featured` class/style on home page.
+
 ## [1.3.10] - 2025-03-30
 
 ### Fixed
