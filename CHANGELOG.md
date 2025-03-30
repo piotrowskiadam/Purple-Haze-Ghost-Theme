@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.3.5] - 2025-03-30
+
+### Changed
+- Increased font size and added vertical margins for the "Latest Posts" heading (`.gh-section-title`) in `index.css` to match design reference.
+
 ## [1.3.4] - 2025-03-30
 
 ### Added
