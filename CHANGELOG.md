@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.10] - 2025-03-30
+
+### Fixed
+- Corrected translation helper usage in `tag.hbs` for "A collection of % posts".
+- Updated `partials/card.hbs` to only apply `.gh-card--featured` class and background style when `{{#is "home"}}` is true, ensuring consistent card styling on archive pages.
+
 ## [1.3.9] - 2025-03-30
 
 ### Fixed

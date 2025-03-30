@@ -2,8 +2,21 @@
 Re-usable card for linking to posts
 --}}
 
-{{!-- Use 'featured' property instead of '@first' for styling --}}
-<article class="gh-card {{post_class}}{{#if featured}} gh-card--featured{{/if}}" {{#if featured}}{{#if feature_image}} style="background-image: url({{img_url feature_image size="l"}})"{{/if}}{{/if}}>
+{{!-- Use 'featured' property only on home page for styling --}}
+<article class="gh-card {{post_class}}{{#is "home"}}{{#if featured}} gh-card--featured{{/if}}{{/is}}" {{#is "home"}}{{#if featured}}{{#if feature_image}} style="background-image: url({{img_url feature_image size="l"}})"{{/if}}{{/if}}{{/is}}>
+    {{!-- Tags moved outside the main link --}}
+    <div class="gh-card-tags"> {{!-- Wrapper for tags --}}
+        {{#if featured}} {{!-- Show FEATURED badge only if featured --}}
+            {{!-- Note: This badge might still appear on non-home pages if the post is featured. Consider adding {{#is "home"}} here too if needed. --}}
+            <span class="gh-card-tag">{{t "FEATURED"}}</span> {{!-- Use standard tag class --}}
+        {{/if}}
+        {{#if tags}}
+            {{#foreach tags as |tag|}}
+                {{!-- Wrap tag in its own link --}}
+                <a href="{{tag.url}}" class="gh-card-tag">{{tag.name}}</a>
+            {{/foreach}}
+        {{/if}}
+    </div>
     <a class="gh-card-link" href="{{url}}">
         {{#if feature_image}}
             <picture class="gh-card-picture">
