@@ -17,11 +17,10 @@
         var(--wide) [wide-end]
         var(--full) [full-end];
 }
-
 /* Apply wider width only on larger screens */
 @media (min-width: 741px) { /* Above --small breakpoint */
     .gh-content.gh-canvas {
-       --main: 75ch; /* Increase main content width for post body */
+       --main: 90ch; /* Further increase main content width for post body */
     }
 }
 
@@ -250,9 +249,17 @@ figcaption strong {
 /* Tables
 /* ---------------------------------------------------------- */
 
+/* Wrapper for enabling horizontal scroll on tables */
+.table-wrapper {
+    overflow-x: auto;
+    width: 100%;
+    margin-bottom: 1.5em; /* Add some space below the scrolled table */
+    -webkit-overflow-scrolling: touch; /* Improve scrolling on touch devices */
+}
+
 .gh-content table {
-    display: block; /* Allow overflow scrolling */
-    overflow-x: auto; /* Enable horizontal scrolling */
+    /* display: block; Removed */
+    /* overflow-x: auto; Removed */
     border-collapse: separate; /* Use separate for spacing/rounding */
     width: 100%;
     border-radius: 0.5rem; /* Reduced rounding */

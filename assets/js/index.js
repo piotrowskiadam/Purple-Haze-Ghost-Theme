@@ -23,6 +23,21 @@ infiniteScroll();
 // Removed handleTagLinks() as it's no longer needed with the new card structure
 
 // Initialize Prism syntax highlighting
+// Function to wrap tables for horizontal scrolling
+const wrapTables = () => {
+    const tables = document.querySelectorAll('.gh-content table');
+    tables.forEach(table => {
+        // Check if table is already wrapped
+        if (table.parentNode.classList.contains('table-wrapper')) {
+            return;
+        }
+        const wrapper = document.createElement('div');
+        wrapper.className = 'table-wrapper';
+        table.parentNode.insertBefore(wrapper, table);
+        wrapper.appendChild(table);
+    });
+};
+
 // Run after DOM content is loaded to ensure elements exist
 document.addEventListener('DOMContentLoaded', (event) => {
     // Initialize Prism syntax highlighting
@@ -33,4 +48,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         background: 'var(--color-bg, #040404)', // Use theme background variable
         margin: 24 // Add some margin around the zoomed image
     });
+
+    // Wrap tables for scrolling
+    wrapTables();
 });

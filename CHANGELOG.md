@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.22] - 2025-03-30
+
+### Fixed
+- Implemented horizontal scrolling for wide tables using a JS wrapper (`.table-wrapper`) and CSS (`overflow-x: auto`).
+- Increased desktop post content width (`--main`) to `90ch` in `content.css`.
+- Corrected featured tag positioning on homepage cards using absolute positioning in `index.css`.
+
 ## [1.3.21] - 2025-03-30
 
 ### Fixed
