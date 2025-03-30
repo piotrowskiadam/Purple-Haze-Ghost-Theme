@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.14] - 2025-03-30
+
+### Fixed
+- Added explicit CSS rule `a.gh-card-tag { color: var(--tag-text-color, #D0B8FB); }` to `index.css` to ensure custom tag text color applies correctly to linked tags.
+- Corrected `partials/card.hbs` structure to place tags block outside the main post link (`.gh-card-link`) for proper click handling.
+
 ## [1.3.13] - 2025-03-30
 
 ### Fixed

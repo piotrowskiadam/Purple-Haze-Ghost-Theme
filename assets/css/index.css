@@ -224,6 +224,11 @@ html,
     margin-bottom: 0.5em; /* Allow wrapping */
 }
 
+/* Ensure anchor tag version also uses the custom color */
+a.gh-card-tag {
+    color: var(--tag-text-color, #D0B8FB);
+}
+
 .gh-card-tag-more { /* Style for the '...' tag */
      background-color: var(--color-border);
      color: var(--color-secondary-text);
