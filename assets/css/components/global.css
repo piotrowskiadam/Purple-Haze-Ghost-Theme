@@ -16,7 +16,7 @@ body {
     min-height: 100vh;
     margin: 0;
     padding: 0;
-    color: var(--color-secondary-text); /* Use secondary text color (light gray) */
+    color: var(--color-base); /* Use base text color (near white) */
     font-family: var(--gh-font-body); /* Use Ghost body font setting */
     font-size: 1.5rem;
     line-height: 1.6em;

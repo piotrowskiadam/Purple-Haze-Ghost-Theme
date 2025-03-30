@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.2] - 2025-03-30
+
+### Fixed
+- Corrected default body text color in `global.css` to use `--color-base` (near white) instead of `--color-secondary-text` (gray), ensuring excerpts and main post content use the intended color.
+
+### Changed
+- Added note about `GhostThemeDocs` folder to `AI_AGENT_NOTES.md`.
+
 ## [1.3.1] - 2025-03-30
 
 ### Changed
