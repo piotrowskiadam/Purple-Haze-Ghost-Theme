@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.3.13] - 2025-03-30
+
+### Fixed
+- Constrained card image width (`.gh-card-picture`) in `index.css` to match content width (`720px`) and centered it, improving layout on archive pages with single posts.
+
 ## [1.3.12] - 2025-03-30
 
 ### Fixed

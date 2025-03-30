@@ -193,6 +193,13 @@ html,
     overflow: hidden; /* Ensure image respects radius */
 }
 
+/* Constrain picture element width like content */
+.gh-card-picture {
+    display: block; /* Needed for margin auto */
+    max-width: 720px; /* Match content width */
+    margin-inline: auto; /* Center the picture */
+}
+
 .gh-card-image:first-of-type {
     aspect-ratio: 16 / 9;
 }
