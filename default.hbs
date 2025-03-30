@@ -15,7 +15,7 @@
     {{!-- Inject custom theme settings as CSS variables --}}
     <style>
         :root {
-            {{#if @custom.tag_text_color}}--tag-text-color: {{@custom.tag_text_color}};{{/if}}
+            {{#if @custom.secondary_accent_color}}--secondary-accent-color: {{@custom.secondary_accent_color}};{{/if}}
             {{#if @custom.featured_overlay_color}}--featured-overlay-color: {{@custom.featured_overlay_color}};{{/if}}
             {{#if @custom.navigation_text_color}}--navigation-text-color: {{@custom.navigation_text_color}};{{/if}}
         }

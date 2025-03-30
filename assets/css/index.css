@@ -13,6 +13,7 @@ production stylesheet in assets/built/screen.css using: npm run dev
 @import "components/global.css";
 @import "components/forms.css";
 @import "components/buttons.css";
+@import "vendor/prism-dracula.css"; /* Syntax highlighting */
 
 /* Ghost components */
 @import "ghost/header.css";
@@ -223,7 +224,7 @@ html,
 .gh-card-tag {
     display: inline-block; /* Needed for margin/padding */
     background-color: var(--ghost-accent-color, #281C52); /* Use Ghost Accent Color with correct fallback */
-    color: var(--tag-text-color, #D0B8FB); /* Use variable */
+    color: var(--secondary-accent-color, #D0B8FB); /* Use variable */
     padding: 0.3em 0.6em; /* Further adjust padding */
     border-radius: 0.4em; /* Slightly more rounding */
     font-size: 1.3rem; /* Further increase font size */
@@ -236,7 +237,7 @@ html,
 
 /* Ensure anchor tag version also uses the custom color */
 a.gh-card-tag {
-    color: var(--tag-text-color, #D0B8FB);
+    color: var(--secondary-accent-color, #D0B8FB);
 }
 
 /* Reset link styles within title */

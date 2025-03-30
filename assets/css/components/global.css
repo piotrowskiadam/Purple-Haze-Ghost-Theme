@@ -121,7 +121,7 @@ ul:not([class]) li + li {
 }
 
 a:not([class]) {
-    color: var(--color-primary);
+    color: var(--secondary-accent-color, #D0B8FB); /* Use secondary accent color for default links */
     text-decoration-skip-ink: auto;
 }
 

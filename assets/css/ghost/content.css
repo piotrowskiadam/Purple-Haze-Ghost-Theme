@@ -1,5 +1,3 @@
-
-
 /* Content grid
 /* ---------------------------------------------------------- */
 
@@ -20,7 +18,7 @@
 }
 
 .gh-content.gh-canvas {
-   --main: 60ch; /* Override main content width for post body */
+   --main: 75ch; /* Increase main content width for post body */
 }
 
 .gh-canvas > * {
@@ -96,15 +94,15 @@
     font-weight: bold; /* Bold text */
     color: var(--color-base); /* White text */
     background-color: color-mix(in srgb, var(--color-primary) 30%, var(--color-bg)); /* Dark purple background */
-    padding: 1.5em 2em 1.5em 3.5em; /* Add padding */
+    padding: 1.5em 2em 1.5em 4.5em; /* Increased left padding */
     border-radius: var(--radius); /* Rounded corners */
-    margin-left: -1.5em; /* Adjust margin to align quote mark */
+    /* margin-left: -1.5em; Removed negative margin */
 }
 
 .gh-content blockquote::before {
     content: "“"; /* Use large quote character */
     position: absolute;
-    left: 0.5em; /* Position quote mark */
+    left: 0.2em; /* Adjusted position */
     top: 0.3em;
     font-size: 4em; /* Large quote mark */
     line-height: 1;
@@ -140,6 +138,7 @@
     margin-top: 6vmin;
 }
 
+/* General figcaption styles (may be overridden below) */
 figcaption {
     padding: 1rem 1.5rem 0; /* Adjusted padding */
     text-align: center;
@@ -202,21 +201,29 @@ figcaption strong {
     aspect-ratio: 16 / 9;
 }
 
-.kg-image-card { /* Apply border to the figure */
-    border-radius: var(--radius);
-    border: 1px solid var(--color-primary); /* Purple border like design */
-    overflow: hidden;
+.kg-image-card {
     margin: 4vmin auto; /* Add vertical margin */
+    /* Border & overflow removed from figure */
 }
 
 .kg-image-card img {
     margin: auto;
     display: block; /* Ensure image behaves as block */
-    /* Removed border/radius from img itself */
+    border-radius: var(--radius); /* Apply radius to image */
+    border: 1px solid var(--color-primary); /* Apply border to image */
+}
+
+/* Style image captions */
+.kg-image-card figcaption {
+    color: var(--secondary-accent-color, #D0B8FB); /* Use secondary accent for caption */
+    font-size: 0.9em;
+    text-align: center;
+    margin-top: 0.5em;
+    padding: 0 1.5rem; /* Keep horizontal padding */
 }
 
 
-/* Card captions
+/* Card captions - General (These might conflict/override, review)
 /* ---------------------------------------------------------- */
 
 .kg-width-full.kg-card-hascaption {

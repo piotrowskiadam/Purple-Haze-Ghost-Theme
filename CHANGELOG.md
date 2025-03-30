@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.3.18] - 2025-03-30
+
+### Changed
+- Renamed custom setting `tag_text_color` to `secondary_accent_color` in `package.json`, `default.hbs`, and CSS files.
+- Increased post content width (`--main` variable to `75ch`) in `content.css`.
+- Updated default link color (`a:not([class])`) in `global.css` to use `secondary_accent_color`.
+- Adjusted blockquote styles in `content.css` to prevent quote mark overlap.
+- Adjusted image card styles in `content.css` to apply border/radius to `<img>` instead of `<figure>` and set `figcaption` color to `secondary_accent_color`.
+
+### Added
+- `prismjs` dependency for syntax highlighting.
+- Dracula theme CSS for PrismJS (`assets/css/vendor/prism-dracula.css`).
+- PrismJS initialization (core, common languages) in `assets/js/index.js`.
+- `medium-zoom` dependency and initialization in `assets/js/index.js` for image zooming.
+
 ## [1.3.17] - 2025-03-30
 
 ### Changed
