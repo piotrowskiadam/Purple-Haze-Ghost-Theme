@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.3] - 2025-03-30
+
+### Fixed
+- Corrected card excerpt text color in `index.css`:
+    - Set `.gh-card` color to `var(--color-base)`.
+    - Set `.gh-card--featured p` and `.gh-card--featured .gh-card-meta` color to `var(--color-base)`.
+
 ## [1.3.2] - 2025-03-30
 
 ### Fixed
