@@ -10,6 +10,9 @@
             {{/foreach}}
         {{/get}}
 
+        {{!-- Add "Latest Posts" heading --}}
+        <h2 class="gh-section-title">{{t "Latest Posts"}}</h2>
+
         {{!-- Get the rest of the posts, excluding the featured one, including tags/authors --}}
         <div class="gh-postfeed">
         {{#get "posts" filter="featured:false" limit=@config.posts_per_page page=pagination.page include="tags,authors" as |posts|}}

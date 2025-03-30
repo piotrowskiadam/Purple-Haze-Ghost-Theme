@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.4] - 2025-03-30
+
+### Added
+- "Latest Posts" heading (`<h2>`) to `index.hbs` between featured post and regular post feed.
+
+### Changed
+- Added `min-height: 400px` and removed `aspect-ratio` for `.gh-card--featured` on screens <= 740px (`--small` breakpoint) in `index.css` to improve mobile layout.
+
 ## [1.3.3] - 2025-03-30
 
 ### Fixed
