@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.6] - 2025-03-30
+
+### Changed
+- Refined styling for "Latest Posts" heading (`.gh-section-title`):
+    - Reduced and equalized top/bottom margins to `4vmin` (desktop and mobile).
+    - Increased mobile font size to `3.6rem`.
+
 ## [1.3.5] - 2025-03-30
 
 ### Changed

@@ -267,16 +267,16 @@ html,
 /* Section Title (e.g., "Latest Posts") */
 .gh-section-title {
     font-size: 4.2rem; /* Larger than default h2 */
-    margin-top: 8vmin; /* More space above */
-    margin-bottom: 6vmin; /* More space below */
+    margin-top: 4vmin; /* Equal reduced space */
+    margin-bottom: 4vmin; /* Equal reduced space */
     text-align: left; /* Ensure left alignment */
 }
 
 @media (max-width: 500px) {
     .gh-section-title {
-        font-size: 3.0rem; /* Adjust size for smaller screens */
-        margin-top: 6vmin;
-        margin-bottom: 4vmin;
+        font-size: 3.6rem; /* Increase size for smaller screens */
+        margin-top: 4vmin; /* Equal reduced space */
+        margin-bottom: 4vmin; /* Equal reduced space */
     }
 }
 
