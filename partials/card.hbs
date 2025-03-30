@@ -56,7 +56,8 @@ Re-usable card for linking to posts
                 {{!-- Always loop through tags if they exist, regardless of featured status --}}
                 {{#if tags}}
                     {{#foreach tags as |tag|}}
-                        <span class="gh-card-tag">{{tag.name}}</span>
+                        {{!-- Wrap tag in its own link --}}
+                        <a href="{{tag.url}}" class="gh-card-tag">{{tag.name}}</a>
                     {{/foreach}}
                 {{/if}}
             </div>

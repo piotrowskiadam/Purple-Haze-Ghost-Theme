@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.8] - 2025-03-30
+
+### Added
+- JavaScript in `index.js` to stop click propagation on tag links (`a.gh-card-tag`), allowing them to navigate independently of the main card link.
+
+### Changed
+- Updated `partials/card.hbs` to wrap individual tags in `<a>` tags linking to `{{tag.url}}`.
+
 ## [1.3.7] - 2025-03-30
 
 ### Fixed
