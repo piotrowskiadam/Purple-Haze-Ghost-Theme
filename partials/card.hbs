@@ -4,23 +4,7 @@ Re-usable card for linking to posts
 
 {{!-- Use 'featured' property only on home page for styling the ARTICLE --}}
 <article class="gh-card {{post_class}}{{#is "home"}}{{#if featured}} gh-card--featured{{/if}}{{/is}}" {{#is "home"}}{{#if featured}}{{#if feature_image}} style="background-image: url({{img_url feature_image size="l"}})"{{/if}}{{/if}}{{/is}}>
-    {{!-- Main link for the card (excluding tags) --}}
-    {{!-- Tags rendered OUTSIDE the main link, but still within the article --}}
-    <div class="gh-card-tags"> {{!-- Wrapper for tags --}}
-        {{!-- Show FEATURED badge only if featured AND on home page --}}
-        {{#is "home"}}
-            {{#if featured}}
-                <span class="gh-card-tag">{{t "FEATURED"}}</span> {{!-- Use standard tag class --}}
-            {{/if}}
-        {{/is}}
-        {{!-- Always loop through tags if they exist, regardless of featured status --}}
-        {{#if tags}}
-            {{#foreach tags as |tag|}}
-                {{!-- Wrap tag in its own link --}}
-                <a href="{{tag.url}}" class="gh-card-tag">{{tag.name}}</a>
-            {{/foreach}}
-        {{/if}}
-    </div>
+    {{!-- Main link for the card --}}
     <a class="gh-card-link" href="{{url}}">
         {{#if feature_image}}
             <picture class="gh-card-picture">

@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.3.15] - 2025-03-30
+
+### Fixed
+- Corrected `partials/card.hbs` structure to prevent tag duplication by removing the erroneously added outer tag block. Tags are now correctly rendered only once inside `.gh-card-content`.
+
 ## [1.3.14] - 2025-03-30
 
 ### Fixed
