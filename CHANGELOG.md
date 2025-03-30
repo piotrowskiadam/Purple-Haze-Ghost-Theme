@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.16] - 2025-03-30
+
+### Changed
+- Refactored `partials/card.hbs` to use separate links for image, title, and read more, removing the single wrapper link.
+- Removed unnecessary JS event handler for tag links.
+- Added CSS styles for new link classes (`.gh-card-image-link`, `.gh-card-readmore`) and reset styles for title link (`.gh-card-title a`).
+
 ## [1.3.15] - 2025-03-30
 
 ### Fixed

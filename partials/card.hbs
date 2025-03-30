@@ -4,11 +4,11 @@ Re-usable card for linking to posts
 
 {{!-- Use 'featured' property only on home page for styling the ARTICLE --}}
 <article class="gh-card {{post_class}}{{#is "home"}}{{#if featured}} gh-card--featured{{/if}}{{/is}}" {{#is "home"}}{{#if featured}}{{#if feature_image}} style="background-image: url({{img_url feature_image size="l"}})"{{/if}}{{/if}}{{/is}}>
-    {{!-- Main link for the card --}}
-    <a class="gh-card-link" href="{{url}}">
-        {{#if feature_image}}
+    {{#if feature_image}}
+        {{!-- Wrap image in its own link --}}
+        <a href="{{url}}" class="gh-card-image-link" aria-label="{{t "Go to post"}} {{title}}">
             <picture class="gh-card-picture">
-              <source 
+              <source
                 srcset="
                 {{img_url feature_image size="xxs" format="avif"}} 30w,
                 {{img_url feature_image size="xs" format="avif"}} 100w,
@@ -48,7 +48,9 @@ Re-usable card for linking to posts
                 {{^if @first}}loading="lazy"{{/if}}
               >
             </picture>
+        </a> {{!-- Close image link --}}
         {{/if}}
+        {{!-- Content area (no longer wrapped in a single link) --}}
         <div class="gh-card-content">
             <div class="gh-card-tags"> {{!-- Wrapper for tags --}}
                 {{!-- Show FEATURED badge only if featured AND on home page --}}
@@ -65,14 +67,14 @@ Re-usable card for linking to posts
                     {{/foreach}}
                 {{/if}}
             </div>
-            {{!-- Title - Always use h4 within card partial --}}
-            <h4 class="gh-card-title">{{title}}</h4>
+            {{!-- Title - Wrap in its own link --}}
+            <h4 class="gh-card-title"><a href="{{url}}">{{title}}</a></h4>
             {{!-- Excerpt --}}
             <p>{{excerpt words="30"}}...</p> {{!-- Limit by words (increased) and add ellipsis --}}
             {{!-- Meta moved after excerpt --}}
             <span class="gh-card-meta"><time datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMM YYYY"}}</time> <span class="bull">&bull;</span> {{reading_time minute=(t "1 min read") minutes=(t "% min read")}}</span>
-            {{!-- Read More --}}
-            <strong>{{t "Read more"}}</strong>
+            {{!-- Read More - Wrap in its own link --}}
+            <a href="{{url}}" class="gh-card-readmore"><strong>{{t "Read more"}}</strong></a>
         </div>
-    </a>
+        {{!-- Removed closing </a> tag for the old main link --}}
 </article>

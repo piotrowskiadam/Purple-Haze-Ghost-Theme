@@ -7,19 +7,8 @@ import "../css/index.css";
 import menuOpen from "./menuOpen";
 import infiniteScroll from "./infiniteScroll";
 
-// Function to handle tag link clicks and stop propagation
-const handleTagLinks = () => {
-    const tagLinks = document.querySelectorAll('a.gh-card-tag');
-    tagLinks.forEach(link => {
-        link.addEventListener('click', (event) => {
-            // Stop the click event from bubbling up to the parent card link
-            event.stopPropagation();
-            // Allow the default link behavior (navigation) to proceed
-        });
-    });
-};
 
 // Call the functions
 menuOpen();
 infiniteScroll();
-handleTagLinks(); // Add call to the new function
+// Removed handleTagLinks() as it's no longer needed with the new card structure
