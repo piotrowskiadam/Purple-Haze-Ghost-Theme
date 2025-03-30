@@ -198,7 +198,7 @@ html,
 
 .gh-card-tag {
     display: inline-block; /* Needed for margin/padding */
-    background-color: var(--ghost-accent-color, #7B3FE4); /* Use Ghost Accent Color */
+    background-color: var(--ghost-accent-color, #281C52); /* Use Ghost Accent Color with correct fallback */
     color: var(--tag-text-color, #D0B8FB); /* Use variable */
     padding: 0.3em 0.6em; /* Further adjust padding */
     border-radius: 0.4em; /* Slightly more rounding */
@@ -515,7 +515,7 @@ html,
     left: 0;
     right: 0;
     height: 250px; /* Increased height */
-    background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--ghost-accent-color, #7B3FE4) 15%, transparent)); /* Use Accent Color */
+    background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--ghost-accent-color, #281C52) 15%, transparent)); /* Use Accent Color with correct fallback */
     pointer-events: none; /* Ensure it doesn't block interactions */
     /* z-index: -1; Removed again */
 }

@@ -4,7 +4,7 @@
 :root {
 
     /* Colours */
-    --color-primary: var(--ghost-accent-color, #7B3FE4); /* Purple Accent */
+    --color-primary: var(--ghost-accent-color, #281C52); /* Use desired default purple as fallback */
     --color-base: #FFFFFF; /* Primary Text (White) */
     --color-secondary-text: #D0D0D0; /* Secondary Text (Light Gray) */
     --color-border: #333333; /* Border for dark theme */

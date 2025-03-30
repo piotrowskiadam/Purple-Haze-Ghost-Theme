@@ -1,6 +1,14 @@
 # Changelog
 
+## [1.2.2] - 2025-03-30
+
+### Changed
+- Updated the default fallback color for `--ghost-accent-color` to `#281C52` (dark purple) in `vars.css` and relevant rules in `index.css`. This ensures the theme visually defaults to this purple if no Accent Color is set in Ghost Admin.
+
 ## [1.2.1] - 2025-03-30
+
+### Changed
+- Updated `README.md` to reflect Purple Haze theme details instead of generic starter theme info.
 
 ### Fixed
 - Removed stray repository URL accidentally added to `partials/card.hbs`.
