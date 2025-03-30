@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.17] - 2025-03-30
+
+### Changed
+- Updated `AI_AGENT_NOTES.md` with key learnings and best practices.
+- Updated `README.md` with a new "Development Notes" section pointing to `AI_AGENT_NOTES.md`.
+
 ## [1.3.16] - 2025-03-30
 
 ### Changed

@@ -109,6 +109,19 @@ npm run test
 
 &nbsp;
 
+## Development Notes (AI & Human)
+
+This theme is actively developed with the assistance of AI agents. Key learnings, best practices, and specific implementation details discovered during development are documented in `AI_AGENT_NOTES.md`. Both human and AI developers should consult this file before making significant changes to understand the established patterns and avoid reintroducing previously fixed issues.
+
+Key areas covered include:
+- Release workflow (versioning, building, tagging, GitHub releases)
+- Handling custom theme settings and CSS variables
+- Translation implementation details
+- Card structure and link behavior (image, title, tags, read more)
+- Conditional styling using Ghost context helpers
+
+&nbsp;
+
 ## Copyright & License
 
 Copyright (c) 2025 Adam Piotrowski - Based on Ghost Starter Theme (Copyright (c) 2013-2025 Ghost Foundation) - Released under the [MIT license](LICENSE).
