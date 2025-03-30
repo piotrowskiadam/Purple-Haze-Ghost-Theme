@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.3.7] - 2025-03-30
+
+### Fixed
+- Removed top padding from `.gh-postfeed` in `index.css` to reduce excessive space below the "Latest Posts" heading.
+
 ## [1.3.6] - 2025-03-30
 
 ### Changed

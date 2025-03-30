@@ -57,7 +57,7 @@ html,
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
     gap: 6vmin 5vmin; /* Increased gap */
-    padding: 8vmin 0;
+    padding: 0 0 8vmin 0; /* Remove top padding, keep bottom */
 }
 
 /* Removed rule making first post full-width */
