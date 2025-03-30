@@ -50,7 +50,13 @@ Re-usable card for linking to posts
             </picture>
         </a> {{!-- Close image link --}}
         {{/if}}
-        {{!-- Content area (no longer wrapped in a single link) --}}
+        {{!-- Content area --}}
+        {{!-- Wrap content in link ONLY for featured cards on home (background image cards) --}}
+        {{#is "home"}}
+            {{#if featured}}
+                <a href="{{url}}" class="gh-featured-card-link"> {{!-- Specific class for potential styling --}}
+            {{/if}}
+        {{/is}}
         <div class="gh-card-content">
             <div class="gh-card-tags"> {{!-- Wrapper for tags --}}
                 {{!-- Show FEATURED badge only if featured AND on home page --}}
@@ -76,5 +82,9 @@ Re-usable card for linking to posts
             {{!-- Read More - Wrap in its own link --}}
             <a href="{{url}}" class="gh-card-readmore"><strong>{{t "Read more"}}</strong></a>
         </div>
-        {{!-- Removed closing </a> tag for the old main link --}}
+        {{#is "home"}}
+            {{#if featured}}
+                </a> {{!-- Close featured card link --}}
+            {{/if}}
+        {{/is}}
 </article>

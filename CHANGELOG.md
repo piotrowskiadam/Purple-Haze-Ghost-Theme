@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.3.19] - 2025-03-30
+
+### Fixed
+- Corrected `partials/card.hbs` structure to ensure featured card content is wrapped in a link, making the background image clickable.
+
 ## [1.3.18] - 2025-03-30
 
 ### Changed
