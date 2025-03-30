@@ -28,14 +28,15 @@
     grid-column-start: 2;
     display: flex;
     align-items: center;
-    max-width: 200px;
+    /* max-width: 200px; Removed max-width */
     text-align: center;
-    word-break: break-all;
+    word-wrap: break-word; /* Allow wrapping between words */
 }
 
 .gh-head-logo {
     display: block;
     padding: 10px 0;
+    color: var(--navigation-text-color, #FFFFFF); /* Use variable */
     font-weight: 600;
     font-size: 2.2rem;
     line-height: 1.2em;
@@ -69,6 +70,7 @@
 .gh-head-menu .nav a {
     display: inline-block;
     padding: 5px 0;
+    color: var(--navigation-text-color, #FFFFFF); /* Use variable */
 }
 
 .gh-head-menu .nav-current a {

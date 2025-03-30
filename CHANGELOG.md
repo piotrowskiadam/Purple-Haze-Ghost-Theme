@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.3.0] - 2025-03-30
+
+### Added
+- Custom Theme Setting for 'Navigation text color' (`navigation_text_color`).
+
+### Changed
+- Increased tag font size to `1.3rem`.
+- Improved site title wrapping in header by removing `max-width` and adjusting `word-wrap`.
+- Updated header logo and navigation links to use the new `navigation_text_color` setting.
+
 ## [1.2.2] - 2025-03-30
 
 ### Changed

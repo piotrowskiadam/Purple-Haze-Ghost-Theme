@@ -202,7 +202,7 @@ html,
     color: var(--tag-text-color, #D0B8FB); /* Use variable */
     padding: 0.3em 0.6em; /* Further adjust padding */
     border-radius: 0.4em; /* Slightly more rounding */
-    font-size: 1.2rem; /* Increased font size for prominence */
+    font-size: 1.3rem; /* Further increase font size */
     font-weight: 600; /* Bold */
     line-height: 1.4; /* Adjust line height */
     text-transform: uppercase;
