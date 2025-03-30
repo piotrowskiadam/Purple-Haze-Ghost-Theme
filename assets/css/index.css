@@ -124,7 +124,26 @@ html,
     position: relative; /* For absolute positioning of overlay if needed */
     border-radius: var(--radius); /* Add rounded corners */
     overflow: hidden; /* Ensure background image respects radius */
+    /* position: relative; Already set */
 }
+
+/* Style the link overlay for featured cards */
+.gh-featured-card-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1; /* Place it above the background but below tags if needed */
+    /* Make it transparent, content inside provides visuals */
+    display: block; /* Ensure it takes up space */
+}
+/* Ensure content inside the link is still positioned correctly */
+.gh-featured-card-link .gh-card-content {
+    position: relative; /* Ensure content stays above overlay background if needed */
+    z-index: 2; /* Keep content above the main link overlay */
+}
+
 
 @media (max-width: 740px) { /* Use --small breakpoint */
     .gh-card--featured {
