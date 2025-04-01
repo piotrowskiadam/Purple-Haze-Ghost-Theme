@@ -1,7 +1,12 @@
 # Changelog
 
-## [1.4.7] - 2025-04-01
+## [1.4.8] - 2025-04-01
 
+### Fixed
+- Corrected CSS grid column assignments for ToC and main article to ensure proper centering.
+- Corrected sticky CSS class name (`.toc-sticky`) to match JavaScript implementation.
+
+## [1.4.7] - 2025-04-01
 ### Changed
 - Increased ToC title font size again.
 - Re-implemented JS Intersection Observer to make ToC sticky only after feature image/header scrolls past.
