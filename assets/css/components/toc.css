@@ -57,7 +57,7 @@
 @media (min-width: 1024px) { /* Using 1024px breakpoint */
     .gh-toc-container {
         display: grid;
-        /* Simplified grid: Auto space | ToC | Gap | Main Content | Auto space */
+        /* Grid: Flexible space | ToC | Gap | Main Content | Flexible space */
         --toc-width: 280px; /* Define ToC width */
         --toc-gap: 4rem;    /* Define gap */
         --content-main-width: var(--content-width, 90ch); /* Use the wider post content width */
@@ -78,16 +78,11 @@
     .gh-toc {
         grid-column: 2 / 3; /* Place ToC in the second column */
         display: block; /* Show ToC on desktop */
-        /* position: sticky; -- Removed, will be added by JS */
-        /* top: 80px; -- Removed, will be added by JS */
-        align-self: start;
-        max-height: calc(100vh - 120px); /* Initial max-height */
-        /* Add styles for when JS adds the sticky class */
-    }
-    .gh-toc.toc-sticky {
-        position: sticky;
-        top: 40px; /* Adjust desired sticky offset */
-        max-height: calc(100vh - 80px); /* Adjust max-height for sticky */
+        position: sticky; /* Make it sticky directly */
+        top: 80px; /* Adjust based on header height - align with where content starts */
+        align-self: start; /* Stick relative to the container top */
+        max-height: calc(100vh - 120px); /* Adjust max-height based on top offset */
+        /* Removed .toc-sticky class */
     }
 
     .gh-article {

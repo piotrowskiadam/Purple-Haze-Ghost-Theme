@@ -1,7 +1,12 @@
 # Changelog
 
-## [1.4.5] - 2025-04-01
+## [1.4.6] - 2025-04-01
 
+### Changed
+- Simplified ToC JavaScript, removing conditional sticky logic.
+- Refined ToC CSS grid layout for better content centering and applied `position: sticky` directly.
+
+## [1.4.5] - 2025-04-01
 ### Changed
 - Updated ToC title color to use main text color (`--color-base`).
 - Modified ToC JavaScript to make the ToC sticky only after the feature image/header scrolls out of view using Intersection Observer.
