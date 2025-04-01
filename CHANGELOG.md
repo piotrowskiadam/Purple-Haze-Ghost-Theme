@@ -1,7 +1,14 @@
 # Changelog
 
-## [1.4.6] - 2025-04-01
+## [1.4.7] - 2025-04-01
 
+### Changed
+- Increased ToC title font size again.
+- Re-implemented JS Intersection Observer to make ToC sticky only after feature image/header scrolls past.
+- Re-added `.toc-sticky` class in CSS for conditional sticky positioning.
+- Refined CSS grid layout for better content centering.
+
+## [1.4.6] - 2025-04-01
 ### Changed
 - Simplified ToC JavaScript, removing conditional sticky logic.
 - Refined ToC CSS grid layout for better content centering and applied `position: sticky` directly.
