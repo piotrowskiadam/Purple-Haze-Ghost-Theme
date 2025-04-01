@@ -1,8 +1,17 @@
 {{!< default}}
 
 {{#post}}
+<div class="gh-toc-container"> {{!-- Container for ToC and article --}}
+<aside class="gh-toc">
+    <div class="gh-toc-title">{{t "Table of Contents"}}</div>
+    <nav>
+        <ul class="gh-toc-list">
+            {{!-- ToC items will be injected here by JS --}}
+        </ul>
+    </nav>
+</aside>
 
-    <article class="gh-article {{post_class}}"> {{!-- Removed outer container --}}
+<article class="gh-article {{post_class}}"> {{!-- Removed duplicate article tag --}}
 
         <header class="gh-header gh-canvas">
         <div class="gh-header-content"> {{!-- Wrapper for alignment --}}
@@ -63,16 +72,6 @@
         </figure>
         {{/if}}
 
-        {{!-- Moved ToC inside gh-content, before content helper --}}
-        <aside class="gh-toc">
-            <div class="gh-toc-title">{{t "Table of Contents"}}</div>
-            <nav>
-                <ul class="gh-toc-list">
-                    {{!-- ToC items will be injected here by JS --}}
-                </ul>
-            </nav>
-        </aside>
-
         {{content}}
     </div>
 
@@ -90,8 +89,7 @@
         </div> {{!-- Close gh-footer-content --}}
     </footer>
 </article>
-{{!-- Removed closing div for gh-toc-container --}}
-
+</div> {{!-- End gh-toc-container --}}
 <aside class="gh-readmore"> {{!-- Read more remains outside the container --}}
     <div class="gh-readmore-inner gh-container">
         <div class="gh-readmore-next">

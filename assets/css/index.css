@@ -53,7 +53,7 @@ html,
 }
 
 .gh-article {
-    padding: 8vmin 0; /* Restore original padding */
+    padding: 0 0 8vmin 0; /* Revert: Remove top padding */
 }
 .gh-postfeed {
     display: grid;
@@ -382,7 +382,7 @@ a.gh-card-tag {
 /* ---------------------------------------------------------- */
 
 .gh-header {
-    padding: 0 0 2vmin 0; /* Restore original padding */
+    padding: 1.5rem 0 2vmin 0; /* Revert: Add top padding to match ToC */
     /* text-align: center; Removed */
 }
 

@@ -1,14 +1,19 @@
 /* Table of Contents Styles */
 
+/* Container for grid layout on desktop */
+.gh-toc-container {
+    display: block; /* Default */
+}
+
 .gh-toc {
     display: none; /* Hidden by default on mobile */
+    padding-top: 1.5rem; /* Match article header padding */
     padding-bottom: 1.5rem;
-    margin-bottom: 2rem; /* Add space below ToC on mobile */
 }
 
 .gh-toc-title {
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 2.0rem; /* Increased title font size */
+    font-weight: 700; /* Bolder title */
     margin-bottom: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -19,9 +24,9 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    font-size: 2.4rem; /* Increased font size further */
-    line-height: 1.5; /* Adjust line height for larger font */
-    max-height: calc(100vh - 120px); /* Adjust based on sticky top offset */
+    font-size: 1.6rem; /* Keep this size as per feedback */
+    line-height: 1.6;
+    max-height: calc(100vh - 150px); /* Adjust based on title size and top offset */
     overflow-y: auto;
 }
 
@@ -48,17 +53,74 @@
     font-weight: 600; /* Make active link slightly bolder */
 }
 
-/* Desktop Layout - Float and Sticky */
-@media (min-width: 1200px) { /* Adjust breakpoint if needed */
+/* Desktop Layout - Grid and Sticky */
+@media (min-width: 1024px) { /* Using 1024px breakpoint */
+    .gh-toc-container {
+        display: grid;
+        /* Define columns: ToC width, gap, main content area */
+        /* Let's try defining the main content area based on the existing --content-width and --container-width */
+        --toc-width: 280px; /* Define ToC width */
+        --toc-gap: 4rem;    /* Define gap */
+        --content-max-width: var(--container-width, 1200px);
+        --content-main-width: var(--content-width, 90ch); /* Use the wider post content width */
+        
+        /* Calculate side padding needed to center the main content within the overall container */
+        --side-padding: calc((var(--content-max-width) - var(--toc-width) - var(--toc-gap) - var(--content-main-width)) / 2);
+
+        grid-template-columns:
+            minmax(var(--side-padding), 1fr) /* Left space */
+            var(--toc-width)                /* ToC column */
+            var(--toc-gap)                  /* Gap */
+            var(--content-main-width)       /* Main content column */
+            minmax(var(--side-padding), 1fr); /* Right space */
+        
+        max-width: var(--content-max-width);
+        margin: 0 auto;
+        padding: 0 2rem; /* Keep overall horizontal padding */
+        align-items: flex-start;
+    }
+
     .gh-toc {
+        grid-column: 2 / 3; /* Place ToC in the second column */
         display: block; /* Show ToC on desktop */
-        float: left;
-        width: 280px; /* Adjust width as needed */
-        margin-right: 3rem; /* Space between ToC and content */
-        margin-bottom: 1rem; /* Space below if content is short */
         position: sticky;
-        top: 40px; /* Adjust based on header height/desired spacing */
-        /* max-height calculation might need adjustment based on final top offset */
-        max-height: calc(100vh - 80px);
+        top: 80px; /* Adjust based on header height */
+        align-self: start; /* Ensure it sticks relative to the container top */
+        max-height: calc(100vh - 120px); /* Adjust max-height based on top offset */
+    }
+
+    .gh-article {
+        grid-column: 4 / 5; /* Place article in the fourth column */
+        padding-top: 0; /* Remove article top padding, header handles it */
+    }
+
+     /* Ensure canvas elements within article use the grid column */
+    .gh-article .gh-canvas {
+        grid-column: 1 / -1; /* Span the article's grid area */
+        max-width: none;
+        width: 100%;
+        padding: 0;
+        /* Reset the inner grid, let the outer grid handle layout */
+        display: block;
+        grid-template-columns: none;
+    }
+
+     /* Adjust content width within the article column - should be handled by grid */
+    .gh-article .gh-content {
+         max-width: none; /* Let the grid column define width */
+         margin: 0; /* Remove auto margin */
+    }
+
+    /* Ensure wide/full images still work relative to the article column */
+     .gh-article .kg-width-wide {
+        width: calc(100% + var(--toc-gap) + var(--toc-width) / 2); /* Example: Span into gap + half of ToC */
+        margin-left: calc(-1 * (var(--toc-gap) + var(--toc-width) / 2));
+        max-width: none; /* Override max-width */
+    }
+
+    .gh-article .kg-width-full {
+       width: calc(100% + var(--toc-gap) + var(--toc-width) + var(--side-padding) * 2); /* Span everything */
+       margin-left: calc(-1 * (var(--toc-gap) + var(--toc-width) + var(--side-padding)));
+       max-width: none; /* Override max-width */
     }
 }

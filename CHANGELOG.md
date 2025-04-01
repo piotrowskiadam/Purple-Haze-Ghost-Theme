@@ -1,7 +1,14 @@
 # Changelog
 
-## [1.4.3] - 2025-04-01
+## [1.4.4] - 2025-04-01
 
+### Changed
+- Reverted ToC layout to use a grid container (`.gh-toc-container`) wrapping ToC and article.
+- Adjusted grid columns in `toc.css` to keep main content centered while placing sticky ToC on the left.
+- Increased ToC title font size (`.gh-toc-title`) to `2.0rem`.
+- Reverted CSS changes from v1.4.3 related to floated ToC.
+
+## [1.4.3] - 2025-04-01
 ### Changed
 - Reworked Table of Contents layout:
   - Moved ToC inside the main content area (`.gh-content`) below the header/feature image.
