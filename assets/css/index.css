@@ -53,7 +53,7 @@ html,
 }
 
 .gh-article {
-    padding: 0 0 8vmin 0; /* Remove top padding */
+    padding: 8vmin 0; /* Restore original padding */
 }
 .gh-postfeed {
     display: grid;
@@ -310,7 +310,7 @@ a.gh-card-tag {
     opacity: 0.8;
 }
 
-.gh-card-content {
+.gh-card-content { /* This is for cards, not post content */
     max-width: 720px;
     margin: 0 auto; /* Keep centering the block */
     text-align: left; /* Left-align text by default */
@@ -382,7 +382,7 @@ a.gh-card-tag {
 /* ---------------------------------------------------------- */
 
 .gh-header {
-    padding: 1.5rem 0 2vmin 0; /* Add top padding to match ToC, keep reduced bottom */
+    padding: 0 0 2vmin 0; /* Restore original padding */
     /* text-align: center; Removed */
 }
 

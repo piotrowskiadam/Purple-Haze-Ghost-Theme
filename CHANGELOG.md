@@ -1,7 +1,17 @@
 # Changelog
 
-## [1.4.2] - 2025-04-01
+## [1.4.3] - 2025-04-01
 
+### Changed
+- Reworked Table of Contents layout:
+  - Moved ToC inside the main content area (`.gh-content`) below the header/feature image.
+  - Removed previous grid layout (`.gh-toc-container`).
+  - Applied float and sticky positioning to ToC on desktop.
+  - Increased ToC font size to `2.4rem`.
+- Reverted post header/article padding adjustments from v1.4.2.
+- Added `overflow: hidden` to `.gh-content` to contain floated ToC.
+
+## [1.4.2] - 2025-04-01
 ### Changed
 - Increased Table of Contents column width and reduced gap between ToC and main content on desktop.
 - Adjusted top padding on post header to vertically align post title with ToC title.
