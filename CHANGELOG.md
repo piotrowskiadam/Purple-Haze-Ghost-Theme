@@ -1,7 +1,14 @@
 # Changelog
 
-## [1.4.11] - 2025-04-02
+## [1.4.12] - 2025-04-02
 
+### Changed
+- Reworked ToC layout to leverage standard `.gh-canvas` grid.
+- Positioned ToC in `wide-start / main-start` grid area.
+- Simplified JS by removing sticky observer (CSS handles sticky directly).
+- Adjusted scrollspy observer margin.
+
+## [1.4.11] - 2025-04-02
 ### Changed
 - Refined ToC sticky behavior: ToC is hidden initially, made visible and sticky via JS (`.toc-visible-sticky`) only after feature image/header scrolls past.
 - Adjusted scrollspy observer margin to delay initial heading highlight.

@@ -1,9 +1,6 @@
 /* Table of Contents Styles */
 
-/* Container for grid layout on desktop */
-.gh-toc-container {
-    display: block; /* Default */
-}
+/* Removed .gh-toc-container custom styles, relies on .gh-canvas applied in HTML */
 
 .gh-toc {
     display: none; /* Hidden by default on mobile */
@@ -12,7 +9,7 @@
 }
 
 .gh-toc-title {
-    font-size: 3.2rem; /* Keep large title size */
+    font-size: 3.2rem; /* Large title size */
     font-weight: 700; /* Bolder title */
     margin-bottom: 1rem;
     text-transform: uppercase;
@@ -53,36 +50,28 @@
     font-weight: 600; /* Make active link slightly bolder */
 }
 
-/* Desktop Layout - Grid and Sticky */
-@media (min-width: 1024px) { /* Using 1024px breakpoint */
-    .gh-toc-container {
-        display: grid;
-        /* Simplified Grid: ToC | Gap | Main Content */
-        --toc-width: 280px; /* Define ToC width */
-        --toc-gap: 4rem;    /* Define gap */
-        --content-main-width: var(--content-width, 90ch); /* Use the wider post content width */
+/* Desktop Layout - Using gh-canvas grid */
+@media (min-width: 1024px) { /* Adjust breakpoint if needed */
 
-        grid-template-columns: var(--toc-width) var(--toc-gap) var(--content-main-width);
-
-        /* Center the grid structure */
-        justify-content: center; /* Center the columns within the container */
-        max-width: calc(var(--toc-width) + var(--toc-gap) + var(--content-main-width) + 4rem); /* Calculate max-width based on columns + padding */
-        margin: 0 auto; /* Center the container */
-        padding: 0 2rem; /* Keep overall horizontal padding */
-        align-items: flex-start;
+    .gh-toc-container.gh-canvas {
+        /* Ensure the container uses the grid variables correctly */
+        gap: 0 var(--gap); /* Use the canvas gap for column spacing */
+        /* Other styles like max-width, margin, padding are inherited from .gh-canvas */
     }
 
     .gh-toc {
-        grid-column: 2 / 3; /* ToC in 2nd column */
-        display: block; /* Occupy space */
+        grid-column: wide-start / main-start; /* Place in left wide column */
+        display: block; /* Show ToC on desktop */
         align-self: start;
-        max-height: calc(100vh - 120px);
+        padding-right: 4rem; /* Add gap manually */
+        max-height: calc(100vh - 120px); /* Initial max-height */
         /* Initially hidden */
         visibility: hidden;
         opacity: 0;
         transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
     }
-    .gh-toc.toc-visible-sticky { /* New class for JS control */
+
+    .gh-toc.toc-visible-sticky { /* Class added by JS */
         visibility: visible;
         opacity: 1;
         position: sticky;
@@ -92,26 +81,24 @@
     }
 
     .gh-article {
-        grid-column: 3 / 4; /* Article in 3rd column */
-        padding-top: 0; /* Remove article top padding, header handles it */
+        grid-column: main-start / main-end; /* Article stays in the main content area */
+        padding-top: 0; /* Header already has padding */
     }
 
-     /* Ensure canvas elements within article use the grid column */
+     /* Ensure canvas elements within article use the correct grid column */
     .gh-article .gh-canvas {
-        grid-column: 1 / -1; /* Span the article's grid area */
-        max-width: none;
-        width: 100%;
-        padding: 0;
-        /* Reset the inner grid, let the outer grid handle layout */
-        display: block;
-        grid-template-columns: none;
+       /* Resetting styles that might interfere */
+       grid-column: auto; /* Let child canvas elements position normally within article */
+       max-width: none; /* Allow content canvas to fill article column */
+       width: 100%;
+       padding: 0;
+       display: grid; /* Restore grid display */
+       grid-template-columns: inherit; /* Inherit main canvas columns */
     }
 
-     /* Adjust content width within the article column - should be handled by grid */
+     /* Content width is handled by the main canvas grid */
     .gh-article .gh-content {
-         max-width: none; /* Let the grid column define width */
-         margin: 0; /* Remove auto margin */
+         max-width: none;
+         margin: 0;
     }
-
-    /* Removed complex width overrides for wide/full images from here */
 }

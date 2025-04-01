@@ -1,7 +1,7 @@
 {{!< default}}
 
 {{#post}}
-<div class="gh-toc-container"> {{!-- Container for ToC and article --}}
+<div class="gh-toc-container gh-canvas"> {{!-- Container using canvas grid --}}
 <aside class="gh-toc">
     <div class="gh-toc-title">{{t "Table of Contents"}}</div>
     <nav>
@@ -11,7 +11,7 @@
     </nav>
 </aside>
 
-<article class="gh-article {{post_class}}"> {{!-- Removed duplicate article tag --}}
+<article class="gh-article {{post_class}}">
 
         <header class="gh-header gh-canvas">
         <div class="gh-header-content"> {{!-- Wrapper for alignment --}}
