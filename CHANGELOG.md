@@ -1,7 +1,13 @@
 # Changelog
 
-## [1.4.10] - 2025-04-01
+## [1.4.11] - 2025-04-02
 
+### Changed
+- Refined ToC sticky behavior: ToC is hidden initially, made visible and sticky via JS (`.toc-visible-sticky`) only after feature image/header scrolls past.
+- Adjusted scrollspy observer margin to delay initial heading highlight.
+- Increased ToC title font size.
+
+## [1.4.10] - 2025-04-01
 ### Changed
 - Simplified ToC CSS grid layout for better centering.
 - Removed JS dependency for ToC sticky behavior; applied `position: sticky` directly in CSS.

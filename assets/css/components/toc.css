@@ -12,7 +12,7 @@
 }
 
 .gh-toc-title {
-    font-size: 3.2rem; /* Make title significantly larger */
+    font-size: 3.2rem; /* Keep large title size */
     font-weight: 700; /* Bolder title */
     margin-bottom: 1rem;
     text-transform: uppercase;
@@ -73,14 +73,22 @@
     }
 
     .gh-toc {
-        grid-column: 1 / 2; /* ToC in 1st column */
-        display: block; /* Show ToC on desktop */
-        position: sticky; /* Apply sticky directly */
+        grid-column: 2 / 3; /* ToC in 2nd column */
+        display: block; /* Occupy space */
+        align-self: start;
+        max-height: calc(100vh - 120px);
+        /* Initially hidden */
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    }
+    .gh-toc.toc-visible-sticky { /* New class for JS control */
+        visibility: visible;
+        opacity: 1;
+        position: sticky;
         top: 80px; /* Adjust desired sticky offset */
-        align-self: start; /* Stick relative to the container top */
-        max-height: calc(100vh - 120px); /* Adjust max-height based on top offset */
-        overflow-y: auto; /* Allow scrolling if needed */
-        /* Removed .toc-sticky class */
+        max-height: calc(100vh - 120px); /* Adjust max-height for sticky */
+        overflow-y: auto; /* Add scroll only when sticky and overflowing */
     }
 
     .gh-article {
