@@ -1,0 +1,109 @@
+/* Table of Contents Styles */
+
+.gh-toc-container {
+    /* Basic layout, columns handled in media query */
+    display: block; 
+}
+
+.gh-toc {
+    display: none; /* Hidden by default on mobile */
+    padding-top: 1.5rem; /* Align with article content padding */
+    padding-bottom: 1.5rem;
+}
+
+.gh-toc-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--ghost-accent-color); /* Use main accent for title */
+}
+
+.gh-toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-height: calc(100vh - 100px); /* Adjust based on header/sticky offset */
+    overflow-y: auto;
+}
+
+.gh-toc-list li {
+    margin-bottom: 0.5em;
+}
+
+.gh-toc-list a {
+    color: var(--color-secondary-text); /* Use secondary text color */
+    text-decoration: none;
+    display: block;
+    padding: 0.2em 0.5em;
+    border-radius: 4px;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.gh-toc-list a:hover {
+    background-color: color-mix(in srgb, var(--color-bg) 90%, var(--color-secondary-text) 10%);
+}
+
+.gh-toc-list a.active {
+    background-color: var(--secondary-accent-color, #D0B8FB); /* Highlight with secondary accent */
+    color: var(--color-bg); /* Use background color for text on highlight */
+    font-weight: 500;
+}
+
+/* Desktop Layout */
+@media (min-width: 1024px) {
+    .gh-toc-container {
+        display: grid;
+        grid-template-columns: 240px 1fr; /* Fixed width ToC, flexible article */
+        gap: 4rem; /* Space between ToC and article */
+        align-items: flex-start; /* Align items to the top */
+        max-width: 1200px; /* Match canvas width or adjust as needed */
+        margin: 0 auto;
+        padding: 0 2rem; /* Add some horizontal padding */
+    }
+
+    .gh-toc {
+        display: block; /* Show ToC on desktop */
+        position: sticky;
+        top: 80px; /* Adjust based on header height */
+        align-self: start; /* Ensure it sticks relative to the container top */
+    }
+
+    /* Adjust article within the grid */
+    .gh-article {
+       /* No specific grid styles needed if it just takes the second column */
+    }
+
+     /* Ensure canvas elements within article don't break grid */
+    .gh-article .gh-canvas {
+        max-width: none; /* Override default canvas max-width */
+        width: 100%;
+        padding: 0; /* Remove canvas padding if container handles it */
+        grid-column: auto; /* Reset any potential grid column settings */
+    }
+
+     /* Adjust content width within the article column */
+    .gh-article .gh-content {
+         max-width: 720px; /* Or your preferred content width */
+         margin: 0 auto; /* Center content within its column */
+    }
+
+    /* Ensure wide/full images still work relative to the article column */
+     .gh-article .kg-width-wide {
+        max-width: 920px; /* Adjust as needed, wider than content */
+        margin-left: auto;
+        margin-right: auto;
+        /* Consider negative margins if needed, but grid might handle it */
+    }
+
+    .gh-article .kg-width-full {
+        max-width: 100%; /* Full width of the article column */
+        grid-column: 1 / -1; /* Span full width if needed, relative to article */
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+}

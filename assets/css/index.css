@@ -25,10 +25,11 @@ production stylesheet in assets/built/screen.css using: npm run dev
 @import "ghost/badge.css";
 @import "ghost/pagination.css";
 @import "ghost/comments.css";
-
+@import "components/toc.css"; /* Add ToC styles */
 
 
 /* Main - Your styles here! Edit below
+/* ---------------------------------------------------------- */
 /* ---------------------------------------------------------- */
 
 html,

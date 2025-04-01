@@ -6,6 +6,7 @@ import "../css/index.css";
 // Import JS
 import menuOpen from "./menuOpen";
 import infiniteScroll from "./infiniteScroll";
+import "./toc"; // Import ToC script
 import Prism from 'prismjs';
 
 // Import specific languages for Prism (add more as needed)
