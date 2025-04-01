@@ -57,8 +57,8 @@
 @media (min-width: 1024px) {
     .gh-toc-container {
         display: grid;
-        grid-template-columns: 240px 1fr; /* Fixed width ToC, flexible article */
-        gap: 4rem; /* Space between ToC and article */
+        grid-template-columns: 480px 1fr; /* Increased ToC width */
+        gap: 2rem; /* Reduced space between ToC and article */
         align-items: flex-start; /* Align items to the top */
         max-width: 1200px; /* Match canvas width or adjust as needed */
         margin: 0 auto;

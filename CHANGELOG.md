@@ -1,7 +1,12 @@
 # Changelog
 
-## [1.4.1] - 2025-04-01
+## [1.4.2] - 2025-04-01
 
+### Changed
+- Increased Table of Contents column width and reduced gap between ToC and main content on desktop.
+- Adjusted top padding on post header to vertically align post title with ToC title.
+
+## [1.4.1] - 2025-04-01
 ### Changed
 - Changed Table of Contents title from `h3` to `div` for better SEO.
 - Increased Table of Contents item font size to `1.6rem`.
