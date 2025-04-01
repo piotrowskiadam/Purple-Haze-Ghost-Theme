@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Intersection Observer for Scrollspy ---
     const observerOptions = {
-        rootMargin: '-80px 0px -10% 0px', // Further adjust bottom margin for scrollspy
+        rootMargin: '-80px 0px 0% 0px', // Set bottom margin to 0% to delay initial highlight
         threshold: 1.0
     };
 
@@ -110,6 +110,38 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(heading);
     });
 
-    // Removed sticky observer logic as CSS handles it now
+    // --- Intersection Observer for Sticky ToC ---
+    const stickyOffset = 80; // Desired top offset when sticky (must match CSS .toc-visible-sticky top value)
+    const stickyObserverOptions = {
+        rootMargin: `-${stickyOffset}px 0px 0px 0px`, // Observe when bottom edge hits the sticky offset line from the top
+        threshold: 0 // Trigger as soon as the edge crosses
+    };
+
+    const stickyObserverCallback = (entries) => {
+        entries.forEach(entry => {
+            // Check if the bottom of the observed element is above the sticky trigger point
+            if (!entry.isIntersecting && entry.boundingClientRect.bottom < stickyOffset) {
+                 tocElement.classList.add('toc-visible-sticky'); // Use the correct class name
+            } else {
+                // Handles when element is intersecting OR scrolled back down past the trigger point
+                tocElement.classList.remove('toc-visible-sticky'); // Use the correct class name
+            }
+        });
+    };
+
+    const stickyObserver = new IntersectionObserver(stickyObserverCallback, stickyObserverOptions);
+
+    // Observe the feature image if it exists, otherwise observe the header
+    const elementToObserveSticky = featureImage || postHeader;
+
+    if (elementToObserveSticky) {
+        stickyObserver.observe(elementToObserveSticky);
+    } else {
+        // If neither exists, make ToC visible immediately (edge case)
+        // Add the class directly if no element to observe
+         tocElement.classList.add('toc-visible-sticky');
+         // Optionally remove sticky positioning if it should just be visible
+         // tocElement.style.position = 'static';
+    }
 
 });

@@ -1,7 +1,13 @@
 # Changelog
 
-## [1.4.12] - 2025-04-02
+## [1.4.13] - 2025-04-02
 
+### Changed
+- Reverted ToC layout to use `.gh-canvas` grid structure.
+- Re-implemented JS observer logic for conditional ToC stickiness/visibility.
+- Adjusted CSS for `.gh-toc` and `.toc-visible-sticky` to work with JS observer.
+
+## [1.4.12] - 2025-04-02
 ### Changed
 - Reworked ToC layout to leverage standard `.gh-canvas` grid.
 - Positioned ToC in `wide-start / main-start` grid area.

@@ -1,11 +1,11 @@
 /* Table of Contents Styles */
 
-/* Removed .gh-toc-container custom styles, relies on .gh-canvas applied in HTML */
-
+/* Base styles (Mobile First) */
 .gh-toc {
     display: none; /* Hidden by default on mobile */
-    padding-top: 1.5rem; /* Match article header padding */
+    padding-top: 1.5rem;
     padding-bottom: 1.5rem;
+    margin-bottom: 2rem; /* Add space below ToC on mobile if it were displayed */
 }
 
 .gh-toc-title {
@@ -21,10 +21,9 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    font-size: 1.6rem; /* Keep this size as per feedback */
+    font-size: 1.6rem; /* Main content font size */
     line-height: 1.6;
-    max-height: calc(100vh - 150px); /* Adjust based on title size and top offset */
-    overflow-y: auto;
+    /* Max height calculation will apply when sticky */
 }
 
 .gh-toc-list li {
@@ -50,21 +49,21 @@
     font-weight: 600; /* Make active link slightly bolder */
 }
 
-/* Desktop Layout - Using gh-canvas grid */
-@media (min-width: 1024px) { /* Adjust breakpoint if needed */
+/* Desktop Layout - Using standard .gh-canvas grid */
+@media (min-width: 1024px) { /* Breakpoint where canvas grid applies */
 
+    /* Ensure the container uses the grid */
     .gh-toc-container.gh-canvas {
-        /* Ensure the container uses the grid variables correctly */
-        gap: 0 var(--gap); /* Use the canvas gap for column spacing */
-        /* Other styles like max-width, margin, padding are inherited from .gh-canvas */
+        /* Styles inherited from .gh-canvas in content.css */
+        /* We just need to place children correctly */
+        align-items: flex-start; /* Align items to top */
     }
 
     .gh-toc {
         grid-column: wide-start / main-start; /* Place in left wide column */
-        display: block; /* Show ToC on desktop */
+        display: block; /* Show on desktop */
         align-self: start;
-        padding-right: 4rem; /* Add gap manually */
-        max-height: calc(100vh - 120px); /* Initial max-height */
+        padding-right: 4rem; /* Manual gap */
         /* Initially hidden */
         visibility: hidden;
         opacity: 0;
@@ -85,20 +84,9 @@
         padding-top: 0; /* Header already has padding */
     }
 
-     /* Ensure canvas elements within article use the correct grid column */
-    .gh-article .gh-canvas {
-       /* Resetting styles that might interfere */
-       grid-column: auto; /* Let child canvas elements position normally within article */
-       max-width: none; /* Allow content canvas to fill article column */
-       width: 100%;
+    /* Ensure inner .gh-canvas elements behave correctly */
+    .gh-article > .gh-canvas {
+       grid-column: 1 / -1; /* Span the article's column */
        padding: 0;
-       display: grid; /* Restore grid display */
-       grid-template-columns: inherit; /* Inherit main canvas columns */
-    }
-
-     /* Content width is handled by the main canvas grid */
-    .gh-article .gh-content {
-         max-width: none;
-         margin: 0;
     }
 }
