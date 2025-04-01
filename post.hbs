@@ -4,10 +4,12 @@
 <article class="gh-article {{post_class}}">
 
     <header class="gh-header gh-canvas">
-        <h1 class="gh-title">{{title}}</h1>
-        <span class="gh-post-meta"><time datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMM YYYY"}}</time> <span class="bull">&bull;</span> {{reading_time}}</span> {{!-- Moved below title --}}
+        <div class="gh-header-content"> {{!-- Wrapper for alignment --}}
+            <h1 class="gh-title">{{title}}</h1>
+            <span class="gh-post-meta"><time datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMM YYYY"}}</time> <span class="bull">&bull;</span> {{reading_time}}</span> {{!-- Moved below title --}}
 
-        {{#if custom_excerpt}}
+            {{#if custom_excerpt}}
+        </div>
         <p class="gh-excerpt">{{custom_excerpt}}</p>
         {{/if}}
 
@@ -64,17 +66,17 @@
     </div>
 
     <footer class="gh-footer gh-canvas">
-    
-        <div class="gh-post-authors">
-            {{t "Written by"}} {{#foreach authors}}<a href="{{url}}">{{name}}</a>{{/foreach}}
-        </div>
-    
-        {{#if comments}}
+        <div class="gh-footer-content"> {{!-- Wrapper for alignment --}}
+            <div class="gh-post-authors">
+                {{t "Written by"}} {{#foreach authors}}<a href="{{url}}">{{name}}</a>{{/foreach}}
+            </div>
+        
+            {{#if comments}}
         <section class="gh-post-comments">
             {{comments}}
         </section>
         {{/if}}
-
+        </div> {{!-- Close gh-footer-content --}}
     </footer>
 
 </article>

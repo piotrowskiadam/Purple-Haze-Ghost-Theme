@@ -24,7 +24,9 @@
     }
 }
 
-.gh-canvas > * {
+.gh-canvas > *,
+.gh-header-content, /* Align post header content */
+.gh-footer-content { /* Align post footer content */
    grid-column: main-start / main-end;
 }
 

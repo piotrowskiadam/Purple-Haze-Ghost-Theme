@@ -240,14 +240,7 @@ html,
     line-height: 1; /* Prevent extra space from inline-block */
 }
 
-/* Position tags absolutely on featured cards */
-.gh-card--featured .gh-card-tags {
-    position: absolute;
-    top: 1.5rem; /* Adjust as needed */
-    left: 1.5rem; /* Adjust as needed */
-    z-index: 3; /* Ensure tags are above link overlay and content */
-    margin: 0; /* Reset margins */
-}
+/* Removed absolute positioning for featured tags */
 
 .gh-card-tag {
     display: inline-block; /* Needed for margin/padding */

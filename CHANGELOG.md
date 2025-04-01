@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.3.23] - 2025-03-31
+
+### Fixed
+- Reverted `card.hbs` structure: tags are now outside main link, JS added back to handle clicks.
+- Re-applied absolute positioning for featured tag CSS in `index.css` (adjusted position).
+- Wrapped post header/footer content in `.gh-container` in `post.hbs` for alignment.
+
+### Added
+- Related posts section to `post.hbs`.
+- Translations for "You might also like".
+
 ## [1.3.22] - 2025-03-30
 
 ### Fixed
