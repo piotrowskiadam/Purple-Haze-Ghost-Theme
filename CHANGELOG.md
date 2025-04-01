@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.13] - 2025-04-02
+## [1.4.14] - 2025-04-02
 
+### Fixed
+- Adjusted ToC scrollspy observer margin to delay initial heading highlight.
+
+## [1.4.13] - 2025-04-02
 ### Changed
 - Reverted ToC layout to use `.gh-canvas` grid structure.
 - Re-implemented JS observer logic for conditional ToC stickiness/visibility.

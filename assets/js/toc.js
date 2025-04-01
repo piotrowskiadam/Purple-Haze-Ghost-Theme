@@ -121,10 +121,10 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             // Check if the bottom of the observed element is above the sticky trigger point
             if (!entry.isIntersecting && entry.boundingClientRect.bottom < stickyOffset) {
-                 tocElement.classList.add('toc-visible-sticky'); // Use the correct class name
+                 tocElement.classList.add('toc-sticky'); // Use the class name defined in CSS
             } else {
                 // Handles when element is intersecting OR scrolled back down past the trigger point
-                tocElement.classList.remove('toc-visible-sticky'); // Use the correct class name
+                tocElement.classList.remove('toc-sticky'); // Use the class name defined in CSS
             }
         });
     };
@@ -139,9 +139,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         // If neither exists, make ToC visible immediately (edge case)
         // Add the class directly if no element to observe
-         tocElement.classList.add('toc-visible-sticky');
-         // Optionally remove sticky positioning if it should just be visible
-         // tocElement.style.position = 'static';
+         tocElement.classList.add('toc-sticky'); // Use correct class
+         // If no trigger, make it sticky immediately
     }
 
 });

@@ -1,17 +1,17 @@
 {{!< default}}
 
 {{#post}}
-<div class="gh-toc-container gh-canvas"> {{!-- Container using canvas grid --}}
-<aside class="gh-toc">
-    <div class="gh-toc-title">{{t "Table of Contents"}}</div>
-    <nav>
-        <ul class="gh-toc-list">
-            {{!-- ToC items will be injected here by JS --}}
-        </ul>
-    </nav>
-</aside>
+<div class="gh-post-wrapper"> {{!-- New simple wrapper --}}
+    <aside class="gh-toc">
+        <div class="gh-toc-title">{{t "Table of Contents"}}</div>
+        <nav>
+            <ul class="gh-toc-list">
+                {{!-- ToC items will be injected here by JS --}}
+            </ul>
+        </nav>
+    </aside>
 
-<article class="gh-article {{post_class}}">
+    <article class="gh-article {{post_class}}">
 
         <header class="gh-header gh-canvas">
         <div class="gh-header-content"> {{!-- Wrapper for alignment --}}
@@ -89,7 +89,7 @@
         </div> {{!-- Close gh-footer-content --}}
     </footer>
 </article>
-</div> {{!-- End gh-toc-container --}}
+</div> {{!-- End gh-post-wrapper --}}
 <aside class="gh-readmore"> {{!-- Read more remains outside the container --}}
     <div class="gh-readmore-inner gh-container">
         <div class="gh-readmore-next">
