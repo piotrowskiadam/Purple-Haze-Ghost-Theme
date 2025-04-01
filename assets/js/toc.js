@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const tocContainer = document.querySelector('.gh-toc-list');
     const content = document.querySelector('.gh-content'); // Area where headings are located
     const tocElement = document.querySelector('.gh-toc'); // The aside element
+    const featureImage = document.querySelector('.gh-feature-image'); // Get feature image element
+    const postHeader = document.querySelector('.gh-header'); // Get header element
 
     if (!tocContainer || !content || !tocElement) {
         // If any required element is missing, don't proceed
@@ -107,5 +109,37 @@ document.addEventListener('DOMContentLoaded', () => {
     headings.forEach(heading => {
         observer.observe(heading);
     });
+
+    // --- Intersection Observer for Sticky ToC ---
+    const stickyObserverOptions = {
+        rootMargin: '-40px 0px 0px 0px', // Trigger when element is 40px from top
+        threshold: 0
+    };
+
+    const stickyObserverCallback = (entries) => {
+        entries.forEach(entry => {
+            // If the target element is NOT intersecting (i.e., scrolled past the top margin)
+            // make the ToC sticky. Otherwise, remove sticky.
+            if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+                tocElement.classList.add('toc-sticky');
+            } else {
+                tocElement.classList.remove('toc-sticky');
+            }
+        });
+    };
+
+    const stickyObserver = new IntersectionObserver(stickyObserverCallback, stickyObserverOptions);
+
+    // Observe the element *after* the feature image, or the header if no image exists
+    // This ensures ToC becomes sticky only after the image/header is scrolled past
+    const elementToObserveSticky = featureImage?.nextElementSibling || postHeader?.nextElementSibling;
+
+    if (elementToObserveSticky) {
+        stickyObserver.observe(elementToObserveSticky);
+    } else if (postHeader) {
+        // Fallback: observe the header itself if nothing comes after it (unlikely but safe)
+        stickyObserver.observe(postHeader);
+    }
+
 
 });

@@ -1,7 +1,13 @@
 # Changelog
 
-## [1.4.4] - 2025-04-01
+## [1.4.5] - 2025-04-01
 
+### Changed
+- Updated ToC title color to use main text color (`--color-base`).
+- Modified ToC JavaScript to make the ToC sticky only after the feature image/header scrolls out of view using Intersection Observer.
+- Added `.toc-sticky` class in CSS to handle the conditional sticky state.
+
+## [1.4.4] - 2025-04-01
 ### Changed
 - Reverted ToC layout to use a grid container (`.gh-toc-container`) wrapping ToC and article.
 - Adjusted grid columns in `toc.css` to keep main content centered while placing sticky ToC on the left.

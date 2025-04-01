@@ -17,7 +17,7 @@
     margin-bottom: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    color: var(--ghost-accent-color); /* Use main accent for title */
+    color: var(--color-base); /* Use main text color */
 }
 
 .gh-toc-list {
@@ -57,24 +57,19 @@
 @media (min-width: 1024px) { /* Using 1024px breakpoint */
     .gh-toc-container {
         display: grid;
-        /* Define columns: ToC width, gap, main content area */
-        /* Let's try defining the main content area based on the existing --content-width and --container-width */
+        /* Simplified grid: Auto space | ToC | Gap | Main Content | Auto space */
         --toc-width: 280px; /* Define ToC width */
         --toc-gap: 4rem;    /* Define gap */
-        --content-max-width: var(--container-width, 1200px);
         --content-main-width: var(--content-width, 90ch); /* Use the wider post content width */
-        
-        /* Calculate side padding needed to center the main content within the overall container */
-        --side-padding: calc((var(--content-max-width) - var(--toc-width) - var(--toc-gap) - var(--content-main-width)) / 2);
 
         grid-template-columns:
-            minmax(var(--side-padding), 1fr) /* Left space */
-            var(--toc-width)                /* ToC column */
-            var(--toc-gap)                  /* Gap */
-            var(--content-main-width)       /* Main content column */
-            minmax(var(--side-padding), 1fr); /* Right space */
-        
-        max-width: var(--content-max-width);
+            1fr /* Left flexible space */
+            var(--toc-width) /* ToC column */
+            var(--toc-gap) /* Gap */
+            var(--content-main-width) /* Main content column */
+            1fr; /* Right flexible space */
+
+        max-width: var(--container-width, 1200px); /* Use theme's container width */
         margin: 0 auto;
         padding: 0 2rem; /* Keep overall horizontal padding */
         align-items: flex-start;
@@ -83,10 +78,16 @@
     .gh-toc {
         grid-column: 2 / 3; /* Place ToC in the second column */
         display: block; /* Show ToC on desktop */
+        /* position: sticky; -- Removed, will be added by JS */
+        /* top: 80px; -- Removed, will be added by JS */
+        align-self: start;
+        max-height: calc(100vh - 120px); /* Initial max-height */
+        /* Add styles for when JS adds the sticky class */
+    }
+    .gh-toc.toc-sticky {
         position: sticky;
-        top: 80px; /* Adjust based on header height */
-        align-self: start; /* Ensure it sticks relative to the container top */
-        max-height: calc(100vh - 120px); /* Adjust max-height based on top offset */
+        top: 40px; /* Adjust desired sticky offset */
+        max-height: calc(100vh - 80px); /* Adjust max-height for sticky */
     }
 
     .gh-article {
@@ -111,16 +112,5 @@
          margin: 0; /* Remove auto margin */
     }
 
-    /* Ensure wide/full images still work relative to the article column */
-     .gh-article .kg-width-wide {
-        width: calc(100% + var(--toc-gap) + var(--toc-width) / 2); /* Example: Span into gap + half of ToC */
-        margin-left: calc(-1 * (var(--toc-gap) + var(--toc-width) / 2));
-        max-width: none; /* Override max-width */
-    }
-
-    .gh-article .kg-width-full {
-       width: calc(100% + var(--toc-gap) + var(--toc-width) + var(--side-padding) * 2); /* Span everything */
-       margin-left: calc(-1 * (var(--toc-gap) + var(--toc-width) + var(--side-padding)));
-       max-width: none; /* Override max-width */
-    }
+    /* Removed complex width overrides for wide/full images from here */
 }
