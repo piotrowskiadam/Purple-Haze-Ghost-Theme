@@ -1,7 +1,13 @@
 # Changelog
 
-## [1.4.14] - 2025-04-02
+## [1.4.15] - 2025-04-02
 
+### Changed
+- Reworked ToC layout using fixed/absolute positioning relative to a wrapper (`.gh-post-wrapper`).
+- Re-implemented JS observers for conditional visibility/stickiness (`.toc-active`) and bottom boundary (`.toc-bottom`).
+- Adjusted CSS positioning calculations and added `.toc-bottom` styles.
+
+## [1.4.14] - 2025-04-02
 ### Fixed
 - Adjusted ToC scrollspy observer margin to delay initial heading highlight.
 

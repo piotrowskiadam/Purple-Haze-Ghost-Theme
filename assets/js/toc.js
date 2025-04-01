@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Intersection Observer for Scrollspy ---
     const observerOptions = {
-        rootMargin: '-80px 0px 0% 0px', // Set bottom margin to 0% to delay initial highlight
+        rootMargin: '-80px 0px -10% 0px', // Adjust bottom margin for scrollspy highlight trigger
         threshold: 1.0
     };
 
@@ -110,37 +110,73 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(heading);
     });
 
-    // --- Intersection Observer for Sticky ToC ---
-    const stickyOffset = 80; // Desired top offset when sticky (must match CSS .toc-visible-sticky top value)
+    // --- Intersection Observer for Sticky/Bottom ToC ---
+    const postWrapper = document.querySelector('.gh-post-wrapper'); // Get the wrapper
+    const postFooter = document.querySelector('.gh-footer'); // Footer element as bottom trigger
+    const stickyOffset = 80; // Must match CSS .toc-visible-sticky top value
+
+    // Observer for starting sticky
     const stickyObserverOptions = {
-        rootMargin: `-${stickyOffset}px 0px 0px 0px`, // Observe when bottom edge hits the sticky offset line from the top
-        threshold: 0 // Trigger as soon as the edge crosses
+        rootMargin: `-${stickyOffset}px 0px 0px 0px`,
+        threshold: 0
     };
 
     const stickyObserverCallback = (entries) => {
         entries.forEach(entry => {
-            // Check if the bottom of the observed element is above the sticky trigger point
+            // Add active class when bottom of observed element is above sticky point
             if (!entry.isIntersecting && entry.boundingClientRect.bottom < stickyOffset) {
-                 tocElement.classList.add('toc-sticky'); // Use the class name defined in CSS
+                if (!tocElement.classList.contains('toc-bottom')) { // Don't make active if already at bottom
+                    tocElement.classList.add('toc-visible-sticky'); // Use correct class
+                }
             } else {
-                // Handles when element is intersecting OR scrolled back down past the trigger point
-                tocElement.classList.remove('toc-sticky'); // Use the class name defined in CSS
+                tocElement.classList.remove('toc-visible-sticky'); // Use correct class
             }
         });
     };
 
     const stickyObserver = new IntersectionObserver(stickyObserverCallback, stickyObserverOptions);
-
-    // Observe the feature image if it exists, otherwise observe the header
-    const elementToObserveSticky = featureImage || postHeader;
-
+    const elementToObserveSticky = featureImage || postHeader; // Observe image or header
     if (elementToObserveSticky) {
         stickyObserver.observe(elementToObserveSticky);
     } else {
-        // If neither exists, make ToC visible immediately (edge case)
-        // Add the class directly if no element to observe
-         tocElement.classList.add('toc-sticky'); // Use correct class
-         // If no trigger, make it sticky immediately
+        // If no trigger element, make it active immediately
+        tocElement.classList.add('toc-visible-sticky');
+    }
+
+    // Observer for reaching the bottom
+    const bottomObserverOptions = {
+        // Trigger when the top of the footer is X pixels from the bottom of the viewport
+        // Adjust the '150px' based on footer height and desired stopping point
+        rootMargin: `0px 0px -${window.innerHeight - (postFooter?.offsetHeight || 100) - 150}px 0px`,
+        threshold: 0
+    };
+
+     const bottomObserverCallback = (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Footer is entering the trigger zone near the bottom
+                tocElement.classList.add('toc-bottom');
+                tocElement.classList.remove('toc-active'); // Use 'toc-visible-sticky'
+                tocElement.classList.remove('toc-visible-sticky'); // Ensure fixed positioning is removed
+            } else {
+                // Check if it was previously bottom-aligned and is now scrolling up
+                if (tocElement.classList.contains('toc-bottom')) {
+                    // Re-check if it should become active (sticky) again
+                    if (elementToObserveSticky && elementToObserveSticky.getBoundingClientRect().bottom < stickyOffset) {
+                         tocElement.classList.remove('toc-bottom');
+                         tocElement.classList.add('toc-visible-sticky'); // Use correct class
+                    } else {
+                         tocElement.classList.remove('toc-bottom');
+                         // It won't become active here, stickyObserver will handle it
+                    }
+                }
+            }
+        });
+    };
+
+    const bottomObserver = new IntersectionObserver(bottomObserverCallback, bottomObserverOptions);
+    if (postFooter && postWrapper) { // Need wrapper for absolute positioning context
+        bottomObserver.observe(postFooter);
     }
 
 });

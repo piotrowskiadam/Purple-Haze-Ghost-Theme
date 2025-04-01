@@ -2,7 +2,6 @@
 
 .gh-post-wrapper {
     position: relative; /* Needed for absolute positioning of ToC at bottom */
-    /* This wrapper doesn't need grid styles itself */
     max-width: var(--container-width, 1200px); /* Match overall container width */
     margin: 0 auto;
     padding: 0 2rem; /* Match overall container padding */
@@ -60,12 +59,9 @@
         display: block; /* Show on desktop */
         position: absolute; /* Start as absolute relative to wrapper */
         width: 280px; /* Fixed width */
-        /* Calculate left position: center viewport - half container - gap - toc width */
-        /* This calculation assumes the container is centered. Need --content-width */
-        /* Let's use a simpler approach first: position relative to the left edge of the centered content */
-        /* We need JS to calculate this reliably, or use negative margin relative to article */
-        /* Alternative: Place it far left and let it be sticky */
-        left: 2rem; /* Position from the left edge of the wrapper padding */
+        /* Calculate left based on viewport width and centered content */
+        /* (Viewport Width / 2) - (Content Width / 2) - Gap - ToC Width */
+        left: calc(50vw - (var(--content-width, 90ch) / 2) - 4rem - 280px);
         top: 0; /* Initially align with top of wrapper (effectively below header) */
         padding-top: 1.5rem; /* Add padding to align text */
         /* Initially hidden */
@@ -82,8 +78,8 @@
         top: 80px; /* Desired sticky offset from viewport top */
         max-height: calc(100vh - 120px); /* Max height when fixed */
         overflow-y: auto;
-        /* Keep the same calculated left position */
-        left: calc(50% - (var(--container-width, 1200px) / 2) + 2rem); /* Recalculate left based on viewport */
+        /* Keep the same calculated left position relative to viewport center */
+        left: calc(50vw - (var(--content-width, 90ch) / 2) - 4rem - 280px);
     }
 
     .gh-toc.toc-bottom { /* Added by JS when reaching footer */
@@ -92,7 +88,8 @@
         position: absolute; /* Change back to absolute */
         top: auto; /* Remove fixed top */
         bottom: 0; /* Align to bottom of gh-post-wrapper */
-        left: 2rem; /* Revert to original absolute left */
+        /* Recalculate left relative to the wrapper */
+        left: calc(50% - (var(--content-width, 90ch) / 2) - 4rem - 280px);
         max-height: none; /* Remove max-height */
         overflow-y: hidden; /* Hide overflow when at bottom */
     }
@@ -100,15 +97,16 @@
     /* Article remains centered by default .gh-canvas behavior */
     .gh-article {
         padding-top: 0; /* Header already has padding */
-        /* Ensure article content doesn't overlap with fixed ToC */
-        /* No specific change needed here if ToC is positioned outside */
     }
 }
 
-/* Adjust left position for wider viewports if needed */
+/* Adjust left position for wider viewports if container width increases */
+/* This might need further refinement based on how --container-width behaves */
 @media (min-width: 1400px) {
-     .gh-toc.toc-active {
-         /* Recalculate left based on viewport */
-         left: calc(50% - (var(--container-width, 1200px) / 2) + 2rem);
+     .gh-toc,
+     .gh-toc.toc-active,
+     .gh-toc.toc-bottom {
+         /* Recalculate left based on viewport/container */
+         left: calc(50vw - (min(var(--container-width, 1200px), 100vw - 4rem) / 2) + 2rem - 4rem - 280px); /* Approx: Center - Half Container + Padding - Gap - ToC Width */
      }
 }
