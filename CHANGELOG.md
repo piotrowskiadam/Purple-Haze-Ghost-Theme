@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.8] - 2025-04-01
+## [1.4.9] - 2025-04-01
 
+### Fixed
+- Refined Intersection Observer `rootMargin` in `toc.js` for more precise sticky trigger point.
+
+## [1.4.8] - 2025-04-01
 ### Fixed
 - Corrected CSS grid column assignments for ToC and main article to ensure proper centering.
 - Corrected sticky CSS class name (`.toc-sticky`) to match JavaScript implementation.

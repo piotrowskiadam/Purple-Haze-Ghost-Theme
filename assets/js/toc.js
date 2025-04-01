@@ -111,9 +111,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Intersection Observer for Sticky ToC (Re-implemented) ---
-    const stickyOffset = 80; // Desired top offset when sticky (matches CSS)
+    const stickyOffset = 80; // Desired top offset when sticky (must match CSS .toc-sticky top value)
     const stickyObserverOptions = {
-        rootMargin: `-${stickyOffset - 1}px 0px 0px 0px`, // Observe when bottom edge passes 1px above sticky point
+        rootMargin: `-${stickyOffset}px 0px 0px 0px`, // Observe when bottom edge hits the sticky offset line
         threshold: 0 // Trigger as soon as the edge crosses
     };
 
