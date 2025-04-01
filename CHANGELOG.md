@@ -1,7 +1,12 @@
 # Changelog
 
-## [1.4.9] - 2025-04-01
+## [1.4.10] - 2025-04-01
 
+### Changed
+- Simplified ToC CSS grid layout for better centering.
+- Removed JS dependency for ToC sticky behavior; applied `position: sticky` directly in CSS.
+
+## [1.4.9] - 2025-04-01
 ### Fixed
 - Refined Intersection Observer `rootMargin` in `toc.js` for more precise sticky trigger point.
 

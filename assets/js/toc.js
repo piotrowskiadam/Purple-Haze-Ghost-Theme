@@ -110,33 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(heading);
     });
 
-    // --- Intersection Observer for Sticky ToC (Re-implemented) ---
-    const stickyOffset = 80; // Desired top offset when sticky (must match CSS .toc-sticky top value)
-    const stickyObserverOptions = {
-        rootMargin: `-${stickyOffset}px 0px 0px 0px`, // Observe when bottom edge hits the sticky offset line
-        threshold: 0 // Trigger as soon as the edge crosses
-    };
-
-    const stickyObserverCallback = (entries) => {
-        entries.forEach(entry => {
-            // entry.boundingClientRect.bottom < stickyOffset means the bottom edge is above the sticky point
-            if (!entry.isIntersecting && entry.boundingClientRect.bottom < stickyOffset) {
-                tocElement.classList.add('toc-sticky');
-            } else {
-                // This condition handles both when the element is intersecting
-                // or when its bottom edge is below the sticky point (scrolling back up)
-                tocElement.classList.remove('toc-sticky');
-            }
-        });
-    };
-
-    const stickyObserver = new IntersectionObserver(stickyObserverCallback, stickyObserverOptions);
-
-    // Observe the feature image if it exists, otherwise observe the header
-    const elementToObserveSticky = featureImage || postHeader;
-
-    if (elementToObserveSticky) {
-        stickyObserver.observe(elementToObserveSticky);
-    }
+    // Removed sticky observer logic
 
 });

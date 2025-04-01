@@ -57,40 +57,34 @@
 @media (min-width: 1024px) { /* Using 1024px breakpoint */
     .gh-toc-container {
         display: grid;
-        /* Grid: Flexible space | ToC | Gap | Main Content | Flexible space */
+        /* Simplified Grid: ToC | Gap | Main Content */
         --toc-width: 280px; /* Define ToC width */
         --toc-gap: 4rem;    /* Define gap */
         --content-main-width: var(--content-width, 90ch); /* Use the wider post content width */
 
-        grid-template-columns:
-            1fr /* Left flexible space */
-            var(--toc-width) /* ToC column */
-            var(--toc-gap) /* Gap */
-            var(--content-main-width) /* Main content column */
-            1fr; /* Right flexible space */
+        grid-template-columns: var(--toc-width) var(--toc-gap) var(--content-main-width);
 
-        max-width: var(--container-width, 1200px); /* Use theme's container width */
-        margin: 0 auto;
+        /* Center the grid structure */
+        justify-content: center; /* Center the columns within the container */
+        max-width: calc(var(--toc-width) + var(--toc-gap) + var(--content-main-width) + 4rem); /* Calculate max-width based on columns + padding */
+        margin: 0 auto; /* Center the container */
         padding: 0 2rem; /* Keep overall horizontal padding */
         align-items: flex-start;
     }
 
     .gh-toc {
-        grid-column: 2 / 3; /* Corrected: ToC in 2nd column */
+        grid-column: 1 / 2; /* ToC in 1st column */
         display: block; /* Show ToC on desktop */
-        /* Sticky state handled by JS adding .toc-sticky */
-        align-self: start;
-        max-height: calc(100vh - 120px); /* Initial max-height */
-    }
-    .gh-toc.toc-sticky { /* Corrected class name to match JS */
-        position: sticky;
+        position: sticky; /* Apply sticky directly */
         top: 80px; /* Adjust desired sticky offset */
-        max-height: calc(100vh - 120px); /* Adjust max-height for sticky */
-        overflow-y: auto; /* Add scroll only when sticky and overflowing */
+        align-self: start; /* Stick relative to the container top */
+        max-height: calc(100vh - 120px); /* Adjust max-height based on top offset */
+        overflow-y: auto; /* Allow scrolling if needed */
+        /* Removed .toc-sticky class */
     }
 
     .gh-article {
-        grid-column: 4 / 5; /* Corrected: Article in 4th column */
+        grid-column: 3 / 4; /* Article in 3rd column */
         padding-top: 0; /* Remove article top padding, header handles it */
     }
 
