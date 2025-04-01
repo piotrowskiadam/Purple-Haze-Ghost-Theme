@@ -24,7 +24,7 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 1.6rem; /* Increased font size */
     line-height: 1.6;
     max-height: calc(100vh - 100px); /* Adjust based on header/sticky offset */
     overflow-y: auto;
@@ -48,9 +48,9 @@
 }
 
 .gh-toc-list a.active {
-    background-color: var(--secondary-accent-color, #D0B8FB); /* Highlight with secondary accent */
-    color: var(--color-bg); /* Use background color for text on highlight */
-    font-weight: 500;
+    background-color: transparent; /* Remove background highlight */
+    color: var(--secondary-accent-color, #D0B8FB); /* Apply secondary accent color to text */
+    font-weight: 600; /* Make active link slightly bolder */
 }
 
 /* Desktop Layout */

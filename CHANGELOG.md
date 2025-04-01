@@ -1,7 +1,13 @@
 # Changelog
 
-## [1.4.0] - 2025-04-01
+## [1.4.1] - 2025-04-01
 
+### Changed
+- Changed Table of Contents title from `h3` to `div` for better SEO.
+- Increased Table of Contents item font size to `1.6rem`.
+- Changed active Table of Contents item style to apply secondary accent color to text instead of background.
+
+## [1.4.0] - 2025-04-01
 ### Added
 
 - Implemented a sticky Table of Contents (ToC) for post pages (`post.hbs`).
