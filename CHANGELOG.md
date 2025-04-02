@@ -1,7 +1,16 @@
 # Changelog
 
-## [1.4.49] - 2025-04-02
+## [1.4.50] - 2025-04-02
 
+### Added
+- Integrated PhotoSwipe v5 for enhanced gallery lightbox functionality (keyboard navigation, etc.).
+- Installed PhotoSwipe as dev dependency.
+
+### Changed
+- Updated JS to import PhotoSwipe locally instead of CDN.
+- Removed redundant PhotoSwipe script tag from `default.hbs`.
+
+## [1.4.49] - 2025-04-02
 ### Changed
 - Increased site title font size (`.gh-head-logo`) to `3.5rem`.
 ## [1.4.49] - 2025-04-02

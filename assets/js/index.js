@@ -7,6 +7,7 @@ import "../css/index.css";
 import menuOpen from "./menuOpen";
 import infiniteScroll from "./infiniteScroll";
 import "./toc"; // Import ToC script
+import PhotoSwipe from 'photoswipe'; // Import from installed package
 import Prism from 'prismjs';
 
 // Import specific languages for Prism (add more as needed)
@@ -39,7 +40,99 @@ const wrapTables = () => {
     });
 };
 
+/**
+ * PhotoSwipe Gallery Initialization
+ */
+const initPhotoSwipe = () => {
+    const galleries = document.querySelectorAll('.kg-gallery-card');
+
+    galleries.forEach((galleryContainer) => {
+        const images = galleryContainer.querySelectorAll('.kg-gallery-image img');
+        if (!images.length) return;
+
+        images.forEach((img, imageIndex) => {
+            img.style.cursor = 'zoom-in'; // Indicate images are clickable
+
+            // Ensure image has dimensions for PhotoSwipe
+            if (!img.naturalWidth) {
+                // Preload image to get dimensions if not available
+                const tempImg = new Image();
+                tempImg.onload = () => {
+                    img.setAttribute('data-pswp-width', tempImg.naturalWidth);
+                    img.setAttribute('data-pswp-height', tempImg.naturalHeight);
+                };
+                tempImg.src = img.src;
+            } else {
+                 img.setAttribute('data-pswp-width', img.naturalWidth);
+                 img.setAttribute('data-pswp-height', img.naturalHeight);
+            }
+
+
+            img.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                const slides = [];
+                images.forEach(innerImg => {
+                    slides.push({
+                        src: innerImg.src,
+                        w: parseInt(innerImg.getAttribute('data-pswp-width') || innerImg.naturalWidth || 1024),
+                        h: parseInt(innerImg.getAttribute('data-pswp-height') || innerImg.naturalHeight || 768),
+                        // alt: innerImg.alt // Optional: use alt text as caption
+                    });
+                });
+
+                const options = {
+                    dataSource: slides,
+                    index: imageIndex,
+                };
+
+                const lightbox = new PhotoSwipe(options);
+                lightbox.init();
+            });
+        });
+    });
+};
+
+
 // Run after DOM content is loaded to ensure elements exist
+document.addEventListener('DOMContentLoaded', () => {
+    wrapTables(); // Wrap tables on initial load
+    Prism.highlightAll(); // Initialize Prism
+    initPhotoSwipe(); // Initialize PhotoSwipe galleries
+
+    // Re-run functions if content is loaded dynamically (e.g., infinite scroll)
+    // Need a way to detect new content - MutationObserver or custom event
+    // Example using a simple MutationObserver on the main content area:
+    const mainElement = document.querySelector('.gh-main'); // Adjust selector if needed
+    if (mainElement) {
+        const observer = new MutationObserver(mutations => {
+            mutations.forEach(mutation => {
+                if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                    // Check if added nodes contain tables or code blocks or galleries
+                    let needsReRun = false;
+                    mutation.addedNodes.forEach(node => {
+                        if (node.nodeType === 1) { // Check if it's an element node
+                             if (node.querySelector('table') || node.matches('table')) {
+                                wrapTables(); // Re-wrap tables in new content
+                                needsReRun = true;
+                             }
+                             if (node.querySelector('pre code') || node.matches('pre code')) {
+                                Prism.highlightAll(); // Re-highlight code in new content
+                                needsReRun = true;
+                             }
+                             if (node.querySelector('.kg-gallery-card') || node.matches('.kg-gallery-card')) {
+                                initPhotoSwipe(); // Re-initialize galleries in new content
+                                needsReRun = true;
+                             }
+                        }
+                    });
+                }
+            });
+        });
+
+        observer.observe(mainElement, { childList: true, subtree: true });
+    }
+});
 document.addEventListener('DOMContentLoaded', (event) => {
     // Initialize Prism syntax highlighting
     Prism.highlightAll();
