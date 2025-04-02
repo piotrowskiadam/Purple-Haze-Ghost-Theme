@@ -1,7 +1,12 @@
 # Changelog
 
-## [1.4.41] - 2025-04-02
+## [1.4.42] - 2025-04-02
 
+### Fixed
+- Simplified and corrected `.gh-canvas` grid rules in `content.css` to fix About page layout while maintaining post layout.
+- Re-verified code block background fix.
+
+## [1.4.41] - 2025-04-02
 ### Fixed
 - Corrected CSS selectors in `content.css` to fix About page layout broken by previous grid changes.
 - Forced transparent background on `pre code span` elements to remove double background in code blocks.
