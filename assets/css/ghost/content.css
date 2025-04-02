@@ -80,14 +80,15 @@
     margin-top: 6vmin;
 }
 
-.gh-canvas > blockquote,
-/* Let block elements naturally fall into the main column */
-/* Remove specific grid-column assignment for p, ol, ul, dl */
-.gh-canvas > ol,
-.gh-canvas > ul,
-.gh-canvas > dl,
-.gh-canvas > p {
-    font-family: var(--font-serif);
+/* REMOVED rule that forced serif font on specific content elements. */
+/* Font should now be controlled by --gh-font-body applied to the body tag */
+/* Keep size/line-height rules for these elements if needed, but remove font-family */
+.gh-article > .gh-content > blockquote,
+.gh-article > .gh-content > ol,
+.gh-article > .gh-content > ul,
+.gh-article > .gh-content > dl,
+.gh-article > .gh-content > p {
+    /* font-family: var(--font-serif); */ /* Removed */
     font-weight: 400;
     font-size: 2rem;
     line-height: 1.6em;

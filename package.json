@@ -2,7 +2,7 @@
     "name": "purple-haze",
     "description": "A dark, minimalist Ghost theme with purple accents.",
     "demo": "https://starter.ghost.io",
-    "version": "1.4.46",
+    "version": "1.4.47",
     "engines": {
         "ghost": ">=5.0.0"
     },
