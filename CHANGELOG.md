@@ -1,7 +1,16 @@
 # Changelog
 
-## [1.4.34] - 2025-04-02
+## [1.4.35] - 2025-04-02
 
+### Changed
+- Reverted ToC implementation to use simpler CSS sticky positioning within the `.gh-canvas` grid (v7).
+- Corrected `post.hbs` structure.
+- Updated `toc.css` to position ToC in `wide-start / main-start` grid area and apply `position: sticky`.
+- Simplified `toc.js` by removing JS-controlled sticky logic.
+- Added `--secondary-accent-color` variable.
+- Corrected post tag styling in footer to use correct color variables.
+
+## [1.4.34] - 2025-04-02
 ### Fixed
 - Corrected post tag styling in footer to use purple background and light text.
 

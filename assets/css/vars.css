@@ -7,6 +7,7 @@
     --color-primary: var(--ghost-accent-color, #281C52); /* Use desired default purple as fallback */
     --color-base: #FFFEFE; /* Primary Text (Near White) */
     --color-secondary-text: #D0D0D0; /* Secondary Text (Light Gray) */
+    --secondary-accent-color: #D0B8FB; /* Secondary Accent (Light Purple for links/tags) */
     --color-border: #333333; /* Border for dark theme */
     --color-bg: #040404; /* Darker Background */
     --color-success: #80b912; /* Keep default success */

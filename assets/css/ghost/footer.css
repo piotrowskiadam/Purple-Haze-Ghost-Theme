@@ -106,8 +106,8 @@
     padding: 0.4em 0.8em;
     border: none; /* Remove border */
     border-radius: 4px;
-    background-color: var(--primary-accent-color); /* Use primary accent for background */
-    color: var(--color-base); /* Use base color (white) for text */
+    background-color: var(--color-primary); /* Dark Purple Background (#281C52) */
+    color: var(--secondary-accent-color); /* Light Purple Text (#D0B8FB) */
     font-size: 1.3rem;
     font-weight: 500; /* Slightly bolder */
     line-height: 1;
@@ -117,6 +117,6 @@
 }
 
 .gh-post-tags .gh-tag:hover {
-    background-color: color-mix(in srgb, var(--primary-accent-color) 85%, #000 15%); /* Darken slightly on hover */
-    color: var(--color-base); /* Keep text color */
+    background-color: color-mix(in srgb, var(--color-primary) 85%, #000 15%); /* Darken slightly on hover */
+    color: var(--secondary-accent-color); /* Keep light purple text color */
 }
