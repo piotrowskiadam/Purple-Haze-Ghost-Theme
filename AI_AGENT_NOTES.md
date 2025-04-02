@@ -50,5 +50,12 @@ This document provides guidelines for AI agents working on the Purple Haze Ghost
   * For more complex strings (e.g., prefix + number + suffix), combine translated parts with the `{{plural}}` helper: `{{t "Prefix"}} {{plural count empty=(t "0 suffix") singular=(t "1 suffix") plural=(t "% suffix")}}`. Ensure all parts ("Prefix", "0 suffix", "1 suffix", "% suffix") have corresponding keys in locale files.
 * **Build Process:** The `npm run build` command sometimes fails or hangs. Retrying the command usually works. Be mindful of this during development.
 * **Template Cleanup:** Remove unused files/configurations from starter templates, especially GitHub Actions workflows (`.github/workflows/`) if using a manual deployment process.
+* **Table of Contents (ToC):** Implemented using CSS `position: sticky` within the `.gh-canvas` grid (`wide-start / main-start` column). JS (`toc.js`) handles generation and scrollspy highlighting only. Ensure `post.hbs` structure is `div.gh-canvas > aside.gh-toc + article.gh-article`.
+* **Font Loading:** Explicitly load required fonts (e.g., Roboto) with necessary subsets (`latin-ext`) via `<link>` in `default.hbs`. Update `--font-sans-serif` (or other relevant variables) in `vars.css` to prioritize the loaded font.
+* **CSS Grid Layout (`.gh-canvas`):** Be mindful of selector specificity when applying grid column widths (`--main`). Use specific selectors (e.g., targeting body class like `.post-template .gh-canvas`) if different widths are needed for different templates (like posts vs. pages) to avoid unintended overrides. Ensure direct children placement rules (`.gh-canvas > *`) don't conflict with specific element placement (like `.gh-canvas > .gh-toc`).
+* **Code Block Background:** Force transparent background on `pre > code` and inner Prism spans (`pre > code .token`) in `content.css` to prevent double backgrounds.
+* **Tag Styling:** Use `--color-primary` for background and `--secondary-accent-color` for text on tags. Ensure `--secondary-accent-color` is defined in `vars.css`. Apply styles to `.gh-post-tags .gh-tag` (footer) and `.gh-card-tag` (cards).
+* **Featured Badge:** Removed from `partials/card.hbs` as the featured layout is distinct enough. Removed associated CSS.
+* **Reading Time Translation:** Use the `{{plural}}` helper in templates (`{{plural reading_time empty=(t "...") singular=(t "...") plural=(t "...")}}`) and ensure corresponding keys exist in locale files for correct translation.
 
 **Repository:** `https://github.com/piotrowskiadam/Purple-Haze-Ghost-Theme.git`

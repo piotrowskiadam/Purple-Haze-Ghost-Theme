@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.55] - 2025-04-02
+## [1.4.56] - 2025-04-03
 
+### Changed
+- Updated `README.md` and `AI_AGENT_NOTES.md` with recent feature additions and fixes.
+
+## [1.4.55] - 2025-04-02
 ### Changed
 - Moved regular post tags (`.gh-card-tags`) to appear above the title on cards.
 - Adjusted CSS margins for the moved tags block.

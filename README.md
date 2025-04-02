@@ -12,7 +12,8 @@ A dark, minimalist Ghost theme with purple accents, designed for personal blogs 
 - Translation support (English & Polish included).
 - Built using modern web development tools (Rollup, PostCSS).
 - Includes standard Ghost theme features like member support, comments, etc.
-
+- Automatic Table of Contents generation on post pages.
+- Explicit font loading (Roboto) with `latin-ext` subset for proper diacritic display.
 &nbsp;
 
 ## First time using a Ghost theme?
@@ -119,6 +120,8 @@ Key areas covered include:
 - Translation implementation details
 - Card structure and link behavior (image, title, tags, read more)
 - Conditional styling using Ghost context helpers
+- Table of Contents implementation (CSS sticky, scrollspy)
+- Font loading strategy
 
 &nbsp;
 
