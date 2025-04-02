@@ -1,7 +1,14 @@
 # Changelog
 
-## [1.4.30] - 2025-04-02
+## [1.4.31] - 2025-04-02
 
+### Changed
+- Reworked ToC layout using fixed/absolute positioning controlled by JS (v6).
+- Corrected `post.hbs` structure (ToC outside wrapper, article inside).
+- Updated `toc.css` for the new positioning strategy and JS classes (`.toc-active`, `.toc-bottom`).
+- Updated `toc.js` with observers for sticky start and end points.
+
+## [1.4.30] - 2025-04-02
 ### Changed
 - Reverted ToC implementation to use simpler CSS sticky positioning within the `.gh-canvas` grid (v5).
 - Corrected `post.hbs` structure.
