@@ -25,11 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
          return;
     }
 
-    // Calculate initial absolute top position relative to the wrapper
-    // This helps if the JS runs before CSS fully calculates layout
-    // const initialTopOffset = tocElement.offsetTop - (postWrapper?.offsetTop || 0);
-    // tocElement.style.top = `${initialTopOffset}px`; // Set initial absolute top - CSS handles initial top now
-
     headings.forEach((heading, index) => {
         // Ensure heading has an ID, generate one if not
         if (!heading.id) {
@@ -117,10 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // Add active class when the top of the content start element is above the sticky point
             if (!entry.isIntersecting && entry.boundingClientRect.top < stickyOffset) {
                  if (!tocElement.classList.contains('toc-bottom')) { // Don't make active if already at bottom
-                    tocElement.classList.add('toc-active');
+                    tocElement.classList.add('toc-active'); // Use correct class
                  }
             } else {
-                 tocElement.classList.remove('toc-active');
+                 tocElement.classList.remove('toc-active'); // Use correct class
             }
         });
     };
@@ -155,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Re-check if it should become active (sticky) again
                     if (contentStartElement && contentStartElement.getBoundingClientRect().top < stickyOffset) {
                          tocElement.classList.remove('toc-bottom');
-                         tocElement.classList.add('toc-active');
+                         tocElement.classList.add('toc-active'); // Use correct class
                     } else {
                          tocElement.classList.remove('toc-bottom');
                          // It won't become active here, stickyStartObserver will handle it

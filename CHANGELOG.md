@@ -1,7 +1,14 @@
 # Changelog
 
-## [1.4.27] - 2025-04-02
+## [1.4.28] - 2025-04-02
 
+### Changed
+- Reworked ToC layout using fixed/absolute positioning controlled by JS (v4).
+- Corrected `post.hbs` structure (ToC outside wrapper).
+- Updated `toc.css` for the new positioning strategy and JS classes (`.toc-active`, `.toc-bottom`).
+- Updated `toc.js` with observers for sticky start and end points.
+
+## [1.4.27] - 2025-04-02
 ### Changed
 - Reworked ToC layout using fixed/absolute positioning controlled by JS (v3).
 - Corrected `post.hbs` structure.
