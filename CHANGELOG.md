@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.33] - 2025-04-02
+## [1.4.34] - 2025-04-02
 
+### Fixed
+- Corrected post tag styling in footer to use purple background and light text.
+
+## [1.4.33] - 2025-04-02
 ### Changed
 - Updated post tag styling in footer to match card tag styling (purple background, light text).
 
