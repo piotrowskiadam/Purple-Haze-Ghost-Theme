@@ -1,19 +1,19 @@
 {{!< default}}
 
 {{#post}}
-<div class="gh-canvas"> {{!-- Apply canvas grid to the main wrapper --}}
-    <aside class="gh-toc">
-        <div class="gh-toc-title">{{t "Table of Contents"}}</div>
-        <nav>
-            <ul class="gh-toc-list">
-                {{!-- ToC items will be injected here by JS --}}
-            </ul>
-        </nav>
-    </aside>
+<aside class="gh-toc"> {{!-- Moved ToC outside wrapper --}}
+    <div class="gh-toc-title">{{t "Table of Contents"}}</div>
+    <nav>
+        <ul class="gh-toc-list">
+            {{!-- ToC items will be injected here by JS --}}
+        </ul>
+    </nav>
+</aside>
 
+<div class="gh-post-wrapper"> {{!-- Wrapper for article only --}}
     <article class="gh-article {{post_class}}">
 
-        <header class="gh-header"> {{!-- Removed gh-canvas --}}
+        <header class="gh-header gh-canvas"> {{!-- Add gh-canvas back --}}
             <div class="gh-header-content"> {{!-- Wrapper for alignment --}}
                 <h1 class="gh-title">{{title}}</h1>
                 <span class="gh-post-meta"><time datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMM YYYY"}}</time> <span class="bull">&bull;</span> {{reading_time}}</span> {{!-- Moved below title --}}
@@ -27,7 +27,7 @@
 
         </header>
 
-        <div class="gh-content"> {{!-- Removed gh-canvas --}}
+        <div class="gh-content gh-canvas"> {{!-- Add gh-canvas back --}}
 
             {{!-- Feature Image moved inside content canvas --}}
             {{#if feature_image}}
@@ -77,7 +77,7 @@
             {{content}}
         </div>
 
-        <footer class="gh-footer"> {{!-- Removed gh-canvas --}}
+        <footer class="gh-footer gh-canvas"> {{!-- Add gh-canvas back --}}
             <div class="gh-footer-content"> {{!-- Wrapper for alignment --}}
                 <div class="gh-post-authors">
                     {{t "Written by"}} {{#foreach authors}}<a href="{{url}}">{{name}}</a>{{/foreach}}
@@ -91,7 +91,7 @@
             </div> {{!-- Close gh-footer-content --}}
         </footer>
     </article>
-</div> {{!-- Close gh-canvas wrapper --}}
+</div> {{!-- End gh-post-wrapper --}}
 
 <aside class="gh-readmore"> {{!-- Read more remains outside the container --}}
     <div class="gh-readmore-inner gh-container">

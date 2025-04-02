@@ -1,7 +1,14 @@
 # Changelog
 
-## [1.4.19] - 2025-04-02
+## [1.4.20] - 2025-04-02
 
+### Changed
+- Reverted ToC HTML structure again.
+- Reworked CSS for ToC using absolute/fixed positioning controlled by JS.
+- Re-implemented JS observers (`stickyObserver`, `bottomObserver`) to toggle `.toc-visible-sticky` and `.toc-bottom` classes for visibility, stickiness, and stopping scroll at footer.
+- Adjusted scrollspy observer margin.
+
+## [1.4.19] - 2025-04-02
 ### Changed
 - Reverted ToC HTML structure to place ToC and Article inside a `.gh-canvas` wrapper.
 - Updated ToC CSS to use standard `.gh-canvas` grid columns and direct sticky positioning.
