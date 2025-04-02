@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.45] - 2025-04-02
+## [1.4.46] - 2025-04-02
 
+### Fixed
+- Removed CSS rule from `index.css` that incorrectly narrowed About page content width.
+
+## [1.4.45] - 2025-04-02
 ### Fixed
 - Apply wide (`90ch`) main column width to `.gh-canvas` on About page to match post pages.
 

@@ -642,7 +642,7 @@ a.gh-card-tag {
 }
 
 .gh-content--about {
-    --main: 40ch; /* Narrower width for about text */
+    /* Removed --main override to allow default canvas width */
     text-align: center; /* Center align text blocks */
 }
 
