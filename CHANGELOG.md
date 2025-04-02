@@ -1,7 +1,14 @@
 # Changelog
 
-## [1.4.24] - 2025-04-02
+## [1.4.25] - 2025-04-02
 
+### Changed
+- Reverted ToC implementation to use simpler CSS sticky positioning within the `.gh-canvas` grid (v4).
+- Corrected `post.hbs` structure again.
+- Updated `toc.css` to position ToC in `wide-start / main-start` grid area and apply `position: sticky`.
+- Simplified `toc.js` by removing JS-controlled sticky logic.
+
+## [1.4.24] - 2025-04-02
 ### Changed
 - Reverted ToC implementation to use simpler CSS sticky positioning within the `.gh-canvas` grid (v3).
 - Corrected `post.hbs` structure again.

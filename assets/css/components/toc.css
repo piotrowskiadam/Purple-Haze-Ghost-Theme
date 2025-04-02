@@ -82,8 +82,6 @@
     .gh-article > .gh-content,
     .gh-article > .gh-footer {
        /* Ensure they occupy the correct subgrid (main) within the article's column */
-       /* This should happen naturally if they don't have grid-column set */
-       /* Let's remove explicit grid-column here just in case */
-       grid-column: auto;
+       grid-column: main-start / main-end;
     }
 }
