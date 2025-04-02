@@ -19,8 +19,8 @@
 }
 /* Apply wider width only on larger screens */
 @media (min-width: 741px) { /* Above --small breakpoint */
-    .gh-content.gh-canvas {
-       --main: 90ch; /* Further increase main content width for post body */
+    .gh-canvas { /* Apply wider main column to the main canvas grid */
+       --main: 90ch; /* Increase main content width for post body */
     }
 }
 
@@ -50,14 +50,7 @@
 .gh-content > * + * {
     margin-top: 4vmin; /* Keep default spacing for most elements */
 }
-/* Add overflow: hidden to contain floated elements like ToC */
-.gh-content.gh-canvas {
-    overflow: hidden;
-}
-/* Add overflow: hidden to contain floated elements like ToC */
-.gh-content.gh-canvas { /* Target the specific element */
-    overflow: hidden;
-}
+/* Remove redundant/incorrect overflow rules */
 
 .gh-content > p + p {
     margin-top: 1.5rem; /* Specific spacing for paragraphs */
@@ -77,6 +70,8 @@
 }
 
 .gh-canvas > blockquote,
+/* Let block elements naturally fall into the main column */
+/* Remove specific grid-column assignment for p, ol, ul, dl */
 .gh-canvas > ol,
 .gh-canvas > ul,
 .gh-canvas > dl,

@@ -1,7 +1,12 @@
 # Changelog
 
-## [1.4.35] - 2025-04-02
+## [1.4.36] - 2025-04-02
 
+### Fixed
+- Corrected `.gh-canvas` grid definition in `content.css` to ensure wide layout applies correctly on posts.
+- Ensured post tag styling uses correct color variables (`--color-primary`, `--secondary-accent-color`).
+
+## [1.4.35] - 2025-04-02
 ### Changed
 - Reverted ToC implementation to use simpler CSS sticky positioning within the `.gh-canvas` grid (v7).
 - Corrected `post.hbs` structure.
