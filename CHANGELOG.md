@@ -1,7 +1,13 @@
 # Changelog
 
-## [1.4.39] - 2025-04-02
+## [1.4.40] - 2025-04-02
 
+### Fixed
+- Corrected `.gh-canvas` grid definition in `content.css` to ensure wide layout applies correctly on posts (v2).
+- Ensured post tag styling uses correct color variables (`--color-primary`, `--secondary-accent-color`).
+- Reverted ToC to simpler CSS sticky within the corrected grid structure.
+
+## [1.4.39] - 2025-04-02
 ### Fixed
 - Forced transparent background on `pre code` elements to remove potential double background effect.
 

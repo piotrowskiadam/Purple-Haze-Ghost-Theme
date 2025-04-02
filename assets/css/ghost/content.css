@@ -20,13 +20,18 @@
 /* Apply wider width only on larger screens */
 @media (min-width: 741px) { /* Above --small breakpoint */
     .gh-canvas { /* Apply wider main column to the main canvas grid */
-       --main: 90ch; /* Increase main content width for post body */
+       --main: 90ch; /* Increase main content width */
     }
 }
 
-.gh-canvas > *,
-.gh-header-content, /* Align post header content */
-.gh-footer-content { /* Align post footer content */
+/* REMOVED overly broad rule: .gh-canvas > * */
+/* Ensure specific article elements are in the main column */
+/* Note: This assumes post.hbs structure is .gh-canvas > .gh-article > (.gh-header, .gh-content, .gh-footer) */
+.gh-canvas > .gh-article > .gh-header,
+.gh-canvas > .gh-article > .gh-content,
+.gh-canvas > .gh-article > .gh-footer,
+.gh-header-content, /* Align post header inner content */
+.gh-footer-content { /* Align post footer inner content */
    grid-column: main-start / main-end;
 }
 
@@ -188,7 +193,7 @@ figcaption strong {
     font-family: var(--font-mono);
     font-size: 1.4rem; /* Adjust size as needed */
     line-height: 1.5em;
-    background: transparent !important; /* Force transparent background for code inside pre */
+    background: transparent !important; /* Keep forced transparent background */
     border: none; /* Remove border from inline code style */
     padding: 0; /* Remove padding from inline code style */
     color: inherit; /* Inherit color from pre */
