@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Calculate initial absolute top position relative to the wrapper
     // This helps if the JS runs before CSS fully calculates layout
-    const initialTopOffset = tocElement.offsetTop - (postWrapper?.offsetTop || 0);
-    tocElement.style.top = `${initialTopOffset}px`; // Set initial absolute top
+    // const initialTopOffset = tocElement.offsetTop - (postWrapper?.offsetTop || 0);
+    // tocElement.style.top = `${initialTopOffset}px`; // Set initial absolute top - CSS handles initial top now
 
     headings.forEach((heading, index) => {
         // Ensure heading has an ID, generate one if not
