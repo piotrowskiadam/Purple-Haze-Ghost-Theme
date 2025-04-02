@@ -14,7 +14,7 @@
     --color-error: #f05230; /* Keep default error */
 
     /* Fonts */
-    --font-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; /* Base stack */
+    --font-sans-serif: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; /* Prioritize loaded Roboto */
     --font-serif: Georgia, Times, serif;
     --font-mono: Menlo, Courier, monospace;
 

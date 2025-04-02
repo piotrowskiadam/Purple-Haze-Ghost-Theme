@@ -1,7 +1,12 @@
 # Changelog
 
-## [1.4.36] - 2025-04-02
+## [1.4.37] - 2025-04-02
 
+### Fixed
+- Load Roboto font explicitly from Google Fonts with `latin-ext` subset to support Polish diacritics.
+- Prioritize loaded Roboto in the `--font-sans-serif` stack.
+
+## [1.4.36] - 2025-04-02
 ### Fixed
 - Corrected `.gh-canvas` grid definition in `content.css` to ensure wide layout applies correctly on posts.
 - Ensured post tag styling uses correct color variables (`--color-primary`, `--secondary-accent-color`).
