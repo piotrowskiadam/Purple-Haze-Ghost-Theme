@@ -188,7 +188,7 @@ figcaption strong {
     font-family: var(--font-mono);
     font-size: 1.4rem; /* Adjust size as needed */
     line-height: 1.5em;
-    background: none; /* Remove background from inline code style */
+    background: transparent !important; /* Force transparent background for code inside pre */
     border: none; /* Remove border from inline code style */
     padding: 0; /* Remove padding from inline code style */
     color: inherit; /* Inherit color from pre */

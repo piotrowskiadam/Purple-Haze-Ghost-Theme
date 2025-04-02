@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.38] - 2025-04-02
+## [1.4.39] - 2025-04-02
 
+### Fixed
+- Forced transparent background on `pre code` elements to remove potential double background effect.
+
+## [1.4.38] - 2025-04-02
 ### Fixed
 - Use `{{plural}}` helper in `post.hbs` to correctly translate reading time.
 - Added missing "Less than a minute" translation key to `locales/pl.json`.
