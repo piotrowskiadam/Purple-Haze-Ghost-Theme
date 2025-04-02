@@ -1,7 +1,13 @@
 # Changelog
 
-## [1.4.22] - 2025-04-02
+## [1.4.23] - 2025-04-02
 
+### Changed
+- Reverted ToC implementation to use simpler CSS sticky positioning within the `.gh-canvas` grid.
+- Removed JS logic for controlling sticky state; kept only scrollspy observer.
+- Corrected `post.hbs` structure to place ToC and Article correctly within `.gh-canvas`.
+
+## [1.4.22] - 2025-04-02
 ### Changed
 - Reworked ToC layout: Placed ToC inside `.gh-content`, use `float: left` and CSS `position: sticky`.
 - Updated JS observers to control `.toc-active` and `.toc-bottom` classes for visibility/stickiness/stopping.
