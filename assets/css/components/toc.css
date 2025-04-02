@@ -2,16 +2,14 @@
 
 /* Base styles (Mobile First) */
 .gh-toc {
-    display: block; /* Display by default, float handles desktop */
+    display: none; /* Hidden by default on mobile */
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-    margin-bottom: 2rem; /* Space below ToC on mobile */
-    /* Clearfix for safety if needed, though parent overflow should handle */
-    /* overflow: hidden; */
+    margin-bottom: 2rem; /* Add space below ToC on mobile if it were displayed */
 }
 
 .gh-toc-title {
-    font-size: 3.0rem; /* Large title size */
+    font-size: 3.2rem; /* Large title size */
     font-weight: 700; /* Bolder title */
     margin-bottom: 1rem;
     text-transform: uppercase;
@@ -51,36 +49,37 @@
     font-weight: 600; /* Make active link slightly bolder */
 }
 
-/* Desktop Layout - Float and Sticky */
+/* Desktop Layout - Using standard .gh-canvas grid */
 @media (min-width: 1024px) { /* Adjust breakpoint if needed */
 
+    /* Remove styles for the old container */
+    /* .gh-toc-container { ... } */
+
     .gh-toc {
-        display: block; /* Ensure it's visible */
-        float: left;
-        width: 280px; /* Adjust width as needed */
-        margin-right: 4rem; /* Space between ToC and content */
-        margin-left: calc(-280px - 4rem); /* Negative margin to pull it left */
-        margin-bottom: 1rem; /* Space below if content is short */
-        padding-top: 0; /* Reset padding */
-        /* Initial state - not sticky */
-        position: static;
-        visibility: visible; /* Make visible by default on desktop */
-        opacity: 1;
-    }
-
-    .gh-toc.toc-sticky { /* Class added by JS */
-        position: sticky;
+        grid-column: wide-start / main-start; /* Place in left wide column of the parent .gh-canvas */
+        display: block; /* Show ToC on desktop */
+        position: sticky; /* Apply sticky directly */
         top: 80px; /* Adjust desired sticky offset */
-        max-height: calc(100vh - 120px); /* Adjust max-height for sticky */
-        overflow-y: auto; /* Add scroll only when sticky and overflowing */
+        align-self: start; /* Stick relative to the container top */
+        max-height: calc(100vh - 120px); /* Adjust max-height based on top offset */
+        overflow-y: auto; /* Allow scrolling if needed */
+        padding-right: 4rem; /* Add gap manually since it's not a grid gap */
+        padding-top: 0; /* Reset padding */
+        margin-bottom: 0; /* Reset margin */
+        /* Removed JS sticky class logic */
     }
 
-    /* Stop sticky at bottom - This might need JS adjustment */
-    /* .gh-toc.toc-bottom { ... } */
+    .gh-article {
+        grid-column: main-start / main-end; /* Article stays in the main content area */
+        padding-top: 0; /* Header already has padding */
+    }
 
-    /* Article content will naturally flow next to the float */
-    .gh-article .gh-content {
-         /* Ensure content respects the float */
-         /* overflow: hidden; -- Added via content.css */
+     /* Ensure inner .gh-canvas elements behave correctly */
+     /* These might not be needed if article itself is placed correctly */
+    .gh-article > .gh-header,
+    .gh-article > .gh-content,
+    .gh-article > .gh-footer {
+       /* Ensure they occupy the correct subgrid (main) within the article's column */
+       grid-column: main-start / main-end;
     }
 }

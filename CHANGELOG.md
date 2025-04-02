@@ -1,7 +1,13 @@
 # Changelog
 
-## [1.4.16] - 2025-04-02
+## [1.4.17] - 2025-04-02
 
+### Changed
+- Reworked ToC layout again to use standard `.gh-canvas` grid.
+- Simplified JS, relying only on CSS for sticky positioning.
+- Adjusted scrollspy observer margin.
+
+## [1.4.16] - 2025-04-02
 ### Fixed
 - Adjusted ToC scrollspy observer margin again to further delay initial highlight.
 
