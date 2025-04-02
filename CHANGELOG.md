@@ -1,7 +1,12 @@
 # Changelog
 
-## [1.4.43] - 2025-04-02
+## [1.4.44] - 2025-04-02
 
+### Fixed
+- Corrected `.gh-canvas` grid rules in `content.css` to fix About page layout and ensure post layout uses wide main column (v3).
+- Refined code block background fix targeting inner `.token` spans.
+
+## [1.4.43] - 2025-04-02
 ### Fixed
 - Simplified and corrected `.gh-canvas` grid rules in `content.css` again to fix About page layout while maintaining post layout (v2).
 - Refined code block background fix targeting inner `<code>` and `.token` spans.
