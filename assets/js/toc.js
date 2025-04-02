@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Intersection Observer for Scrollspy ---
     const observerOptions = {
-        rootMargin: '-80px 0px -10% 0px', // Adjust bottom margin for scrollspy highlight trigger
+        rootMargin: '-80px 0px -50% 0px', // Delay highlight until heading is near middle
         threshold: 1.0
     };
 

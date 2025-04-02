@@ -1,17 +1,8 @@
 {{!< default}}
 
 {{#post}}
-<div class="gh-post-wrapper"> {{!-- New simple wrapper --}}
-    <aside class="gh-toc">
-        <div class="gh-toc-title">{{t "Table of Contents"}}</div>
-        <nav>
-            <ul class="gh-toc-list">
-                {{!-- ToC items will be injected here by JS --}}
-            </ul>
-        </nav>
-    </aside>
-
-    <article class="gh-article {{post_class}}">
+{{!-- Removed gh-post-wrapper --}}
+<article class="gh-article {{post_class}}">
 
         <header class="gh-header gh-canvas">
         <div class="gh-header-content"> {{!-- Wrapper for alignment --}}
@@ -71,7 +62,16 @@
         {{/if}}
         </figure>
         {{/if}}
-
+{{!-- Moved ToC inside gh-content, before content helper --}}
+<aside class="gh-toc">
+    <div class="gh-toc-title">{{t "Table of Contents"}}</div>
+    <nav>
+        <ul class="gh-toc-list">
+            {{!-- ToC items will be injected here by JS --}}
+        </ul>
+    </nav>
+</aside>
+{{content}}
         {{content}}
     </div>
 
@@ -89,7 +89,7 @@
         </div> {{!-- Close gh-footer-content --}}
     </footer>
 </article>
-</div> {{!-- End gh-post-wrapper --}}
+{{!-- Removed closing gh-post-wrapper div --}}
 <aside class="gh-readmore"> {{!-- Read more remains outside the container --}}
     <div class="gh-readmore-inner gh-container">
         <div class="gh-readmore-next">

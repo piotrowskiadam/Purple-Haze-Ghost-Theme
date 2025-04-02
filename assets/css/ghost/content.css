@@ -50,6 +50,10 @@
 .gh-content > * + * {
     margin-top: 4vmin; /* Keep default spacing for most elements */
 }
+/* Add overflow: hidden to contain floated elements like ToC */
+.gh-content.gh-canvas { /* Target the specific element */
+    overflow: hidden;
+}
 
 .gh-content > p + p {
     margin-top: 1.5rem; /* Specific spacing for paragraphs */

@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.15] - 2025-04-02
+## [1.4.16] - 2025-04-02
 
+### Fixed
+- Adjusted ToC scrollspy observer margin again to further delay initial highlight.
+
+## [1.4.15] - 2025-04-02
 ### Changed
 - Reworked ToC layout using fixed/absolute positioning relative to a wrapper (`.gh-post-wrapper`).
 - Re-implemented JS observers for conditional visibility/stickiness (`.toc-active`) and bottom boundary (`.toc-bottom`).
