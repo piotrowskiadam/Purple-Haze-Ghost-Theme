@@ -1,11 +1,13 @@
 /* Table of Contents Styles */
 
-/* Base styles (Mobile First) */
+.gh-post-wrapper {
+    position: relative; /* Needed for absolute positioning of ToC at bottom */
+    /* This wrapper doesn't need grid styles itself */
+    /* Centering is handled by gh-canvas on inner elements */
+}
+
 .gh-toc {
     display: none; /* Hidden by default on mobile */
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    margin-bottom: 2rem; /* Add space below ToC on mobile if it were displayed */
 }
 
 .gh-toc-title {
@@ -23,7 +25,7 @@
     margin: 0;
     font-size: 1.6rem; /* Main content font size */
     line-height: 1.6;
-    /* Max height calculation will apply when sticky */
+    /* Max height calculation will apply when sticky/fixed */
 }
 
 .gh-toc-list li {
@@ -49,37 +51,61 @@
     font-weight: 600; /* Make active link slightly bolder */
 }
 
-/* Desktop Layout - Using standard .gh-canvas grid */
+/* Desktop Layout - Fixed/Absolute Positioning */
 @media (min-width: 1024px) { /* Adjust breakpoint if needed */
 
-    /* Remove styles for the old container */
-    /* .gh-toc-container { ... } */
-
     .gh-toc {
-        grid-column: wide-start / main-start; /* Place in left wide column of the parent .gh-canvas */
-        display: block; /* Show ToC on desktop */
-        position: sticky; /* Apply sticky directly */
-        top: 80px; /* Adjust desired sticky offset */
-        align-self: start; /* Stick relative to the container top */
-        max-height: calc(100vh - 120px); /* Adjust max-height based on top offset */
-        overflow-y: auto; /* Allow scrolling if needed */
-        padding-right: 4rem; /* Add gap manually since it's not a grid gap */
-        padding-top: 0; /* Reset padding */
-        margin-bottom: 0; /* Reset margin */
-        /* Removed JS sticky class logic */
+        display: block; /* Show on desktop */
+        position: absolute; /* Start as absolute relative to body/viewport initially */
+        width: 280px; /* Fixed width */
+        /* Calculate left position: center viewport - half main content width - gap - toc width */
+        /* Using ch unit for content width might be tricky, use a pixel fallback or adjust calculation */
+        /* Approx calculation assuming 1200px max container */
+        left: calc(50vw - (min(var(--container-width, 1200px), 100vw - 4rem) / 2) + 2rem - 4rem - 280px);
+        top: 150px; /* Initial top offset (estimate below header/image), JS will adjust */
+        padding-top: 1.5rem; /* Add padding to align text */
+        /* Initially hidden */
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, top 0.1s, left 0.1s; /* Added top/left transition */
+        z-index: 10;
     }
 
+    .gh-toc.toc-active { /* Added by JS when scrolling past header/image */
+        visibility: visible;
+        opacity: 1;
+        position: fixed; /* Change to fixed when active */
+        top: 80px; /* Desired sticky offset from viewport top */
+        max-height: calc(100vh - 120px); /* Max height when fixed */
+        overflow-y: auto;
+        /* Keep the same calculated left position relative to viewport center */
+         left: calc(50vw - (min(var(--container-width, 1200px), 100vw - 4rem) / 2) + 2rem - 4rem - 280px);
+    }
+
+    .gh-toc.toc-bottom { /* Added by JS when reaching footer */
+        visibility: visible; /* Keep visible */
+        opacity: 1;
+        position: absolute; /* Change back to absolute relative to wrapper */
+        top: auto; /* Remove fixed top */
+        bottom: 0; /* Align to bottom of gh-post-wrapper */
+        /* Recalculate left relative to the wrapper */
+        left: calc(50% - (min(var(--container-width, 1200px), 100vw - 4rem) / 2) + 2rem - 4rem - 280px);
+        max-height: none; /* Remove max-height */
+        overflow-y: hidden; /* Hide overflow when at bottom */
+    }
+
+    /* Article remains centered by default .gh-canvas behavior */
     .gh-article {
-        grid-column: main-start / main-end; /* Article stays in the main content area */
         padding-top: 0; /* Header already has padding */
     }
+}
 
-     /* Ensure inner .gh-canvas elements behave correctly */
-     /* These might not be needed if article itself is placed correctly */
-    .gh-article > .gh-header,
-    .gh-article > .gh-content,
-    .gh-article > .gh-footer {
-       /* Ensure they occupy the correct subgrid (main) within the article's column */
-       grid-column: main-start / main-end;
-    }
+/* Adjust left position for wider viewports if needed */
+/* This calculation might need refinement */
+@media (min-width: 1400px) {
+     .gh-toc,
+     .gh-toc.toc-active,
+     .gh-toc.toc-bottom {
+         left: calc(50vw - (var(--container-width, 1200px) / 2) + 2rem - 4rem - 280px); /* Use fixed container width */
+     }
 }
