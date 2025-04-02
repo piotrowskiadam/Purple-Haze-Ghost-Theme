@@ -1,7 +1,12 @@
 # Changelog
 
-## [1.4.53] - 2025-04-02
+## [1.4.54] - 2025-04-02
 
+### Removed
+- Removed "Featured" badge display from featured post cards.
+- Removed associated CSS for the badge.
+
+## [1.4.53] - 2025-04-02
 ### Fixed
 - Corrected placement of "Featured" badge to be directly above the title in card partial.
 
