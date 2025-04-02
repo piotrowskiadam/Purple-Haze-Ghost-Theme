@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.47] - 2025-04-02
+## [1.4.48] - 2025-04-02
 
+### Fixed
+- Added top padding to sticky ToC to prevent clipping of diacritics.
+
+## [1.4.47] - 2025-04-02
 ### Fixed
 - Removed specific `font-family` override in `content.css` to ensure About page uses the selected Body Font from dashboard settings.
 
