@@ -1,7 +1,15 @@
 # Changelog
 
-## [1.4.48] - 2025-04-02
+## [1.4.49] - 2025-04-02
 
+### Changed
+- Increased site title font size (`.gh-head-logo`) to `3.5rem`.
+## [1.4.49] - 2025-04-02
+
+### Changed
+- Increased site title font size (`.gh-head-logo`) to `3.5rem`.
+
+## [1.4.48] - 2025-04-02
 ### Fixed
 - Added top padding to sticky ToC to prevent clipping of diacritics.
 

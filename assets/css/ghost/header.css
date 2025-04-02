@@ -38,7 +38,7 @@
     padding: 10px 0;
     color: var(--navigation-text-color, #FFFFFF); /* Use variable */
     font-weight: 600;
-    font-size: 2.2rem;
+    font-size: 3.5rem; /* Increased size */
     line-height: 1.2em;
 }
 
