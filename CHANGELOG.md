@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.50] - 2025-04-02
+## [1.4.51] - 2025-04-02
 
+### Removed
+- Removed PhotoSwipe v5 integration due to styling/layout conflicts.
+
+## [1.4.50] - 2025-04-02
 ### Added
 - Integrated PhotoSwipe v5 for enhanced gallery lightbox functionality (keyboard navigation, etc.).
 - Installed PhotoSwipe as dev dependency.
