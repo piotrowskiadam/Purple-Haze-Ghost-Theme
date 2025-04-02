@@ -236,8 +236,8 @@ html,
 }
 
 .gh-card-tags {
-    margin-top: 1rem; /* Consistent spacing */
-    margin-bottom: 1rem; /* Consistent spacing */
+    margin-top: 0; /* Remove top margin */
+    margin-bottom: 1rem; /* Keep space below tags */
     line-height: 1; /* Prevent extra space from inline-block */
 }
 

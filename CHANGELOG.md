@@ -1,7 +1,12 @@
 # Changelog
 
-## [1.4.54] - 2025-04-02
+## [1.4.55] - 2025-04-02
 
+### Changed
+- Moved regular post tags (`.gh-card-tags`) to appear above the title on cards.
+- Adjusted CSS margins for the moved tags block.
+
+## [1.4.54] - 2025-04-02
 ### Removed
 - Removed "Featured" badge display from featured post cards.
 - Removed associated CSS for the badge.

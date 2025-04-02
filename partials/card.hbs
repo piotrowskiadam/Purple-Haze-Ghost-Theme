@@ -58,17 +58,15 @@ Re-usable card for linking to posts
             {{/if}}
         {{/is}}
         <div class="gh-card-content">
-            <div class="gh-card-tags"> {{!-- Wrapper for tags --}}
-                {{!-- FEATURED badge moved below --}}
-                {{!-- Always loop through tags if they exist, regardless of featured status --}}
+            {{!-- Tags div moved below, before title --}}
+            {{!-- Moved Tags div here --}}
+            <div class="gh-card-tags">
                 {{#if tags}}
                     {{#foreach tags as |tag|}}
-                        {{!-- Wrap tag in its own link --}}
                         <a href="{{tag.url}}" class="gh-card-tag">{{tag.name}}</a>
                     {{/foreach}}
                 {{/if}}
             </div>
-            {{!-- REMOVED FEATURED badge --}}
             <h4 class="gh-card-title"><a href="{{url}}">{{title}}</a></h4>
             {{!-- Excerpt --}}
             <p>{{excerpt words="30"}}...</p> {{!-- Limit by words (increased) and add ellipsis --}}
