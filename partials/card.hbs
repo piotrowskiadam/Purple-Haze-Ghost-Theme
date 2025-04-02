@@ -59,12 +59,7 @@ Re-usable card for linking to posts
         {{/is}}
         <div class="gh-card-content">
             <div class="gh-card-tags"> {{!-- Wrapper for tags --}}
-                {{!-- Show FEATURED badge only if featured AND on home page --}}
-                {{#is "home"}}
-                    {{#if featured}}
-                        <span class="gh-card-tag">{{t "FEATURED"}}</span> {{!-- Use standard tag class --}}
-                    {{/if}}
-                {{/is}}
+                {{!-- FEATURED badge moved below --}}
                 {{!-- Always loop through tags if they exist, regardless of featured status --}}
                 {{#if tags}}
                     {{#foreach tags as |tag|}}
@@ -73,6 +68,12 @@ Re-usable card for linking to posts
                     {{/foreach}}
                 {{/if}}
             </div>
+            {{!-- Moved FEATURED badge here --}}
+            {{#is "home"}}
+                {{#if featured}}
+                    <span class="gh-card-tag gh-card-featured-badge">{{t "FEATURED"}}</span> {{!-- Added specific class --}}
+                {{/if}}
+            {{/is}}
             {{!-- Title - Wrap in its own link --}}
             <h4 class="gh-card-title"><a href="{{url}}">{{title}}</a></h4>
             {{!-- Excerpt --}}

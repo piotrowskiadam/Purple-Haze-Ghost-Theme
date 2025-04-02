@@ -290,8 +290,12 @@ a.gh-card-tag {
      color: var(--color-secondary-text);
      /* Inherits padding/radius/etc from .gh-card-tag */
 }
-
-/* Removed .gh-card-featured-badge rule */
+/* Style for the moved featured badge */
+.gh-card-featured-badge {
+    display: inline-block; /* Allow margin */
+    margin-bottom: 1rem; /* Space below badge */
+    /* Inherits base tag styles */
+}
 
 /* Add margin to card titles */
 .gh-card-title {

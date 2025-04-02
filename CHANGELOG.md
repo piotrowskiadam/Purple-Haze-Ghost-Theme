@@ -1,7 +1,12 @@
 # Changelog
 
-## [1.4.51] - 2025-04-02
+## [1.4.52] - 2025-04-02
 
+### Changed
+- Moved "Featured" badge on cards to appear directly above the post title.
+- Added specific CSS class and margin for the moved badge.
+
+## [1.4.51] - 2025-04-02
 ### Removed
 - Removed PhotoSwipe v5 integration due to styling/layout conflicts.
 
