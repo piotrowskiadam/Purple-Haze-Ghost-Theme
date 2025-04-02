@@ -1,7 +1,14 @@
 # Changelog
 
-## [1.4.21] - 2025-04-02
+## [1.4.22] - 2025-04-02
 
+### Changed
+- Reworked ToC layout: Placed ToC inside `.gh-content`, use `float: left` and CSS `position: sticky`.
+- Updated JS observers to control `.toc-active` and `.toc-bottom` classes for visibility/stickiness/stopping.
+- Added `overflow: hidden` to `.gh-content.gh-canvas` to contain float.
+- Adjusted scrollspy observer margin.
+
+## [1.4.21] - 2025-04-02
 ### Changed
 - Corrected `post.hbs` structure for ToC layout using `.gh-canvas`.
 - Updated `toc.css` to use `.gh-canvas` grid columns and direct CSS sticky.

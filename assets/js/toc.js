@@ -5,12 +5,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const tocContainer = document.querySelector('.gh-toc-list');
     const content = document.querySelector('.gh-content'); // Area where headings are located
     const tocElement = document.querySelector('.gh-toc'); // The aside element
-    const featureImage = document.querySelector('.gh-feature-image'); // Get feature image element
-    const postHeader = document.querySelector('.gh-header'); // Get header element
+    const postFooter = document.querySelector('.gh-footer'); // Footer element as bottom trigger
+    // Use the content div itself as the trigger for starting stickiness
+    const contentStartElement = content;
 
     if (!tocContainer || !content || !tocElement) {
         // If any required element is missing, don't proceed
-        if (tocElement) tocElement.style.display = 'none'; // Hide ToC container if content/list missing
+        if (tocElement) tocElement.style.display = 'none';
         return;
     }
 
@@ -54,36 +55,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 behavior: 'smooth',
                 block: 'start' // Align to top
             });
-            // Optionally close mobile menu if open
         });
     });
 
     // --- Intersection Observer for Scrollspy ---
-    const observerOptions = {
-        rootMargin: '-80px 0px -50% 0px', // Keep delayed highlight trigger
+    const scrollspyObserverOptions = {
+        rootMargin: '-80px 0px -50% 0px', // Delay highlight until heading is near middle
         threshold: 1.0
     };
 
     let lastActiveLink = null; // Keep track of the last active link
 
-    const observerCallback = (entries) => {
+    const scrollspyCallback = (entries) => {
         let latestEntry = null;
 
-         // Find the latest entry that is intersecting or was intersecting just above the threshold
+        // Find the latest entry that is intersecting or was intersecting just above the threshold
         entries.forEach(entry => {
              if (entry.isIntersecting) {
                  latestEntry = entry;
-             } else if (entry.boundingClientRect.top < entry.rootBounds.top && !latestEntry) {
-                 // If we scrolled past an element, consider it the latest if nothing else is intersecting
-                 // This helps catch the last element when scrolling up fast
-                 const correspondingLink = tocItems.find(link => link.dataset.tocTarget === entry.target.id);
-                 if (correspondingLink && correspondingLink !== lastActiveLink) {
-                    // Check if it's a different element than the last active one
-                    // This logic might need refinement depending on exact behavior desired when scrolling up
-                 }
+             } else if (!latestEntry && entry.boundingClientRect.top < entry.rootBounds.top) {
+                 // If scrolling up fast, the last one that passed the top boundary might be the one
+                 // This needs careful checking to avoid highlighting the wrong one when scrolling up
+                 // Let's find the *last* non-intersecting element whose top is above rootBounds.top
+                 // This is complex, let's stick to highlighting only intersecting elements for now
              }
         });
-
 
         // If we found an intersecting element, highlight its link
         if (latestEntry) {
@@ -91,25 +87,84 @@ document.addEventListener('DOMContentLoaded', () => {
             const activeLink = tocItems.find(link => link.dataset.tocTarget === targetId);
 
             if (activeLink && activeLink !== lastActiveLink) {
-                 // Remove active class from previously active link
                 lastActiveLink?.classList.remove('active');
-                // Add active class to the new active link
                 activeLink.classList.add('active');
-                lastActiveLink = activeLink; // Update last active link
+                lastActiveLink = activeLink;
             }
         }
-        // If no entries are intersecting (e.g., scrolled past the last heading),
-        // potentially keep the last one active or deactivate all.
-        // Current logic keeps the last one active until a new one intersects.
+        // If nothing is intersecting, maybe remove highlight? Or keep last active?
+        // Keeping last active seems reasonable for now.
     };
 
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-
+    const scrollspyObserver = new IntersectionObserver(scrollspyCallback, scrollspyObserverOptions);
     headings.forEach(heading => {
-        observer.observe(heading);
+        scrollspyObserver.observe(heading);
     });
 
-    // Removed sticky/bottom observer logic as CSS handles sticky positioning
+    // --- Intersection Observer for Sticky/Bottom ToC ---
+    const stickyOffset = 80; // Must match CSS .toc-active top value
+
+    // Observer for starting sticky
+    const stickyStartObserverOptions = {
+        rootMargin: `-${stickyOffset}px 0px 0px 0px`, // Trigger when top of contentStartElement hits the sticky line
+        threshold: 0
+    };
+
+    const stickyStartCallback = (entries) => {
+        entries.forEach(entry => {
+            // Add active class when the top of the content start element is above the sticky point
+            if (!entry.isIntersecting && entry.boundingClientRect.top < stickyOffset) {
+                 if (!tocElement.classList.contains('toc-bottom')) { // Don't make active if already at bottom
+                    tocElement.classList.add('toc-active');
+                 }
+            } else {
+                 tocElement.classList.remove('toc-active');
+            }
+        });
+    };
+
+    const stickyStartObserver = new IntersectionObserver(stickyStartCallback, stickyStartObserverOptions);
+    if (contentStartElement) {
+        stickyStartObserver.observe(contentStartElement);
+    } else {
+         // Fallback: If no content, make ToC visible but not sticky
+         tocElement.style.visibility = 'visible';
+         tocElement.style.opacity = '1';
+    }
+
+    // Observer for reaching the bottom
+    const bottomObserverOptions = {
+        // Trigger when the top of the footer is X pixels from the bottom of the viewport
+        // Adjust the '150px' based on footer height and desired stopping point relative to sticky offset
+        rootMargin: `0px 0px -${window.innerHeight - stickyOffset - (postFooter?.offsetHeight || 100) - 50}px 0px`,
+        threshold: 0
+    };
+
+     const bottomObserverCallback = (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Footer is entering the trigger zone near the bottom
+                tocElement.classList.add('toc-bottom');
+                tocElement.classList.remove('toc-active'); // Ensure fixed positioning is removed
+            } else {
+                // Check if it was previously bottom-aligned and is now scrolling up
+                if (tocElement.classList.contains('toc-bottom')) {
+                    // Re-check if it should become active (sticky) again
+                    if (contentStartElement && contentStartElement.getBoundingClientRect().top < stickyOffset) {
+                         tocElement.classList.remove('toc-bottom');
+                         tocElement.classList.add('toc-active');
+                    } else {
+                         tocElement.classList.remove('toc-bottom');
+                         // It won't become active here, stickyStartObserver will handle it
+                    }
+                }
+            }
+        });
+    };
+
+    const bottomObserver = new IntersectionObserver(bottomObserverCallback, bottomObserverOptions);
+    if (postFooter) { // Only need footer to observe the bottom
+        bottomObserver.observe(postFooter);
+    }
 
 });
