@@ -1,7 +1,12 @@
 # Changelog
 
-## [1.4.40] - 2025-04-02
+## [1.4.41] - 2025-04-02
 
+### Fixed
+- Corrected CSS selectors in `content.css` to fix About page layout broken by previous grid changes.
+- Forced transparent background on `pre code span` elements to remove double background in code blocks.
+
+## [1.4.40] - 2025-04-02
 ### Fixed
 - Corrected `.gh-canvas` grid definition in `content.css` to ensure wide layout applies correctly on posts (v2).
 - Ensured post tag styling uses correct color variables (`--color-primary`, `--secondary-accent-color`).
