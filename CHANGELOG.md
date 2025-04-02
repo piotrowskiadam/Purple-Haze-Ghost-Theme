@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.44] - 2025-04-02
+## [1.4.45] - 2025-04-02
 
+### Fixed
+- Apply wide (`90ch`) main column width to `.gh-canvas` on About page to match post pages.
+
+## [1.4.44] - 2025-04-02
 ### Fixed
 - Corrected `.gh-canvas` grid rules in `content.css` to fix About page layout and ensure post layout uses wide main column (v3).
 - Refined code block background fix targeting inner `.token` spans.

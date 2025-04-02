@@ -19,12 +19,11 @@
 }
 /* Apply wider width only on larger screens */
 @media (min-width: 741px) { /* Above --small breakpoint */
-    /* Apply wider main column ONLY to the main post canvas wrapper */
-    /* Assumes post.hbs uses <div class="gh-canvas"> wrapping <aside> and <article> */
-    body:not(.page-template-custom-about) > .gh-viewport > .gh-main > .gh-canvas {
-       --main: 90ch;
+    /* Apply wider main column to all canvas grids on desktop */
+    .gh-canvas {
+       --main: 90ch; /* Increase main content width */
     }
-    /* About page elements with .gh-canvas will use the default --main width */
+    /* Removed specific overrides for about page */
 }
 
 /* Default direct children of ANY .gh-canvas to main column */
