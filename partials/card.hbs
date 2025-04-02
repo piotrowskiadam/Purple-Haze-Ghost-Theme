@@ -68,13 +68,12 @@ Re-usable card for linking to posts
                     {{/foreach}}
                 {{/if}}
             </div>
-            {{!-- Moved FEATURED badge here --}}
+            {{!-- Moved FEATURED badge to be directly before the title H4 --}}
             {{#is "home"}}
                 {{#if featured}}
-                    <span class="gh-card-tag gh-card-featured-badge">{{t "FEATURED"}}</span> {{!-- Added specific class --}}
+                    <span class="gh-card-tag gh-card-featured-badge">{{t "FEATURED"}}</span>
                 {{/if}}
             {{/is}}
-            {{!-- Title - Wrap in its own link --}}
             <h4 class="gh-card-title"><a href="{{url}}">{{title}}</a></h4>
             {{!-- Excerpt --}}
             <p>{{excerpt words="30"}}...</p> {{!-- Limit by words (increased) and add ellipsis --}}

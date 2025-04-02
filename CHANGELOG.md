@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.52] - 2025-04-02
+## [1.4.53] - 2025-04-02
 
+### Fixed
+- Corrected placement of "Featured" badge to be directly above the title in card partial.
+
+## [1.4.52] - 2025-04-02
 ### Changed
 - Moved "Featured" badge on cards to appear directly above the post title.
 - Added specific CSS class and margin for the moved badge.
