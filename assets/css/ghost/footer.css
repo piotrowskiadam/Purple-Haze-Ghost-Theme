@@ -91,3 +91,31 @@
         font-size: 1.6rem;
     }
 }
+
+/* Post Tags in Footer */
+.gh-post-tags {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center; /* Center tags within the footer content area */
+}
+
+.gh-post-tags .gh-tag {
+    display: inline-block;
+    padding: 0.4em 0.8em;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background-color: transparent;
+    color: var(--color-secondary-text);
+    font-size: 1.3rem;
+    line-height: 1;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.gh-post-tags .gh-tag:hover {
+    border-color: var(--secondary-accent-color);
+    color: var(--secondary-accent-color);
+    background-color: color-mix(in srgb, var(--color-bg) 90%, var(--secondary-accent-color) 10%);
+}

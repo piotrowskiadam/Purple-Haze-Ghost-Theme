@@ -1,7 +1,17 @@
 # Changelog
 
-## [1.4.31] - 2025-04-02
+## [1.4.32] - 2025-04-02
 
+### Added
+- Display post tags at the bottom of the post content.
+
+### Changed
+- Reverted ToC implementation to use simpler CSS sticky positioning within the `.gh-canvas` grid (v6).
+- Corrected `post.hbs` structure.
+- Updated `toc.css` to position ToC in `wide-start / main-start` grid area and apply `position: sticky`.
+- Simplified `toc.js` by removing JS-controlled sticky logic.
+
+## [1.4.31] - 2025-04-02
 ### Changed
 - Reworked ToC layout using fixed/absolute positioning controlled by JS (v6).
 - Corrected `post.hbs` structure (ToC outside wrapper, article inside).
