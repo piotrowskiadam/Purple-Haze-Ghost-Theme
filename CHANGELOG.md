@@ -1,7 +1,13 @@
 # Changelog
 
-## [1.4.18] - 2025-04-02
+## [1.4.19] - 2025-04-02
 
+### Changed
+- Reverted ToC HTML structure to place ToC and Article inside a `.gh-canvas` wrapper.
+- Updated ToC CSS to use standard `.gh-canvas` grid columns and direct sticky positioning.
+- Simplified ToC JS, removing sticky observer logic.
+
+## [1.4.18] - 2025-04-02
 ### Changed
 - Reworked ToC layout again using fixed/absolute positioning controlled by JS.
 - Updated HTML structure (`post.hbs`) with a wrapper.
