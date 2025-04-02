@@ -1,7 +1,12 @@
 # Changelog
 
-## [1.4.37] - 2025-04-02
+## [1.4.38] - 2025-04-02
 
+### Fixed
+- Use `{{plural}}` helper in `post.hbs` to correctly translate reading time.
+- Added missing "Less than a minute" translation key to `locales/pl.json`.
+
+## [1.4.37] - 2025-04-02
 ### Fixed
 - Load Roboto font explicitly from Google Fonts with `latin-ext` subset to support Polish diacritics.
 - Prioritize loaded Roboto in the `--font-sans-serif` stack.

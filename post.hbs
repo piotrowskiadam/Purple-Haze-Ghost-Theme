@@ -16,7 +16,7 @@
         <header class="gh-header"> {{!-- Removed gh-canvas --}}
             <div class="gh-header-content"> {{!-- Inner content aligns to main column --}}
                 <h1 class="gh-title">{{title}}</h1>
-                <span class="gh-post-meta"><time datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMM YYYY"}}</time> <span class="bull">&bull;</span> {{reading_time}}</span>
+                <span class="gh-post-meta"><time datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMM YYYY"}}</time> <span class="bull">&bull;</span> {{plural reading_time empty=(t "Less than a minute") singular=(t "1 min read") plural=(t "% min read")}}</span>
                 {{#if custom_excerpt}}
             </div>
             <p class="gh-excerpt">{{custom_excerpt}}</p>
