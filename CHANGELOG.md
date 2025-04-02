@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.32] - 2025-04-02
+## [1.4.33] - 2025-04-02
 
+### Changed
+- Updated post tag styling in footer to match card tag styling (purple background, light text).
+
+## [1.4.32] - 2025-04-02
 ### Added
 - Display post tags at the bottom of the post content.
 

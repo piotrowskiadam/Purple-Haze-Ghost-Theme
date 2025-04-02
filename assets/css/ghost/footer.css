@@ -104,18 +104,19 @@
 .gh-post-tags .gh-tag {
     display: inline-block;
     padding: 0.4em 0.8em;
-    border: 1px solid var(--color-border);
+    border: none; /* Remove border */
     border-radius: 4px;
-    background-color: transparent;
-    color: var(--color-secondary-text);
+    background-color: var(--primary-accent-color); /* Use primary accent for background */
+    color: var(--color-base); /* Use base color (white) for text */
     font-size: 1.3rem;
+    font-weight: 500; /* Slightly bolder */
     line-height: 1;
     text-decoration: none;
-    transition: all 0.2s ease-in-out;
+    text-transform: uppercase; /* Match card tag style */
+    transition: background-color 0.2s ease-in-out;
 }
 
 .gh-post-tags .gh-tag:hover {
-    border-color: var(--secondary-accent-color);
-    color: var(--secondary-accent-color);
-    background-color: color-mix(in srgb, var(--color-bg) 90%, var(--secondary-accent-color) 10%);
+    background-color: color-mix(in srgb, var(--primary-accent-color) 85%, #000 15%); /* Darken slightly on hover */
+    color: var(--color-base); /* Keep text color */
 }
