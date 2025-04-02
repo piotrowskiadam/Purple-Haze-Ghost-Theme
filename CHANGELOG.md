@@ -1,7 +1,14 @@
 # Changelog
 
-## [1.4.20] - 2025-04-02
+## [1.4.21] - 2025-04-02
 
+### Changed
+- Corrected `post.hbs` structure for ToC layout using `.gh-canvas`.
+- Updated `toc.css` to use `.gh-canvas` grid columns and direct CSS sticky.
+- Simplified `toc.js` by removing JS-controlled sticky logic.
+- Adjusted scrollspy observer margin.
+
+## [1.4.20] - 2025-04-02
 ### Changed
 - Reverted ToC HTML structure again.
 - Reworked CSS for ToC using absolute/fixed positioning controlled by JS.

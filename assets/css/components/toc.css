@@ -1,11 +1,13 @@
 /* Table of Contents Styles */
 
-.gh-post-wrapper {
-    position: relative; /* Needed for absolute positioning of ToC at bottom */
-}
-
+/* Base styles (Mobile First) */
 .gh-toc {
-    display: none; /* Hidden by default on mobile */
+    display: block; /* Display by default */
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem; /* Space below ToC on mobile */
+    /* Clearfix for safety if needed, though parent overflow should handle */
+    /* overflow: hidden; */
 }
 
 .gh-toc-title {
@@ -23,7 +25,7 @@
     margin: 0;
     font-size: 1.6rem; /* Main content font size */
     line-height: 1.6;
-    /* Max height calculation will apply when sticky/fixed */
+    /* Max height calculation will apply when sticky */
 }
 
 .gh-toc-list li {
@@ -49,58 +51,25 @@
     font-weight: 600; /* Make active link slightly bolder */
 }
 
-/* Desktop Layout - Fixed/Absolute Positioning controlled by JS */
+/* Desktop Layout - Float and Sticky */
 @media (min-width: 1024px) { /* Adjust breakpoint if needed */
 
     .gh-toc {
-        display: block; /* Show on desktop */
-        position: absolute; /* Start as absolute relative to body/viewport initially */
-        width: 280px; /* Fixed width */
-        /* Calculate left position: center viewport - half main content width - gap - toc width */
-        /* Using 90ch for content width, 4rem for gap */
-        /* This calculation is approximate and might need JS adjustment for perfect alignment */
-        left: calc(50vw - (90ch / 2) - 4rem - 280px);
-        /* Start below where the header/image likely ends, JS will refine */
-        top: 400px; /* Estimate initial top */
-        padding-top: 1.5rem;
-        /* Initially hidden */
-        visibility: hidden;
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, top 0.1s, left 0.1s;
-        z-index: 10;
+        display: block; /* Ensure it's visible */
+        float: left;
+        width: 280px; /* Adjust width as needed */
+        margin-right: 4rem; /* Space between ToC and content */
+        /* Negative margin pulls it left relative to the content flow */
+        margin-left: calc(-280px - 4rem);
+        margin-bottom: 1rem; /* Space below if content is short */
+        padding-top: 0; /* Reset padding */
+        position: sticky; /* Apply sticky directly */
+        top: 80px; /* Adjust desired sticky offset */
+        max-height: calc(100vh - 120px); /* Adjust max-height based on top offset */
+        overflow-y: auto; /* Allow scrolling if needed */
+        /* Removed JS sticky class logic */
     }
 
-    .gh-toc.toc-active { /* Added by JS when scrolling past trigger */
-        visibility: visible;
-        opacity: 1;
-        position: fixed; /* Change to fixed when active */
-        top: 80px; /* Desired sticky offset from viewport top */
-        max-height: calc(100vh - 120px); /* Max height when fixed */
-        overflow-y: auto;
-        /* Keep the same calculated left position relative to viewport center */
-         left: calc(50vw - (90ch / 2) - 4rem - 280px);
-    }
-
-    .gh-toc.toc-bottom { /* Added by JS when reaching footer */
-        visibility: visible; /* Keep visible */
-        opacity: 1;
-        position: absolute; /* Change back to absolute relative to wrapper */
-        top: auto; /* Remove fixed top */
-        bottom: 0; /* Align to bottom of gh-post-wrapper */
-        /* Recalculate left relative to the wrapper */
-        left: calc(50% - (90ch / 2) - 4rem - 280px);
-        max-height: none; /* Remove max-height */
-        overflow-y: hidden; /* Hide overflow when at bottom */
-    }
-}
-
-/* Adjust left position for wider viewports if needed */
-@media (min-width: 1400px) {
-     .gh-toc,
-     .gh-toc.toc-active,
-     .gh-toc.toc-bottom {
-         /* Recalculate left based on viewport/container */
-         /* Example: Use max container width for calculation */
-         left: calc(50vw - (min(var(--container-width, 1200px), 100vw - 4rem) / 2) - 4rem - 280px);
-     }
+    /* Article content will naturally flow next to the float */
+    /* .gh-article .gh-content needs overflow:hidden or clearfix */
 }

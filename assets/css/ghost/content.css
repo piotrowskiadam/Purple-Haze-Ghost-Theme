@@ -51,6 +51,10 @@
     margin-top: 4vmin; /* Keep default spacing for most elements */
 }
 /* Add overflow: hidden to contain floated elements like ToC */
+.gh-content.gh-canvas {
+    overflow: hidden;
+}
+/* Add overflow: hidden to contain floated elements like ToC */
 .gh-content.gh-canvas { /* Target the specific element */
     overflow: hidden;
 }
