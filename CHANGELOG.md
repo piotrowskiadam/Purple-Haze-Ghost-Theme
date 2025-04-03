@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.56] - 2025-04-03
+## [1.4.57] - 2025-04-04
 
+### Changed
+- Updated custom theme setting groups in `package.json` to `visuals` per GScan recommendation.
+
+## [1.4.56] - 2025-04-03
 ### Changed
 - Updated `README.md` and `AI_AGENT_NOTES.md` with recent feature additions and fixes.
 

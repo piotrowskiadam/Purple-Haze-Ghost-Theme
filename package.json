@@ -2,7 +2,7 @@
     "name": "purple-haze",
     "description": "A dark, minimalist Ghost theme with purple accents.",
     "demo": "https://starter.ghost.io",
-    "version": "1.4.56",
+    "version": "1.4.57",
     "engines": {
         "ghost": ">=5.0.0"
     },
@@ -87,19 +87,19 @@
             "secondary_accent_color": {
                 "type": "color",
                 "default": "#D0B8FB",
-                "group": "Site wide",
+                "group": "visuals",
                 "description": "Secondary accent color (used for links, tags, captions, etc.)"
             },
             "featured_overlay_color": {
                 "type": "color",
                 "default": "#000000",
-                "group": "Post",
+                "group": "visuals",
                 "description": "Base color for the gradient overlay on featured posts"
             },
             "navigation_text_color": {
                 "type": "color",
                 "default": "#FFFFFF",
-                "group": "Site wide",
+                "group": "visuals",
                 "description": "Color for header navigation links"
             }
         },
