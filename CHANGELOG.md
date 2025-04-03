@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.58] - 2025-04-04
+## [1.4.59] - 2025-04-04
 
+### Fixed
+- Increased specificity of CSS selector to correctly apply `border-radius` to post feature images.
+
+## [1.4.58] - 2025-04-04
 ### Fixed
 - Applied `border-radius` and `overflow: hidden` to `.gh-feature-image` to round bottom corners.
 

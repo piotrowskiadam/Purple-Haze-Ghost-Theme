@@ -247,7 +247,8 @@ figcaption strong {
 }
 
 /* Apply border-radius to post feature image figure */
-.gh-feature-image {
+/* Increased specificity by targeting direct child of .gh-content */
+.gh-content > .gh-feature-image {
     border-radius: var(--radius);
     overflow: hidden; /* Ensure image respects the radius */
     /* Ensure it doesn't have extra margin causing layout shifts */
@@ -255,7 +256,7 @@ figcaption strong {
     margin-bottom: 4vmin; /* Match default content spacing */
 }
 /* Ensure the image itself doesn't have conflicting styles */
-.gh-feature-image img {
+.gh-content > .gh-feature-image img { /* Match increased specificity */
     border-radius: 0; /* Remove radius if applied directly */
     border: none; /* Remove border if applied directly */
 }
