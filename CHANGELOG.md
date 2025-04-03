@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.59] - 2025-04-04
+## [1.4.60] - 2025-04-04
 
+### Fixed
+- Removed conflicting `border-radius: 0` rule on `gh-feature-image img` to allow parent figure radius to apply correctly.
+
+## [1.4.59] - 2025-04-04
 ### Fixed
 - Increased specificity of CSS selector to correctly apply `border-radius` to post feature images.
 

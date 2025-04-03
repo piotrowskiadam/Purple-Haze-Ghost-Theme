@@ -257,7 +257,7 @@ figcaption strong {
 }
 /* Ensure the image itself doesn't have conflicting styles */
 .gh-content > .gh-feature-image img { /* Match increased specificity */
-    border-radius: 0; /* Remove radius if applied directly */
+    /* border-radius: 0; */ /* REMOVED - Let parent figure handle clipping */
     border: none; /* Remove border if applied directly */
 }
 
