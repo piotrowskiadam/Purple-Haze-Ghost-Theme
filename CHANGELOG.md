@@ -1,7 +1,15 @@
 # Changelog
 
-## [1.4.61] - 2025-04-04
+## [1.4.62] - 2025-04-04
 
+### Fixed
+- Apply `border-radius` and `overflow: hidden` directly to `gh-feature-image img` instead of parent figure to fix clipping by figcaption.
+## [1.4.62] - 2025-04-04
+
+### Fixed
+- Apply `border-radius` and `overflow: hidden` directly to `gh-feature-image img` instead of parent figure to fix clipping by figcaption.
+
+## [1.4.61] - 2025-04-04
 ### Fixed
 - Re-applied `border-radius` directly to `gh-feature-image img` to ensure bottom corners are rounded.
 

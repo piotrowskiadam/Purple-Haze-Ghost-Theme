@@ -246,19 +246,20 @@ figcaption strong {
     padding: 0 1.5rem; /* Keep horizontal padding */
 }
 
-/* Apply border-radius to post feature image figure */
-/* Increased specificity by targeting direct child of .gh-content */
+/* Apply border-radius directly to the image, not the figure */
 .gh-content > .gh-feature-image {
-    border-radius: var(--radius);
-    overflow: hidden; /* Ensure image respects the radius */
+    /* border-radius: var(--radius); */ /* Removed */
+    /* overflow: hidden; */ /* Removed */
     /* Ensure it doesn't have extra margin causing layout shifts */
     margin-top: 0;
     margin-bottom: 4vmin; /* Match default content spacing */
 }
-/* Ensure the image itself also has the radius */
+/* Apply radius and overflow hidden directly to the image */
 .gh-content > .gh-feature-image img { /* Match increased specificity */
-    border-radius: var(--radius); /* Apply radius directly to image */
+    border-radius: var(--radius);
+    overflow: hidden; /* Clip the image itself */
     border: none; /* Remove border if applied directly */
+    display: block; /* Ensure image behaves correctly */
 }
 
 
