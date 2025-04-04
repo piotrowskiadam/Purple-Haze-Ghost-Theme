@@ -255,9 +255,9 @@ figcaption strong {
     margin-top: 0;
     margin-bottom: 4vmin; /* Match default content spacing */
 }
-/* Ensure the image itself doesn't have conflicting styles */
+/* Ensure the image itself also has the radius */
 .gh-content > .gh-feature-image img { /* Match increased specificity */
-    /* border-radius: 0; */ /* REMOVED - Let parent figure handle clipping */
+    border-radius: var(--radius); /* Apply radius directly to image */
     border: none; /* Remove border if applied directly */
 }
 

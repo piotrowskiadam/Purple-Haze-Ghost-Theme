@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.60] - 2025-04-04
+## [1.4.61] - 2025-04-04
 
+### Fixed
+- Re-applied `border-radius` directly to `gh-feature-image img` to ensure bottom corners are rounded.
+
+## [1.4.60] - 2025-04-04
 ### Fixed
 - Removed conflicting `border-radius: 0` rule on `gh-feature-image img` to allow parent figure radius to apply correctly.
 
