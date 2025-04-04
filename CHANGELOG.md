@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.62] - 2025-04-04
+## [1.4.63] - 2025-04-04
 
+### Changed
+- Increased border width for in-content images (`.kg-image-card img`) to 3px.
+
+## [1.4.62] - 2025-04-04
 ### Fixed
 - Apply `border-radius` and `overflow: hidden` directly to `gh-feature-image img` instead of parent figure to fix clipping by figcaption.
 ## [1.4.62] - 2025-04-04

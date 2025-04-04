@@ -234,7 +234,7 @@ figcaption strong {
     margin: auto;
     display: block; /* Ensure image behaves as block */
     border-radius: var(--radius); /* Apply radius to image */
-    border: 1px solid var(--color-primary); /* Apply border to image */
+    border: 3px solid var(--color-primary); /* Increased border thickness */
 }
 
 /* Style image captions */
