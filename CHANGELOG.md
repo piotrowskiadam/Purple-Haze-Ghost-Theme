@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.63] - 2025-04-04
+## [1.4.64] - 2025-04-08
 
+### Fixed
+- Matched `font-weight` of post tags in footer to card tags (`600`).
+
+## [1.4.63] - 2025-04-04
 ### Changed
 - Increased border width for in-content images (`.kg-image-card img`) to 3px.
 

@@ -109,7 +109,7 @@
     background-color: var(--color-primary); /* Dark Purple Background (#281C52) */
     color: var(--secondary-accent-color); /* Light Purple Text (#D0B8FB) */
     font-size: 1.3rem;
-    font-weight: 500; /* Slightly bolder */
+    font-weight: 600; /* Match card tag weight */
     line-height: 1;
     text-decoration: none;
     text-transform: uppercase; /* Match card tag style */
