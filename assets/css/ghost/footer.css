@@ -2,6 +2,7 @@
 /* ---------------------------------------------------------- */
 
 .gh-foot {
+    position: relative; /* Needed for pseudo-element positioning */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,6 +10,20 @@
     background-color: var(--color-bg); /* Match theme background */
     color: var(--color-secondary-text); /* Use light gray text */
     /* border-top: 1px solid var(--color-border); Removed top border */
+    overflow: hidden; /* Prevent pseudo-element overflow if needed */
+}
+
+/* Bottom Glow Effect */
+.gh-foot::before {
+    content: '';
+    position: absolute;
+    bottom: 0; /* Position at the bottom of the footer */
+    left: 0;
+    right: 0;
+    height: 25vh; /* Adjust height as desired */
+    background: linear-gradient(to top, rgba(var(--color-primary-rgb), 0.35), transparent); /* Adjust opacity */
+    z-index: -1; /* Place behind footer content */
+    pointer-events: none;
 }
 
 .gh-foot .gh-container {

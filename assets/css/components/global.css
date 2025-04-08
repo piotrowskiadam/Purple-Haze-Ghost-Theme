@@ -22,12 +22,7 @@ body {
     line-height: 1.6em;
     font-weight: 400;
     font-style: normal;
-    background-color: var(--color-bg); /* Base background color */
-    /* Add gradient as background image */
-    background-image: linear-gradient(to top, rgba(var(--color-primary-rgb), 0.25), transparent 15vh);
-    background-repeat: no-repeat;
-    background-position: bottom center;
-    background-size: 100% 15vh; /* Control gradient size */
+    background: var(--color-bg); /* Use dark background color */
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

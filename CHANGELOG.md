@@ -1,7 +1,12 @@
 # Changelog
 
-## [1.4.71] - 2025-04-08
+## [1.4.72] - 2025-04-08
 
+### Changed
+- Moved bottom glow effect from `body::after` to `.gh-foot::before` pseudo-element.
+- Set glow `position: absolute` and `z-index: -1` relative to footer.
+
+## [1.4.71] - 2025-04-08
 ### Changed
 - Applied bottom viewport glow effect using `body` background properties instead of pseudo-element.
 
