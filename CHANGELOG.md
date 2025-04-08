@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.75] - 2025-04-08
+## [1.4.76] - 2025-04-08
 
+### Changed
+- Increased opacity of bottom glow effect gradient from 0.25 to 0.4 for better visibility.
+
+## [1.4.75] - 2025-04-08
 ### Fixed
 - Removed background color from `.gh-foot` to allow bottom glow effect to be visible.
 - Added `.gh-foot::before` pseudo-element with subtle purple gradient glow behind footer content.

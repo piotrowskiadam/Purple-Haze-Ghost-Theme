@@ -21,7 +21,7 @@
     left: 0;
     right: 0;
     height: 15vh; /* Subtle height */
-    background: linear-gradient(to top, rgba(var(--color-primary-rgb), 0.25), transparent); /* Subtle opacity */
+    background: linear-gradient(to top, rgba(var(--color-primary-rgb), 0.4), transparent); /* Increased opacity for more visibility */
     z-index: 0; /* Place above body bg, below footer content */
     pointer-events: none;
 }
