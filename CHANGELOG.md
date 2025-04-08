@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.66] - 2025-04-08
+## [1.4.67] - 2025-04-08
 
+### Changed
+- Increased opacity, height, and z-index of bottom viewport glow effect for testing visibility.
+
+## [1.4.66] - 2025-04-08
 ### Changed
 - Increased opacity and height of bottom viewport glow effect for better visibility.
 
