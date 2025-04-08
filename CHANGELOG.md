@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.68] - 2025-04-08
+## [1.4.69] - 2025-04-08
 
+### Fixed
+- Corrected bottom viewport glow effect: Changed `position: fixed` to `position: absolute`, reverted `z-index` to `-1`, and restored subtle opacity/height.
+
+## [1.4.68] - 2025-04-08
 ### Fixed
 - Changed bottom viewport glow effect selector from `.gh-viewport::after` to `body::after` for potentially better visibility.
 

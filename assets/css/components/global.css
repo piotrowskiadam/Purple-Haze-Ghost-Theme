@@ -35,10 +35,11 @@ body::after { /* Apply to body instead of viewport */
     bottom: 0;
     left: 0;
     right: 0;
-    height: 40vh; /* Further increased height for testing */
-    background: linear-gradient(to top, rgba(var(--color-primary-rgb), 0.9) 20%, transparent 80%); /* Increased opacity and adjusted gradient */
-    z-index: 999; /* TEMPORARY: Bring to front for testing */
+    height: 15vh; /* Revert height */
+    background: linear-gradient(to top, rgba(var(--color-primary-rgb), 0.25), transparent); /* Revert opacity */
+    z-index: -1; /* Revert z-index to place behind content */
     pointer-events: none; /* Allow clicks through */
+    position: absolute; /* Position relative to document bottom */
 }
 
 p,
