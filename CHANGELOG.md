@@ -1,7 +1,12 @@
 # Changelog
 
-## [1.4.69] - 2025-04-08
+## [1.4.70] - 2025-04-08
 
+### Changed
+- Changed bottom viewport glow effect selector to `body::after` for testing visibility.
+- Kept exaggerated opacity/height/z-index for testing.
+
+## [1.4.69] - 2025-04-08
 ### Fixed
 - Corrected bottom viewport glow effect: Changed `position: fixed` to `position: absolute`, reverted `z-index` to `-1`, and restored subtle opacity/height.
 

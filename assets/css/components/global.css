@@ -29,17 +29,16 @@ body {
 }
 
 /* Add bottom glow effect */
-body::after { /* Apply to body instead of viewport */
+body::after { /* Apply to body */
     content: '';
-    position: fixed;
+    position: fixed; /* Fixed to viewport bottom */
     bottom: 0;
     left: 0;
     right: 0;
-    height: 15vh; /* Revert height */
-    background: linear-gradient(to top, rgba(var(--color-primary-rgb), 0.25), transparent); /* Revert opacity */
-    z-index: -1; /* Revert z-index to place behind content */
+    height: 40vh; /* Exaggerated height for testing */
+    background: linear-gradient(to top, rgba(var(--color-primary-rgb), 0.9) 20%, transparent 80%); /* Exaggerated opacity/gradient for testing */
+    z-index: -1; /* Place behind content */
     pointer-events: none; /* Allow clicks through */
-    position: absolute; /* Position relative to document bottom */
 }
 
 p,
