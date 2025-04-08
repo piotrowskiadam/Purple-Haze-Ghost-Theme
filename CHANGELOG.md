@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.65] - 2025-04-08
+## [1.4.66] - 2025-04-08
 
+### Changed
+- Increased opacity and height of bottom viewport glow effect for better visibility.
+
+## [1.4.65] - 2025-04-08
 ### Added
 - Added subtle purple glow effect at the bottom of the viewport using a pseudo-element.
 - Added `--color-primary-rgb` variable to `vars.css`.
