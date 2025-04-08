@@ -42,7 +42,7 @@
 }
 
 .gh-foot a:hover {
-    color: var(--color-primary); /* Purple hover for links */
+    color: var(--secondary-accent-color); /* Use secondary accent color on hover */
 }
 
 .gh-foot-menu {

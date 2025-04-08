@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.78] - 2025-04-08
+## [1.4.79] - 2025-04-08
 
+### Changed
+- Footer links now use secondary accent color on hover instead of primary accent color.
+
+## [1.4.78] - 2025-04-08
 ### Fixed
 - Added `z-index: 1` to `.gh-head-inner` to ensure header title and logo appear above misty overlay.
 - Added author email to `package.json` to fix Ghost theme validation error.
