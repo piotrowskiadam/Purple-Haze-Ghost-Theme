@@ -34,18 +34,7 @@ body {
     z-index: 0; /* Ensure it's not negative */
 }
 
-/* Add bottom glow effect via pseudo-element on viewport */
-.gh-viewport::after {
-    content: '';
-    position: absolute; /* Position relative to viewport */
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 20vh; /* Adjust height */
-    background: linear-gradient(to top, rgba(var(--color-primary-rgb), 0.3), transparent); /* Adjust opacity */
-    z-index: 0; /* Place above viewport bg, below content */
-    pointer-events: none;
-}
+/* Removed bottom glow effect from viewport */
 
 p,
 ul,

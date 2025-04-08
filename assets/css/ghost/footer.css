@@ -2,15 +2,15 @@
 /* ---------------------------------------------------------- */
 
 .gh-foot {
-    position: relative; /* Needed for pseudo-element positioning */
+    position: relative; /* Ensure positioning context */
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 4vmin; /* Reduced padding */
-    background-color: var(--color-bg); /* Match theme background */
+    /* background-color: var(--color-bg); */ /* REMOVED - Let body background show through */
     color: var(--color-secondary-text); /* Use light gray text */
     /* border-top: 1px solid var(--color-border); Removed top border */
-    /* overflow: hidden; */ /* Removed overflow */
+    /* overflow: hidden; */ /* Ensure overflow is not hidden */
 }
 
 /* Bottom Glow Effect */
@@ -20,9 +20,9 @@
     bottom: 0; /* Position at the bottom of the footer */
     left: 0;
     right: 0;
-    height: 25vh; /* Adjust height as desired */
-    background: linear-gradient(to top, rgba(var(--color-primary-rgb), 0.35), transparent); /* Adjust opacity */
-    z-index: -1; /* Place behind footer content */
+    height: 15vh; /* Subtle height */
+    background: linear-gradient(to top, rgba(var(--color-primary-rgb), 0.25), transparent); /* Subtle opacity */
+    z-index: 0; /* Place above body bg, below footer content */
     pointer-events: none;
 }
 
@@ -32,6 +32,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative; /* Establish stacking context for content */
+    z-index: 1; /* Ensure content is above pseudo-element */
 }
 
 .gh-foot a {

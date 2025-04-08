@@ -1,7 +1,12 @@
 # Changelog
 
-## [1.4.74] - 2025-04-08
+## [1.4.75] - 2025-04-08
 
+### Fixed
+- Removed background color from `.gh-foot` to allow bottom glow effect to be visible.
+- Added `.gh-foot::before` pseudo-element with subtle purple gradient glow behind footer content.
+
+## [1.4.74] - 2025-04-08
 ### Fixed
 - Applied bottom glow effect to `.gh-viewport::after` with `position: absolute` and `z-index: 0`.
 
