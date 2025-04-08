@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.73] - 2025-04-08
+## [1.4.74] - 2025-04-08
 
+### Fixed
+- Applied bottom glow effect to `.gh-viewport::after` with `position: absolute` and `z-index: 0`.
+
+## [1.4.73] - 2025-04-08
 ### Fixed
 - Removed `overflow: hidden` from `.gh-foot` to allow bottom glow pseudo-element to be visible.
 
