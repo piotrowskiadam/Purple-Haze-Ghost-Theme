@@ -22,24 +22,18 @@ body {
     line-height: 1.6em;
     font-weight: 400;
     font-style: normal;
-    background: var(--color-bg); /* Use dark background color */
+    background-color: var(--color-bg); /* Base background color */
+    /* Add gradient as background image */
+    background-image: linear-gradient(to top, rgba(var(--color-primary-rgb), 0.25), transparent 15vh);
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: 100% 15vh; /* Control gradient size */
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Add bottom glow effect */
-body::after { /* Apply to body */
-    content: '';
-    position: fixed; /* Fixed to viewport bottom */
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 40vh; /* Exaggerated height for testing */
-    background: linear-gradient(to top, rgba(var(--color-primary-rgb), 0.9) 20%, transparent 80%); /* Exaggerated opacity/gradient for testing */
-    z-index: -1; /* Place behind content */
-    pointer-events: none; /* Allow clicks through */
-}
+/* Removed pseudo-element rule */
 
 p,
 ul,

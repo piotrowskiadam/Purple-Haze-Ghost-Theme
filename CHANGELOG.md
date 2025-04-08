@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.70] - 2025-04-08
+## [1.4.71] - 2025-04-08
 
+### Changed
+- Applied bottom viewport glow effect using `body` background properties instead of pseudo-element.
+
+## [1.4.70] - 2025-04-08
 ### Changed
 - Changed bottom viewport glow effect selector to `body::after` for testing visibility.
 - Kept exaggerated opacity/height/z-index for testing.
