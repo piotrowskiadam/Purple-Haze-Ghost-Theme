@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.76] - 2025-04-08
+## [1.4.77] - 2025-04-08
 
+### Changed
+- Increased opacity of top misty overlay gradient to 0.4 to match bottom glow.
+
+## [1.4.76] - 2025-04-08
 ### Changed
 - Increased opacity of bottom glow effect gradient from 0.25 to 0.4 for better visibility.
 
