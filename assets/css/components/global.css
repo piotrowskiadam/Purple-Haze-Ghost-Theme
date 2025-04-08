@@ -29,7 +29,7 @@ body {
 }
 
 /* Add bottom glow effect */
-.gh-viewport::after {
+body::after { /* Apply to body instead of viewport */
     content: '';
     position: fixed;
     bottom: 0;

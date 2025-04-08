@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.67] - 2025-04-08
+## [1.4.68] - 2025-04-08
 
+### Fixed
+- Changed bottom viewport glow effect selector from `.gh-viewport::after` to `body::after` for potentially better visibility.
+
+## [1.4.67] - 2025-04-08
 ### Changed
 - Increased opacity, height, and z-index of bottom viewport glow effect for testing visibility.
 
