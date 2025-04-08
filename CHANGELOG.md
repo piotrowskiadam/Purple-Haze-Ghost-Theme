@@ -1,7 +1,12 @@
 # Changelog
 
-## [1.4.77] - 2025-04-08
+## [1.4.78] - 2025-04-08
 
+### Fixed
+- Added `z-index: 1` to `.gh-head-inner` to ensure header title and logo appear above misty overlay.
+- Added author email to `package.json` to fix Ghost theme validation error.
+
+## [1.4.77] - 2025-04-08
 ### Changed
 - Increased opacity of top misty overlay gradient to 0.4 to match bottom glow.
 

@@ -2,7 +2,7 @@
     "name": "purple-haze",
     "description": "A dark, minimalist Ghost theme with purple accents.",
     "demo": "https://starter.ghost.io",
-    "version": "1.4.77",
+    "version": "1.4.78",
     "engines": {
         "ghost": ">=5.0.0"
     },
@@ -19,6 +19,7 @@
     },
     "author": {
       "name": "Adam Piotrowski",
+      "email": "piotrowskiadam@hotmail.com",
       "url": "https://github.com/piotrowskiadam/Purple-Haze-Ghost-Theme"
     },
     "gpm": {
