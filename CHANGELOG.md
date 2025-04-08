@@ -1,7 +1,11 @@
 # Changelog
 
-## [1.4.72] - 2025-04-08
+## [1.4.73] - 2025-04-08
 
+### Fixed
+- Removed `overflow: hidden` from `.gh-foot` to allow bottom glow pseudo-element to be visible.
+
+## [1.4.72] - 2025-04-08
 ### Changed
 - Moved bottom glow effect from `body::after` to `.gh-foot::before` pseudo-element.
 - Set glow `position: absolute` and `z-index: -1` relative to footer.

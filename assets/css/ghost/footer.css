@@ -10,7 +10,7 @@
     background-color: var(--color-bg); /* Match theme background */
     color: var(--color-secondary-text); /* Use light gray text */
     /* border-top: 1px solid var(--color-border); Removed top border */
-    overflow: hidden; /* Prevent pseudo-element overflow if needed */
+    /* overflow: hidden; */ /* Removed overflow */
 }
 
 /* Bottom Glow Effect */
