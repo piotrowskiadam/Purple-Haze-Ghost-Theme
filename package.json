@@ -18,9 +18,8 @@
         "pretest": "npm run build"
     },
     "author": {
-        "name": "Ghost Foundation",
-        "email": "hello@ghost.org",
-        "url": "https://ghost.org"
+      "name": "Adam Piotrowski",
+      "url": "https://github.com/piotrowskiadam/Purple-Haze-Ghost-Theme"
     },
     "gpm": {
         "type": "theme",
