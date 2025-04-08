@@ -28,6 +28,18 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* Add bottom glow effect */
+.gh-viewport::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 15vh; /* Adjust height of the glow */
+    background: linear-gradient(to top, rgba(var(--color-primary-rgb), 0.25), transparent); /* Adjust opacity (0.25) */
+    z-index: -1; /* Place behind content */
+    pointer-events: none; /* Allow clicks through */
+}
 
 p,
 ul,

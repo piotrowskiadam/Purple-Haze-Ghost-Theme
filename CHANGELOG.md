@@ -1,7 +1,12 @@
 # Changelog
 
-## [1.4.64] - 2025-04-08
+## [1.4.65] - 2025-04-08
 
+### Added
+- Added subtle purple glow effect at the bottom of the viewport using a pseudo-element.
+- Added `--color-primary-rgb` variable to `vars.css`.
+
+## [1.4.64] - 2025-04-08
 ### Fixed
 - Matched `font-weight` of post tags in footer to card tags (`600`).
 
