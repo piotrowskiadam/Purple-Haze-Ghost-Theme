@@ -1,26 +1,31 @@
 {
     "name": "purple-haze",
     "description": "A dark, minimalist Ghost theme with purple accents.",
-    "demo": "https://starter.ghost.io",
-    "version": "1.4.79",
+    "demo": "https://piotrowskiadam.pl/",
+    "version": "1.5.0",
     "engines": {
-        "ghost": ">=5.0.0"
+        "ghost": ">=5.0.0",
+        "node": "^22.17.0 || ^24.0.0"
     },
     "license": "MIT",
     "screenshots": {
-        "desktop": "assets/screenshot-desktop.jpg"
+        "desktop": "assets/screenshot-desktop.jpg",
+        "mobile": "assets/screenshot-mobile.jpg"
     },
     "scripts": {
         "dev": "rollup -c --environment BUILD:development -w",
         "build": "rollup -c --environment BUILD:production",
-        "zip": "npm run build && bestzip $npm_package_name.zip assets/built assets/css assets/js assets/screenshot-desktop.jpg partials members locales *.hbs package.json CHANGELOG.md",
-        "test": "npx gscan .",
-        "pretest": "npm run build"
+        "zip": "npm run build && node scripts/package.mjs",
+        "test": "gscan . --v5 && gscan . --v6",
+        "pretest": "npm run build",
+        "test:browser": "playwright test",
+        "check:zip": "gscan -z purple-haze.zip --v5 && gscan -z purple-haze.zip --v6",
+        "screenshots": "node scripts/screenshots.mjs"
     },
     "author": {
-      "name": "Adam Piotrowski",
-      "email": "piotrowskiadam@hotmail.com",
-      "url": "https://github.com/piotrowskiadam/Purple-Haze-Ghost-Theme"
+        "name": "Adam Piotrowski",
+        "email": "piotrowskiadam@hotmail.com",
+        "url": "https://github.com/piotrowskiadam/Purple-Haze-Ghost-Theme"
     },
     "gpm": {
         "type": "theme",
@@ -36,18 +41,22 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/TryGhost/Starter.git"
+        "url": "git+https://github.com/piotrowskiadam/Purple-Haze-Ghost-Theme.git"
     },
-    "bugs": "https://github.com/TryGhost/Starter/issues",
-    "contributors": "https://github.com/TryGhost/Starter/graphs/contributors",
+    "bugs": {
+        "url": "https://github.com/piotrowskiadam/Purple-Haze-Ghost-Theme/issues"
+    },
     "devDependencies": {
         "@babel/core": "^7.21.0",
         "@babel/preset-env": "^7.20.2",
+        "@playwright/test": "1.64.1",
         "@rollup/plugin-babel": "^6.0.3",
         "@rollup/plugin-commonjs": "^25.0.0",
         "@rollup/plugin-node-resolve": "^15.0.1",
-        "@rollup/plugin-terser": "^0.4.0",
+        "@rollup/plugin-terser": "1.0.2",
         "bestzip": "^2.2.1",
+        "gscan": "6.6.1",
+        "handlebars": "4.7.10",
         "medium-zoom": "^1.1.0",
         "postcss": "^8.4.24",
         "postcss-import": "^15.1.0",
@@ -87,19 +96,17 @@
             "secondary_accent_color": {
                 "type": "color",
                 "default": "#D0B8FB",
-                "group": "visuals",
                 "description": "Secondary accent color (used for links, tags, captions, etc.)"
             },
             "featured_overlay_color": {
                 "type": "color",
                 "default": "#000000",
-                "group": "visuals",
-                "description": "Base color for the gradient overlay on featured posts"
+                "description": "Base color for the gradient overlay on featured posts",
+                "group": "homepage"
             },
             "navigation_text_color": {
                 "type": "color",
                 "default": "#FFFFFF",
-                "group": "visuals",
                 "description": "Color for header navigation links"
             }
         },
@@ -108,5 +115,12 @@
             "pl"
         ]
     },
-    "type": "module"
+    "type": "module",
+    "homepage": "https://github.com/piotrowskiadam/Purple-Haze-Ghost-Theme#readme",
+    "docs": "https://github.com/piotrowskiadam/Purple-Haze-Ghost-Theme#installation",
+    "overrides": {
+        "gscan": {
+            "handlebars": "4.7.10"
+        }
+    }
 }

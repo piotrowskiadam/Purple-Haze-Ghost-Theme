@@ -13,16 +13,16 @@
             <h1 class="gh-checkout-title">Choose your subscription</h1>
             <p>Unlock full access to {{@site.title}} and see the entire library of members-only content & updates</p>
             <div class="gh-checkout-box">
-                {{#get "tiers" include="monthly_price, yearly_price" limit="all" as |tiers|}}
+                {{#get "tiers" include="monthly_price,yearly_price" filter="type:paid" limit="100" as |tiers|}}
                 {{#foreach tiers}}
                 <div class="gh-checkout-plan">
                     <header class="gh-checkout-plan-header">
                         <h3>{{name}}</h3>
                         {{#if monthly_price}}
-                        <span>$</span><strong>{{monthly_price}}</strong> / month
+                        <strong>{{price monthly_price currency=currency}}</strong> / month
                         {{/if}}
                         {{#if yearly_price}}
-                        <span>$</span><strong>{{yearly_price}}</strong> / year
+                        <strong>{{price yearly_price currency=currency}}</strong> / year
                         {{/if}}
                     </header>
                     <div class="gh-checkout-plan-content">
@@ -34,13 +34,12 @@
                         </ul>
                         {{/if}}
 
-                        </ul>
                         {{#if monthly_price}}
-                        <a class="button primary fit" href="javascript:void(0)" data-members-plan="Monthly">Choose this
+                        <a class="button primary fit" href="#/portal/signup/{{id}}/monthly">Choose this
                             plan</a>
                         {{/if}}
                         {{#if yearly_price}}
-                        <a class="button primary fit" href="javascript:void(0)" data-members-plan="Yearly">Choose this
+                        <a class="button primary fit" href="#/portal/signup/{{id}}/yearly">Choose this
                             plan</a>
                         {{/if}}
                     </div>
@@ -58,7 +57,7 @@
             <p>{{@site.description}}</p>
             <div class="gh-auth-box">
                 <input aria-label="Email Address" class="gh-input" data-members-email type="email"
-                    placeholder="youremail@example.com" required="true" autocomplete="false" autofocus />
+                    placeholder="youremail@example.com" required="true" autocomplete="email" autofocus />
                 <button class="gh-button gh-button-primary" type="submit">
                     <span class="gh-button-content">Continue</span>
                     <span class="gh-button-loader">{{> "icons/loader"}}</span>

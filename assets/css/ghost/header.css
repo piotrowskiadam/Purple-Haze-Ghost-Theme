@@ -122,6 +122,10 @@
 /* ---------------------------------------------------------- */
 
 .gh-burger {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
     position: relative;
     display: none;
     cursor: pointer;

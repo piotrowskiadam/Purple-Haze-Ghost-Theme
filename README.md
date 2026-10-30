@@ -1,130 +1,103 @@
-# Purple Haze - Ghost Theme
+# Purple Haze
 
-A dark, minimalist Ghost theme with purple accents, designed for personal blogs and publications. This theme is based on the Ghost Starter Theme framework.
+A dark Ghost theme built for long reads, with purple accents and a sticky table of contents that highlights the reader’s current section as they scroll.
 
-&nbsp;
+[Live example](https://piotrowskiadam.pl/) · [Download a release](https://github.com/piotrowskiadam/Purple-Haze-Ghost-Theme/releases) · [Report a problem](https://github.com/piotrowskiadam/Purple-Haze-Ghost-Theme/issues)
+
+![Purple Haze on desktop](docs/screenshots/home-desktop.png)
+
+Screenshots show **Nightfall Journal**, a fictional publication rendered locally from the **v1.5.0** theme templates. Article titles, author names, and artwork are sample content. These previews use a lightweight template fixture, rather than a running Ghost installation.
+
+## A table of contents that follows the reader
+
+Long articles should be easy to explore. On desktop, Purple Haze keeps the table of contents alongside the article as you scroll, **automatically highlighting the heading of the section you’re reading**. Readers can see where they are at a glance and click any heading to jump to another section.
+
+The outline is generated automatically from your article’s H2 and H3 headings, with subsections indented. There’s no outline to maintain by hand. It stays out of the way on smaller screens and is hidden when an article has no headings.
+
+![Article layout with a sticky table of contents and automatic section highlighting](docs/screenshots/post-desktop.png)
 
 ## Features
 
-- Dark, modern aesthetic with configurable purple accents.
-- Responsive design for optimal viewing on all devices.
-- Customizable tag colors and featured post overlay via Ghost Admin settings.
-- Translation support (English & Polish included).
-- Built using modern web development tools (Rollup, PostCSS).
-- Includes standard Ghost theme features like member support, comments, etc.
-- Automatic Table of Contents generation on post pages.
-- Explicit font loading (Roboto) with `latin-ext` subset for proper diacritic display.
-&nbsp;
+- **Sticky table of contents with active-section highlighting**, generated automatically from article headings.
+- Dark background, purple accents, and configurable navigation and link colors.
+- Responsive post grid, tag archives, author archives, and an optional featured-post spotlight.
+- Syntax highlighting for JavaScript, CSS, HTML, Bash, and JSON.
+- Image zoom and horizontally scrollable tables in articles.
+- Infinite scrolling with ordinary pagination links as a fallback.
+- Ghost search, member signup through Portal, subscription forms, and native comments.
+- English and Polish theme translations, including reading-time labels.
+- An optional **About** template for static pages.
 
-## First time using a Ghost theme?
+<details>
+<summary>Mobile screenshot</summary>
 
-Ghost uses a simple templating language called [Handlebars](http://handlebarsjs.com/) for its themes.
+<img src="docs/screenshots/home-mobile.png" alt="Purple Haze homepage on a mobile screen" width="390">
 
-We've documented this starter theme pretty heavily so that it should be possible to work out what's going on just by reading the code and the comments. We also have a robust set of resources to help you build awesome custom themes:
+</details>
 
-- The official [theme documentation](https://ghost.org/docs/themes) is the complete resource for everything you need to know about Ghost theme development
-- [Tutorials](https://ghost.org/tutorials/) offer a step-by-step guide to building the most common features in Ghost themes
-- The [Ghost VS Code extension](https://marketplace.visualstudio.com/items?itemName=TryGhost.ghost) speeds up theme development and provides quick access to helpful info
-- All of Ghost's official themes are [open source](https://github.com/tryghost) and are a great reference for learning how to create a theme
+## Installation
 
-&nbsp;
+1. Download **purple-haze.zip** from a [GitHub release](https://github.com/piotrowskiadam/Purple-Haze-Ghost-Theme/releases). Choose the attached theme ZIP, rather than GitHub’s automatically generated source archives.
+2. Open your publication’s Ghost Admin, go to **Settings → Site → Theme**, and choose **Change theme → Upload theme**. Labels can vary between Ghost versions.
+3. Upload the ZIP and activate Purple Haze.
+4. Review your navigation, logo, colors, and membership settings.
 
-## Theme structure
+To upgrade an existing installation, keep a copy of your previous theme ZIP and note any edits you made directly to theme files. Upload the new ZIP through the same screen, then check the homepage, an article, archives, and mobile menu. Restore the previous ZIP if needed. Publication content is managed by Ghost separately from the theme.
 
-The main files are:
+**Compatibility:** theme rules are checked with GScan for Ghost 5 and 6. Ghost 6 currently reports two social-helper deprecation warnings; the older helpers are retained for Ghost 5 compatibility. Browser fixture tests supplement those checks. They do not replace testing in a running Ghost publication. See the [maintenance review](docs/MAINTENANCE.md) for validation scope and remaining work.
 
-- [`default.hbs`](default.hbs) - The main template file
-- [`index.hbs`](index.hbs) - Used for the home page
-- [`post.hbs`](post.hbs) - Used for individual posts
-- [`page.hbs`](page.hbs) - Used for individual pages
-- [`tag.hbs`](tag.hbs) - Used for tag archives
-- [`author.hbs`](author.hbs) - Used for author archives
+## Configuration
 
-One neat trick is that you can also create custom one-off templates just by adding the slug of a page to a template file. For example:
+Ghost’s built-in **Accent color** controls the primary accent. The CSS fallback is `#281C52`; an accent color already saved in Ghost takes precedence.
 
-- `page-about.hbs` - Custom template for the `/about/` page
-- `tag-news.hbs` - Custom template for `/tag/news/` archive
-- `author-jamie.hbs` - Custom template for `/author/jamie/` archive
+| Theme setting | Default | Used for |
+| --- | --- | --- |
+| Secondary accent color | `#D0B8FB` | Links, tag text, captions, and hover states |
+| Featured overlay color | `#000000` | Gradient over the featured spotlight image |
+| Navigation text color | `#FFFFFF` | Header navigation and site title |
 
-&nbsp;
+The homepage spotlights the newest featured post on its first page. The chronological feed includes **all** posts, including featured posts, so archive pagination remains complete. A spotlighted post can therefore also appear in the feed.
 
-## Development guide
+Set the publication language to **English** or **Polish** to use the included translations. The theme loads Roboto from Google Fonts. Ghost provides the search, Portal, editor-card assets, and comments integrations; availability depends on your publication settings. Select **About** in a page’s template settings to use `custom-about.hbs`.
 
-This theme provides a first-class development experience out of the box.
+The `members/` templates are retained for installations with custom membership routes. A normal installation uses Ghost Portal and does not need custom routes. Test any existing membership routes and paid checkout separately before upgrading.
 
-&nbsp;
+## Development
 
-### Setup
-
-To see realtime changes during development, symlink the theme folder to the `content/themes` folder in your local Ghost install. Replace `purple-haze` with the actual theme folder name if different.
+Use Node **22.17+ within Node 22**, or Node **24**, and npm. Node is needed to build and validate the theme; readers do not install it.
 
 ```bash
-ln -s /path/to/Purple-Haze-Ghost-Theme /ghost/content/themes/purple-haze
-```
-
-Restart Ghost and select the Purple Haze theme from **Settings**.
-
-From the theme's root directory, install the dependencies:
-
-```bash
-npm install
-```
-
-If Node isn't installed, follow the [official Node installation guide](https://nodejs.org/).
-
-&nbsp;
-
-### Start development mode
-
-From the theme folder, start development mode:
-
-```bash
+npm ci
 npm run dev
 ```
 
-Changes you make to your styles, scripts, and Handlebars files will show up automatically in the browser. CSS and Javascript will be compiled and output to the `built` folder.
-
-Press `ctrl + c` in the terminal to exit development mode.
-
-&nbsp;
-
-### Build, zip, and test your theme
-
-Compile your CSS and JavaScript assets for production with the following command:
+Run the theme inside a [local Ghost installation](https://docs.ghost.org/install/local/). For example, symlink this checkout into that installation’s `content/themes/purple-haze` directory, restart Ghost, and select the theme in Admin. `npm run dev` watches source files, rebuilds `assets/built/`, and runs LiveReload. Production Ghost caches templates, so restart it after template changes when developing in production mode.
 
 ```bash
-npm run build
+npm run build          # Production CSS and JavaScript
+npm test               # Build and run Ghost 5 + Ghost 6 compatibility checks
+npx playwright install chromium
+npm run test:browser   # Browser regression checks against template fixtures
+npm run screenshots    # Regenerate the fictional publication previews
+npm run zip            # Build purple-haze.zip
+npm run check:zip      # Validate the actual upload archive
 ```
 
-Create a zip archive:
+Edit `assets/css/`, `assets/js/`, and `.hbs` templates. The compiled files in `assets/built/` are tracked and should be rebuilt with source changes. npm’s `package-lock.json` is the dependency lockfile.
 
-```bash
-npm run zip
-```
+| Path | Purpose |
+| --- | --- |
+| `default.hbs` | Shared document, header, and footer |
+| `index.hbs`, `partials/card.hbs` | Post feed and featured spotlight |
+| `post.hbs`, `page.hbs`, `custom-about.hbs` | Articles and static pages |
+| `tag.hbs`, `author.hbs` | Archive pages |
+| `locales/` | Theme translations |
+| `tests/` | Browser fixtures and interaction regressions |
 
-Use `gscan` to test your theme for compatibility with Ghost:
+[Release process](docs/RELEASING.md) · [Marketplace preparation](docs/MARKETPLACE.md) · [Contributor notes](AI_AGENT_NOTES.md)
 
-```bash
-npm run test
-```
+## Support and license
 
-&nbsp;
+For bugs, [open an issue](https://github.com/piotrowskiadam/Purple-Haze-Ghost-Theme/issues) with your Ghost version, theme version, browser, steps to reproduce, and a screenshot where useful. Remove account details and private content from reports. Community support is provided through GitHub issues; no response-time guarantee is offered.
 
-## Development Notes (AI & Human)
-
-This theme is actively developed with the assistance of AI agents. Key learnings, best practices, and specific implementation details discovered during development are documented in `AI_AGENT_NOTES.md`. Both human and AI developers should consult this file before making significant changes to understand the established patterns and avoid reintroducing previously fixed issues.
-
-Key areas covered include:
-- Release workflow (versioning, building, tagging, GitHub releases)
-- Handling custom theme settings and CSS variables
-- Translation implementation details
-- Card structure and link behavior (image, title, tags, read more)
-- Conditional styling using Ghost context helpers
-- Table of Contents implementation (CSS sticky, scrollspy)
-- Font loading strategy
-
-&nbsp;
-
-## Copyright & License
-
-Copyright (c) 2025 Adam Piotrowski - Based on Ghost Starter Theme (Copyright (c) 2013-2025 Ghost Foundation) - Released under the [MIT license](LICENSE).
+Created by Adam Piotrowski, based on [Ghost Starter](https://github.com/TryGhost/Starter). Released under the [MIT license](LICENSE), with the original Ghost Foundation attribution retained.

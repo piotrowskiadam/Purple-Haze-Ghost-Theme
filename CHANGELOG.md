@@ -1,5 +1,33 @@
 # Changelog
 
+## [1.5.0] - Unreleased
+
+### Fixed
+- Keep native archive pagination complete, including featured posts, with a manual fallback when automatic loading fails.
+- Prevent concurrent infinite-scroll requests and scope appended items to feed cards.
+- Remove nested links from the featured card and correct responsive image attributes.
+- Use the translated reading-time helper on articles and correct footer social URLs.
+- Make the mobile menu keyboard accessible, expose its state, and support Escape.
+- Correct legacy tier prices, checkout links, invalid signup markup, and email autocomplete.
+- Use valid custom-setting groups while retaining existing setting keys.
+
+### Changed
+- Synchronize manifest and lockfile versions, correct starter metadata, and use npm as the single package manager.
+- Update compatible build dependencies and the minifier, pin GScan, and patch its Handlebars dependency.
+- Simplify content initialization and avoid repeatedly highlighting content through a mutation observer.
+- Produce unminified development bundles and exclude generated assets from LiveReload watching.
+- Rewrite the README and contributor/release notes, with marketplace preparation and known limitations.
+
+### Added
+- Desktop, mobile, and article screenshots of the fictional Nightfall Journal publication, with a reproducible capture command.
+- Ghost 5/6 validation, browser regression checks, CI artifacts, and an allowlisted upload package.
+
+## [1.4.80] - 2025-04-08
+
+### Fixed
+- Footer social icons use the secondary accent color on hover.
+- Historical release note restored from GitHub; v1.4.80 and v1.4.79 share a commit (see docs/RELEASING.md).
+
 ## [1.4.79] - 2025-04-08
 
 ### Changed
@@ -75,9 +103,6 @@
 - Increased border width for in-content images (`.kg-image-card img`) to 3px.
 
 ## [1.4.62] - 2025-04-04
-### Fixed
-- Apply `border-radius` and `overflow: hidden` directly to `gh-feature-image img` instead of parent figure to fix clipping by figcaption.
-## [1.4.62] - 2025-04-04
 
 ### Fixed
 - Apply `border-radius` and `overflow: hidden` directly to `gh-feature-image img` instead of parent figure to fix clipping by figcaption.
@@ -138,9 +163,6 @@
 - Updated JS to import PhotoSwipe locally instead of CDN.
 - Removed redundant PhotoSwipe script tag from `default.hbs`.
 
-## [1.4.49] - 2025-04-02
-### Changed
-- Increased site title font size (`.gh-head-logo`) to `3.5rem`.
 ## [1.4.49] - 2025-04-02
 
 ### Changed
@@ -451,7 +473,6 @@
 - Related posts section to `post.hbs`.
 - Translations for "You might also like".
 
-## [1.3.22] - 2025-03-30
 ## [1.3.22] - 2025-03-30
 
 ### Fixed

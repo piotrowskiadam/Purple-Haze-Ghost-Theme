@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const listItem = document.createElement('li');
         const link = document.createElement('a');
 
-        link.href = `#${heading.id}`;
+        link.href = `#${encodeURIComponent(heading.id)}`;
         link.textContent = heading.textContent;
         link.dataset.tocTarget = heading.id; // Store target ID for observer
 
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             document.getElementById(heading.id)?.scrollIntoView({
-                behavior: 'smooth',
+                behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
                 block: 'start' // Align to top
             });
         });
@@ -90,6 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         // If nothing is intersecting, keep the last active link highlighted
     };
+
+    if (!('IntersectionObserver' in window)) return;
 
     const scrollspyObserver = new IntersectionObserver(scrollspyCallback, scrollspyObserverOptions);
 

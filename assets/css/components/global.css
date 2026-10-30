@@ -204,3 +204,9 @@ h6 {
         scroll-behavior: auto !important;
     }
 }
+
+/* Keep keyboard focus visible against the dark background. */
+:focus-visible {
+    outline: 2px solid var(--secondary-accent-color);
+    outline-offset: 4px;
+}

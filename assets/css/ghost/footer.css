@@ -99,7 +99,7 @@
 }
 
 .gh-foot-social a:hover {
-    color: var(--color-primary); /* Purple hover */
+    color: var(--secondary-accent-color); /* Use secondary accent color on hover */
 }
 
 
