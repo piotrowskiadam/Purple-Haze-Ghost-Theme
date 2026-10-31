@@ -23,7 +23,8 @@ jobs:
       - run: node scripts/check-version.mjs
       - run: npm test
       - run: npm run test:release
-      - run: npx playwright install --with-deps chromium
+      - run: npm run test:html
+      - run: npx playwright install --with-deps chromium firefox webkit
       - run: npm run test:browser
       - run: npm run zip
       - run: npm run check:zip

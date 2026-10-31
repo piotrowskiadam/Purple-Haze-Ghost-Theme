@@ -27,7 +27,8 @@ test('mobile menu supports keyboard activation and Escape', async ({page}) => {
 test('automatic pagination makes one request and appends only feed cards', async ({page}) => {
     let requests = 0;
     await page.route('**/page/2/', async route => {
-        requests++;
+        // Firefox also prefetches rel=next; count the script's fetch calls.
+        if (route.request().resourceType() === 'fetch') requests++;
         await new Promise(resolve => setTimeout(resolve, 150));
         await route.fulfill({contentType: 'text/html', body: render('/page/2/')});
     });

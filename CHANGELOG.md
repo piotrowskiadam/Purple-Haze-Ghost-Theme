@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.5.1] - 2026-10-31
+
+### Fixed
+- Constrain article columns on tablets and wrap long titles without horizontal overflow.
+- Restore useful wide/full editor-card widths while keeping the article outline clear.
+- Give the homepage and card titles a coherent heading hierarchy and label navigation landmarks.
+- Track the current article section during downward/upward scrolling and expose it with aria-current.
+- Support keyboard jumps from the table of contents, heading focus, reduced motion, and URL fragments.
+- Make image zoom keyboard accessible, return focus on closing, and honor Escape during its opening animation.
+- Hide the unused featured-image link from keyboard navigation and keep bold captions legible.
+
+### Added
+- Browser checks for tablet articles, keyboard interactions, default-color accessibility, empty content, long titles, and editor cards.
+- Chromium, Firefox, and WebKit projects in CI, plus HTML validation for ten rendered template scenarios.
+- Verified Ghost-origin iframe access to the live demo after its server header configuration was corrected.
+- Optional read-only integration checks for a prepared Ghost publication, verified on an isolated Ghost 6.72.0 instance.
+
+
 ## [1.5.0] - 2026-10-31
 
 ### Fixed

@@ -23,7 +23,7 @@
     text-decoration: none;
 }
 
-.gh-readmore h4 {
+.gh-readmore h2 {
     width: 100%;
     font-size: inherit;
 }
@@ -35,8 +35,8 @@
     margin: 0.15em 0 0;
 }
 
-.gh-readmore svg + h4,
-.gh-readmore h4 + svg {
+.gh-readmore svg + h2,
+.gh-readmore h2 + svg {
     margin-left: 2vmin;
 }
 

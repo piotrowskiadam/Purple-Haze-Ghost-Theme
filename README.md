@@ -6,11 +6,11 @@ A dark Ghost theme built for long reads, with purple accents and a sticky table 
 
 ![Purple Haze on desktop](docs/screenshots/home-desktop.png)
 
-Screenshots show **Nightfall Journal**, a fictional publication rendered locally from the **v1.5.0** theme templates. Article titles, author names, and artwork are sample content. These previews use a lightweight template fixture, rather than a running Ghost installation.
+Screenshots show **Nightfall Journal**, a fictional publication rendered locally from the **v1.5.1** theme templates. Article titles, author names, and artwork are sample content. These previews use a lightweight template fixture, rather than a running Ghost installation.
 
 ## A table of contents that follows the reader
 
-Long articles should be easy to explore. On desktop, Purple Haze keeps the table of contents alongside the article as you scroll, **automatically highlighting the heading of the section you’re reading**. Readers can see where they are at a glance and click any heading to jump to another section.
+Long articles should be easy to explore. On wider desktop screens, Purple Haze keeps the table of contents alongside the article as you scroll, **automatically highlighting the heading of the section you’re reading**. Readers can see where they are at a glance and click any heading to jump to another section.
 
 The outline is generated automatically from your article’s H2 and H3 headings, with subsections indented. There’s no outline to maintain by hand. It stays out of the way on smaller screens and is hidden when an article has no headings.
 
@@ -22,7 +22,7 @@ The outline is generated automatically from your article’s H2 and H3 headings,
 - Dark background, purple accents, and configurable navigation and link colors.
 - Responsive post grid, tag archives, author archives, and an optional featured-post spotlight.
 - Syntax highlighting for JavaScript, CSS, HTML, Bash, and JSON.
-- Image zoom and horizontally scrollable tables in articles.
+- Keyboard-accessible image zoom and horizontally scrollable tables in articles.
 - Infinite scrolling with ordinary pagination links as a fallback.
 - Ghost search, member signup through Portal, subscription forms, and native comments.
 - English and Polish theme translations, including reading-time labels.
@@ -44,7 +44,7 @@ The outline is generated automatically from your article’s H2 and H3 headings,
 
 To upgrade an existing installation, keep a copy of your previous theme ZIP and note any edits you made directly to theme files. Upload the new ZIP through the same screen, then check the homepage, an article, archives, and mobile menu. Restore the previous ZIP if needed. Publication content is managed by Ghost separately from the theme.
 
-**Compatibility:** theme rules are checked with GScan for Ghost 5 and 6. Ghost 6 currently reports two social-helper deprecation warnings; the older helpers are retained for Ghost 5 compatibility. Browser fixture tests supplement those checks. They do not replace testing in a running Ghost publication. See the [maintenance review](docs/MAINTENANCE.md) for validation scope and remaining work.
+**Compatibility:** theme rules are checked with GScan for Ghost 5 and 6. Ghost 6 currently reports two social-helper deprecation warnings; the older helpers are retained for Ghost 5 compatibility. CI runs Chromium, Firefox, and WebKit fixture checks. Separate Ghost 6.72.0 staging checks cover native pages, search, Portal, comments, and member-only content; paid checkout and the full branded-browser matrix remain manual. See the [maintenance review](docs/MAINTENANCE.md) for validation scope and remaining work.
 
 ## Configuration
 
@@ -77,8 +77,9 @@ Run the theme inside a [local Ghost installation](https://docs.ghost.org/install
 npm run build          # Production CSS and JavaScript
 npm test               # Build and run Ghost 5 + Ghost 6 compatibility checks
 npm run test:release   # Verify release publication safeguards
-npx playwright install chromium
-npm run test:browser   # Browser regression checks against template fixtures
+npx playwright install chromium firefox webkit
+npm run test:browser   # Chromium, Firefox, and WebKit regression checks
+npm run test:html      # Rendered HTML and landmark validation
 npm run screenshots    # Regenerate the fictional publication previews
 npm run zip            # Build purple-haze.zip
 npm run check:zip      # Validate the actual upload archive
@@ -94,6 +95,8 @@ Edit `assets/css/`, `assets/js/`, and `.hbs` templates. The compiled files in `a
 | `tag.hbs`, `author.hbs` | Archive pages |
 | `locales/` | Theme translations |
 | `tests/` | Browser fixtures and interaction regressions |
+
+For native Ghost integration checks, prepare a separate test publication as described in the [submission audit](docs/SUBMISSION-AUDIT.md), then run `GHOST_TEST_URL=http://127.0.0.1:2369 npm run test:ghost`.
 
 [Release process](docs/RELEASING.md) · [Marketplace preparation](docs/MARKETPLACE.md) · [Submission audit](docs/SUBMISSION-AUDIT.md) · [Contributor notes](AI_AGENT_NOTES.md)
 

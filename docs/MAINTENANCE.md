@@ -21,21 +21,18 @@
 
 `npm test` builds production assets and validates Ghost 5 and 6 rules using GScan 6.6.1. Ghost 5 passes without warnings; Ghost 6 reports deprecated `facebook_url` and `twitter_url` helpers. They remain supported for the existing Ghost 5 minimum. These warnings are an explicit migration task, not a claim of full future compatibility.
 
-The Chromium suite renders the repository’s Handlebars templates with a small fixture adapter. It covers card link structure, complete feed data, mobile menu keyboard interaction, one-request pagination, failure fallback, no-JavaScript pagination, article initialization, Polish heading links, and desktop/mobile overflow. It does not run Ghost itself or emulate search, Portal, payment services, or comments. GScan and fixtures cannot establish full browser or membership correctness.
+Version 1.5.1 adds Chromium, Firefox, and WebKit projects in CI, automated axe checks, ten HTML validation scenarios, keyboard image zoom and ToC regression checks, and responsive/editor-card fallbacks. A separate Ghost 6.72.0 instance also exercised native routes, search results, Portal signup UI, comments, and guest access to a members-only article. See [SUBMISSION-AUDIT.md](SUBMISSION-AUDIT.md) for scope and remaining manual checks.
 
-Screenshots in `docs/screenshots/` and `assets/screenshot-*.jpg` depict Nightfall Journal, a fictional publication rendered from the v1.5.0 templates with sample articles and original SVG artwork. Regenerate them with `npm run screenshots`. They use the local fixture adapter, not a running Ghost installation, and do not contain the live blog’s content. Early design images and local Ghost documentation snapshots remain available, labeled as archives, outside the upload ZIP.
+Screenshots in `docs/screenshots/` and `assets/screenshot-*.jpg` depict Nightfall Journal, a fictional publication rendered from the v1.5.1 templates with sample articles and original SVG artwork. Regenerate them with `npm run screenshots`. They use the local fixture adapter, not a running Ghost installation, and do not contain the live blog’s content. Early design images and local Ghost documentation snapshots remain available, labeled as archives, outside the upload ZIP.
 
 ## Dependencies
 
-The original npm audit reported **19 advisories**. Compatible dependency updates, a patched minifier, and a scoped override of GScan’s pinned Handlebars to 4.7.10 removed the reported critical issues. The final audit reported **5 dependency entries: 3 high and 2 low**, from two upstream dependency chains:
-
-- `gscan → @tryghost/zip → extract-zip`: ZIP extraction advisories; no patched extract-zip release was available in the queried registry. The scanner’s archive validation is development tooling. Use trusted, locally built archives for this workflow.
-- `@rollup/plugin-node-resolve → deepmerge`: prototype poisoning advisory, reported at low severity. npm’s automatic recommendation was a major downgrade of the resolver, which was not applied.
+The original npm audit reported **19 advisories**. Compatible dependency updates, a patched minifier, and a scoped override of GScan’s pinned Handlebars to 4.7.10 removed the reported critical issues. After refreshing dependencies and adding validation tools, the current audit reports **13 development dependency entries: 3 high, 8 moderate, and 2 low**. The affected chains involve GScan’s ZIP extractor, resolver/deepmerge, and glob/minimatch used by build/ZIP tooling. npm’s remaining proposed fixes require incompatible dependency changes; they were not applied blindly.
 
 These packages are build/validation dependencies and are not included as server-side executable dependencies in the uploaded theme. That distinction does not remove risk on developer machines or CI. Recheck advisories and upstream fixes before marketplace submission. The Handlebars override should be removed once GScan itself uses a patched release.
 
 ## Remaining work
 
-Follow [MARKETPLACE.md](MARKETPLACE.md) before submission: demo iframe headers, deployment of the exact candidate, browser matrix, full editor-card coverage, real Ghost membership checks, HTML validation, and social-helper migration. The legacy `members/` templates are retained for existing custom routes; their paid checkout flow needs a real Ghost test.
+The confirmed theme and demo-header defects have been corrected. Follow [MARKETPLACE.md](MARKETPLACE.md) for final demo deployment, branded-browser/Safari coverage, paid checkout, complete editor-card review, and the eventual social-helper migration.
 
 The detailed checklist review is in [SUBMISSION-AUDIT.md](SUBMISSION-AUDIT.md). GitHub metadata suggestions are prepared in MARKETPLACE.md. [The release workflow](RELEASING.md) now publishes new manifest versions after successful main-branch validation. Historical releases and tags are preserved; marketplace submission and blog deployment remain separate steps.

@@ -144,7 +144,7 @@ html,
     text-decoration: none; /* Remove underline from link */
 }
 
-.gh-card--featured .gh-card-picture {
+.gh-card--featured .gh-card-image-link {
     display: none; /* Hide the picture element, we use background */
 }
 
@@ -276,6 +276,7 @@ a.gh-card-tag {
 
 /* Add margin to card titles */
 .gh-card-title {
+    font-size: 2.6rem;
     margin-top: 0; /* Remove default heading margin */
     margin-bottom: 1rem; /* Consistent spacing */
 }

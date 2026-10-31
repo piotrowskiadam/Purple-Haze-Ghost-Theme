@@ -50,7 +50,7 @@
 }
 
 /* Desktop Layout - Using standard .gh-canvas grid */
-@media (min-width: 1024px) { /* Adjust breakpoint if needed */
+@media (min-width: 1280px) { /* Adjust breakpoint if needed */
 
     .gh-toc {
         grid-column: wide-start / main-start; /* Place in left wide column of the parent .gh-canvas */
@@ -80,4 +80,16 @@
        /* Ensure they occupy the correct subgrid (main) within the article's column */
        grid-column: main-start / main-end;
     }
+}
+.gh-toc-subsection {
+    padding-inline-start: 1em;
+}
+
+.gh-content h2[id],
+.gh-content h3[id] {
+    scroll-margin-top: 90px;
+}
+
+.gh-toc[hidden] {
+    display: none;
 }

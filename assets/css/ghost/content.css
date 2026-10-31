@@ -21,7 +21,7 @@
 @media (min-width: 741px) { /* Above --small breakpoint */
     /* Apply wider main column to all canvas grids on desktop */
     .gh-canvas {
-       --main: 90ch; /* Increase main content width */
+       --main: min(90ch, calc(100% - var(--gap) * 2));
     }
     /* Removed specific overrides for about page */
 }
@@ -170,7 +170,7 @@ figcaption {
 }
 
 figcaption strong {
-    color: rgba(0,0,0,0.8);
+    color: inherit;
 }
 
 .gh-canvas :not(pre) code {
@@ -347,4 +347,29 @@ figcaption strong {
 /* Ensure last row doesn't have a bottom border */
 .gh-content tbody tr:last-child td {
     border-bottom: none;
+}
+
+.gh-article,
+.gh-content,
+.gh-title,
+.gh-card-title {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.gh-content pre {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+/* Let wide editor cards use the space to the right of the article, keeping
+   the sticky outline unobstructed on the left and preserving mobile gutters. */
+.post-template .gh-content > .kg-width-wide {
+    width: min(1000px, max(100%, calc(50vw + 50% - 4vw)));
+    max-width: none;
+}
+
+.post-template .gh-content > .kg-width-full {
+    width: max(100%, calc(50vw + 50% - 4vw));
+    max-width: none;
 }

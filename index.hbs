@@ -1,13 +1,14 @@
 {{!< default}}
 <div class="gh-page">
     <div class="gh-container">
+        <h1 class="gh-sr-only">{{@site.title}}</h1>
 
         {{!-- Spotlight the newest featured post on the first page only. --}}
         {{#match pagination.page 1}}
         {{#get "posts" filter="featured:true" limit="1" include="tags,authors" as |featured|}}
             {{#foreach featured}}
                 {{!-- Render the card partial for the featured post --}}
-                {{> "card" featured_card=true}}
+                {{> "card" featured_card=true heading_tag="h2"}}
             {{/foreach}}
         {{/get}}
         {{/match}}
@@ -19,7 +20,9 @@
         <div class="gh-postfeed">
             {{#foreach posts}}
                 {{!-- Render the card partial for regular posts --}}
-                {{> "card"}}
+                {{> "card" heading_tag="h3"}}
+            {{else}}
+                <p>{{t "No posts"}}</p>
             {{/foreach}}
         </div>
 

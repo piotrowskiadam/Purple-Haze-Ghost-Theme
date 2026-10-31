@@ -6,7 +6,7 @@ A successful validation run on `main` automatically publishes the version in `pa
 
 1. Update `package.json` and synchronize `package-lock.json` with `npm install --package-lock-only`. Use a patch version for fixes, a minor version for compatible features, and a major version for breaking changes. Use a new number only when a new public release is intended; ordinary commits can keep the existing version.
 2. Add a matching dated entry to `CHANGELOG.md`, such as `## [1.5.1] - 2026-11-01`. An `Unreleased` heading cannot be published automatically. The entry becomes the release notes.
-3. Run `npm ci`, `npm test`, `npm run test:release`, `npm run test:browser`, `npm run zip`, and `npm run check:zip`. Install Playwright Chromium first if needed. Review GScan warnings rather than treating a successful exit as proof of complete compatibility.
+3. Run `npm ci`, `npm test`, `npm run test:release`, `npm run test:html`, `npm run test:browser`, `npm run zip`, and `npm run check:zip`. Install the Playwright Chromium, Firefox, and WebKit browsers first if needed. Review GScan warnings rather than treating a successful exit as proof of complete compatibility.
 4. Test the candidate in a staging Ghost installation. Check home, multiple archive pages, articles, static pages, mobile navigation, search, Portal, comments, and editor cards. Check members-only content and paid checkout if offered. Marketplace readiness is tracked separately in [SUBMISSION-AUDIT.md](SUBMISSION-AUDIT.md).
 5. Review and push the intended changes to `main`, including rebuilt assets. GitHub Actions creates `vX.Y.Z` at the tested commit and publishes the release after validation succeeds. No blog deployment or marketplace submission occurs automatically.
 

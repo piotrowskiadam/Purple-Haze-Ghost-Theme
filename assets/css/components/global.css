@@ -210,3 +210,14 @@ h6 {
     outline: 2px solid var(--secondary-accent-color);
     outline-offset: 4px;
 }
+
+/* Keep the publication heading available to assistive technology without duplicating the logo. */
+.gh-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}

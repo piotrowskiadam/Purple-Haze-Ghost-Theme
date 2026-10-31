@@ -25,16 +25,14 @@ Use a specific published release URL in the final submission. The version in `pa
 - Responsive layouts, alt attributes, navigation, search, comments, custom settings, author/tag archives, and a “Published with Ghost” link.
 - Fixes for nested card links, keyboard menu interaction, and incomplete pagination.
 
-## Still required before submission
+## Before submission
 
-- **Allow the demo to be framed by Ghost.** The live homepage returned `X-Frame-Options: SAMEORIGIN` during inspection. Ghost requires a working HTTPS demo accessible in an iframe from `*.ghost.org`. On the demo host, remove the conflicting X-Frame-Options restriction and configure a suitable CSP `frame-ancestors` policy (for example, allowing `'self'`, `https://ghost.org`, and `https://*.ghost.org`). Check other existing CSP policies too. This is a server configuration task, not a theme ZIP change; verify the result from a Ghost-origin iframe.
-- Deploy the exact release candidate to a running Ghost demo. The fictional Nightfall Journal screenshots demonstrate the templates locally; they do not provide the hosted demo required by the marketplace. Refresh them with `npm run screenshots` after visual changes.
-- Complete a manual browser matrix. The submission page asks for the latest two versions of Chrome, Firefox, Safari, and IE/Edge; its IE wording is dated. Clarify the expected Microsoft browser coverage with Ghost rather than claiming legacy IE support. Current automated checks cover Chromium only.
-- Exercise Ghost search, free/member/paid content, Portal checkout, comments, long titles, empty archives, missing images, galleries, wide/full-width cards, and mobile articles in a real Ghost installation. Browser fixtures emulate only part of the template data.
-- Review custom color contrast and keyboard navigation across the full publication, including membership interfaces. Test theme HTML with an HTML validator; GScan is not an HTML conformance checker.
-- Decide whether to retain Ghost 5 compatibility. GScan 6 warns about `facebook_url` and `twitter_url`; moving to `social_url` should accompany a verified minimum Ghost version and migration guidance.
-- Review the remaining development dependency advisories recorded in [MAINTENANCE.md](MAINTENANCE.md).
-- Submit the form with the published download link and exact ZIP. No submission has been sent by this cleanup.
+- Demo framing has been corrected and verified from an actual Ghost-origin iframe; see [DEMO-HOSTING.md](DEMO-HOSTING.md). Deploy the exact released theme ZIP to the public demo before submitting it.
+- The original tablet, heading, landmark, and keyboard defects have been repaired. [SUBMISSION-AUDIT.md](SUBMISSION-AUDIT.md) records the expanded browser checks and isolated Ghost integration results.
+- Confirm the latest two versions of the branded browsers requested by Ghost, including real Safari. WebKit CI does not replace the complete Safari/iOS matrix.
+- Exercise paid checkout and the complete editor-card set on a test publication, and review custom colors and service accessibility.
+- Review the remaining development-only dependency advisories and Ghost 6 social-helper deprecations in [MAINTENANCE.md](MAINTENANCE.md).
+- Submit the form with the exact published release link and ZIP. No application has been sent automatically.
 
 ## Suggested repository presentation
 
@@ -42,4 +40,4 @@ Suggested GitHub description: **A dark Ghost theme for text-led blogs, with purp
 
 Suggested topics: `ghost`, `ghost-theme`, `handlebars`, `blog`, `dark-theme`, `responsive`.
 
-The public repository currently has no topics or homepage URL. Set its homepage to the demo after resolving iframe access. Historical release tags should be preserved.
+The public repository currently has no topics or homepage URL. Its homepage can point to the demo now that iframe access is resolved. Historical release tags should be preserved.

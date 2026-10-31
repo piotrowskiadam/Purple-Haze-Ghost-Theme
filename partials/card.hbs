@@ -51,7 +51,7 @@
                     {{/foreach}}
                 {{/if}}
             </div>
-            <h4 class="gh-card-title"><a href="{{url}}">{{title}}</a></h4>
+            <{{heading_tag}} class="gh-card-title"><a href="{{url}}">{{title}}</a></{{heading_tag}}>
             <p>{{excerpt words="30"}}</p>
             <span class="gh-card-meta"><time datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMM YYYY"}}</time> <span class="bull">&bull;</span> {{reading_time minute=(t "1 min read") minutes=(t "% min read")}}</span>
             <a href="{{url}}" class="gh-card-readmore"><strong>{{t "Read more"}}</strong></a>

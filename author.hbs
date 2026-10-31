@@ -37,8 +37,10 @@
         <div class="gh-postfeed">
         {{#foreach posts}}
 
-            {{> "card"}} {{!-- partials/card.hbs --}}
+            {{> "card" heading_tag="h2"}} {{!-- partials/card.hbs --}}
 
+        {{else}}
+            <p>{{t "No posts"}}</p>
         {{/foreach}}
         </div>
 

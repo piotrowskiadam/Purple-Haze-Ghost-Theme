@@ -16,7 +16,7 @@
 .gh-auth-form p {
     margin: 10px 0 4vmin 0;
     font-size: 1.7rem;
-    color: rgba(0,0,0,0.6)
+    color: var(--color-secondary-text);
 }
 
 .gh-auth-form p small {
@@ -95,11 +95,11 @@ form[data-members-form].error .message-error {
     border-radius: var(--radius);
 }
 form[data-members-form].success .message-success {
-    background: var(--color-success);
+    background: color-mix(in srgb, var(--color-success) 35%, var(--color-bg));
 }
 form[data-members-form].error .message-error {
-    color: var(--color-error);
-    background: #fff;
+    color: var(--color-base);
+    background: color-mix(in srgb, var(--color-error) 15%, var(--color-bg));
     box-shadow: var(--color-error) 0 0 0 1px;
 }
 
