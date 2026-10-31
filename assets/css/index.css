@@ -384,14 +384,13 @@ a.gh-card-tag {
 .gh-feature-image {
     /* grid-column: wide-start / wide-end; Now handled by kg-width-wide in post.hbs */
     width: 100%;
-    margin: 0 0 4vmin; /* Add bottom margin, remove top margin */
-    border-radius: var(--radius); /* Add rounded corners */
-    overflow: hidden; /* Ensure image respects border radius */
+    margin: 0 0 3.2rem;
 }
 
 .gh-feature-image img {
     margin-inline: auto;
     width: 100%;
+    border-radius: var(--radius);
 }
 
 .gh-post-footer {

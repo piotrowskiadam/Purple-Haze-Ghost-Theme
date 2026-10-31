@@ -2,6 +2,54 @@ import {test, expect} from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import {render} from './fixture.mjs';
 
+for (const viewport of [{width: 390, height: 844}, {width: 1440, height: 1000}, {width: 2560, height: 1600}]) {
+    test(`image labels and captions keep a readable rhythm at ${viewport.width}px`, async ({page}) => {
+        await page.setViewportSize(viewport);
+        await page.goto('/demo/article/image-rhythm/');
+        await page.locator('.gh-content img').evaluateAll(images => Promise.all(images.map(image => image.decode())));
+        const layout = await page.evaluate(() => {
+            const el = name => document.querySelector(`[data-testid="${name}"]`);
+            const rect = name => el(name).getBoundingClientRect();
+            const first = rect('captioned-image');
+            const caption = el('captioned-image').querySelector('figcaption');
+            const image = el('captioned-image').querySelector('img').getBoundingClientRect();
+            const full = rect('full-image');
+            const fullCaption = el('full-image').querySelector('figcaption').getBoundingClientRect();
+            return {
+                before: first.top - rect('image-label').bottom,
+                after: rect('next-image-label').top - first.bottom,
+                consecutive: full.top - rect('uncaptioned-image').bottom,
+                captionGap: caption.getBoundingClientRect().top + parseFloat(getComputedStyle(caption).paddingTop) - image.bottom,
+                captionSize: parseFloat(getComputedStyle(caption).fontSize),
+                featureCaptionSize: parseFloat(getComputedStyle(document.querySelector('.gh-feature-image figcaption')).fontSize),
+                captionAlignment: getComputedStyle(caption).textAlign,
+                captionLeft: fullCaption.left, captionRight: fullCaption.right,
+                figureLeft: full.left, figureRight: full.right,
+                sectionGap: rect('next-section').top - el('next-section').previousElementSibling.getBoundingClientRect().bottom,
+                subsectionGap: rect('section-detail').top - rect('next-section').bottom,
+                overflow: document.documentElement.scrollWidth > innerWidth
+            };
+        });
+        expect(layout.before).toBeGreaterThanOrEqual(12);
+        expect(layout.before).toBeLessThanOrEqual(24);
+        for (const gap of [layout.after, layout.consecutive]) {
+            expect(gap).toBeGreaterThanOrEqual(20);
+            expect(gap).toBeLessThanOrEqual(32);
+        }
+        expect(layout.captionGap).toBeGreaterThanOrEqual(8);
+        expect(layout.captionGap).toBeLessThanOrEqual(12);
+        expect(layout.captionSize).toBeGreaterThanOrEqual(16);
+        expect(layout.featureCaptionSize).toBeGreaterThanOrEqual(16);
+        expect(layout.captionAlignment).toBe('left');
+        expect(layout.captionLeft).toBeGreaterThanOrEqual(layout.figureLeft - 1);
+        expect(layout.captionRight).toBeLessThanOrEqual(layout.figureRight + 1);
+        expect(layout.sectionGap).toBeGreaterThan(layout.after);
+        expect(layout.subsectionGap).toBeLessThan(layout.sectionGap);
+        expect(layout.overflow).toBe(false);
+        if (viewport.width === 2560) expect((await new AxeBuilder({page}).analyze()).violations).toEqual([]);
+    });
+}
+
 for (const width of [390, 768, 900, 1024, 1440]) {
     test(`article fits a ${width}px viewport`, async ({page}) => {
         await page.setViewportSize({width, height: 1000});

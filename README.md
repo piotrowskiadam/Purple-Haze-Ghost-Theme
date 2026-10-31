@@ -6,7 +6,7 @@ A dark Ghost theme built for long reads, with purple accents and a sticky table 
 
 ![Purple Haze on desktop](docs/screenshots/home-desktop.png)
 
-Screenshots show **Nightfall Journal**, a fictional publication rendered locally from the **v1.5.1** theme templates. Article titles, author names, and artwork are sample content. These previews use a lightweight template fixture, rather than a running Ghost installation.
+Screenshots show **Nightfall Journal**, a fictional publication rendered locally from the **v1.5.2** theme templates. Article titles, author names, and artwork are sample content. These previews use a lightweight template fixture, rather than a running Ghost installation.
 
 ## A table of contents that follows the reader
 

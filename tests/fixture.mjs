@@ -80,6 +80,28 @@ export function render(path = '/', {demo = false} = {}) {
     if (path.includes('/no-image/')) {delete data.post.feature_image; data.post.tags = [];}
     if (path.includes('/no-headings/')) data.post.html = '<p>A short article without any headings.</p>';
     if (path.includes('/long-title/')) data.post.title = 'AnUnusuallyLongTitle'.repeat(14);
+    if (path.includes('/image-rhythm/')) {
+        data.post.feature_image_caption = 'Sample feature image with a readable caption.';
+        data.post.html = `
+            <h2 id="image-comparison">Comparing images</h2>
+            <p id="response-label-a" data-testid="image-label">Response from the first source:</p>
+            <figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption" data-testid="captioned-image">
+                <img src="/demo-assets/orbits.svg" alt="Sample image from the first source">
+                <figcaption>A <strong>readable caption</strong> that describes the image and stays close to it, even on a large display. <a href="https://example.com/source">Image source</a>.</figcaption>
+            </figure>
+            <p data-testid="next-image-label">Response from the second source:</p>
+            <figure class="kg-card kg-image-card" data-testid="uncaptioned-image">
+                <img src="/demo-assets/rhythm.svg" alt="Sample image without a caption">
+            </figure>
+            <figure class="kg-card kg-image-card kg-width-full kg-card-hascaption" data-testid="full-image">
+                <img src="/demo-assets/orbits.svg" alt="Sample full width image">
+                <figcaption>A longer full width caption with a source whose address must wrap: <a href="https://example.com/source">https://example.com/${'a-long-source-address-'.repeat(12)}</a></figcaption>
+            </figure>
+            <p>Explanation following the image comparison.</p>
+            <h2 id="another-section" data-testid="next-section">Another section</h2>
+            <h3 data-testid="section-detail">A related detail</h3>
+            <p>Headings separate sections more generously than images and their labels.</p>`;
+    }
     if (path.includes('/editor-cards/')) data.post.html += `
         <figure class="kg-card kg-image-card kg-width-wide"><img src="/demo-assets/orbits.svg" alt="Wide geometric artwork"><figcaption><strong>A legible caption</strong></figcaption></figure>
         <figure class="kg-card kg-image-card kg-width-full"><img src="/demo-assets/rhythm.svg" alt="Full width geometric artwork"></figure>

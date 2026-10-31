@@ -31,6 +31,7 @@ export const demoPosts = [
 ];
 export const demoArticle = {
     ...demoPosts[0],
+    feature_image_caption: 'Original artwork for Nightfall Journal.',
     custom_excerpt: 'On finding a little breathing room between what we consume and what we create.',
     authors: [{name: 'Alex Morgan', url: '/demo/author/alex/'}],
     html: `

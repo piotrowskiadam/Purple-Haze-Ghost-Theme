@@ -58,26 +58,28 @@
 /* Content & Typography
 /* ---------------------------------------------------------- */
 
+.gh-content {
+    /* Reading rhythm should follow the content, not the browser window size. */
+    --content-flow-space: 1.6rem;
+    --content-card-space: 3.2rem;
+    --content-section-space: 4.8rem;
+}
+
 .gh-content > * + * {
-    margin-top: 4vmin; /* Keep default spacing for most elements */
-}
-/* Remove redundant/incorrect overflow rules */
-
-.gh-content > p + p {
-    margin-top: 1.5rem; /* Specific spacing for paragraphs */
+    margin-top: var(--content-flow-space);
 }
 
-.gh-content [id]:not(:first-child) {
-    margin: 1.5em 0 0;
+/* IDs are anchors, not a reason to add space to arbitrary content. */
+.gh-content > :is(h2, h3, h4, h5, h6):not(:first-child) {
+    margin-top: var(--content-card-space);
 }
 
-.gh-content > [id] + * {
-    margin-top: 1.5rem;
+.gh-content > h2:not(:first-child) {
+    margin-top: var(--content-section-space);
 }
 
-.gh-content [id] + .kg-card,
-.gh-content blockquote + .kg-card {
-    margin-top: 6vmin;
+.gh-content > h2 + :is(h3, h4) {
+    margin-top: 2.4rem;
 }
 
 /* REMOVED rule that forced serif font on specific content elements. */
@@ -100,12 +102,12 @@
     padding-left: 1.9em;
 }
 
-.gh-content hr {
-    margin-top: 6vmin;
+.gh-content > hr {
+    margin-top: var(--content-section-space);
 }
 
-.gh-content hr + * {
-    margin-top: 6vmin !important;
+.gh-content > hr + * {
+    margin-top: var(--content-section-space);
 }
 
 .gh-content blockquote {
@@ -150,23 +152,23 @@
 /* Cards
 /* ---------------------------------------------------------- */
 
-.gh-content :not(.kg-card):not([id]) + .kg-card {
-    margin-top: 6vmin;
+.gh-content > * + .kg-card,
+.gh-content > .kg-card + :not(h2, h3, h4, h5, h6) {
+    margin-top: var(--content-card-space);
 }
 
-.gh-content .kg-card + :not(.kg-card) {
-    margin-top: 6vmin;
-}
-
-/* General figcaption styles (may be overridden below) */
-figcaption {
-    padding: 1rem 1.5rem 0; /* Adjusted padding */
-    text-align: center;
-    color: color-mix(in srgb, var(--color-secondary-text) 70%, transparent); /* Lighter gray, less prominent */
-    /* opacity: 0.8; Removed opacity, using color mix instead */
-    font-weight: 400; /* Normal weight */
-    font-size: 1.3rem; /* Slightly smaller */
-    line-height: 1.5em;
+/* Keep captions legible without making them look like navigation links. */
+.gh-content figure > figcaption,
+.gh-feature-image > figcaption {
+    max-width: 75ch;
+    margin: 0;
+    padding: 1rem 0 0;
+    color: var(--color-secondary-text);
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+    overflow-wrap: anywhere;
 }
 
 figcaption strong {
@@ -225,34 +227,33 @@ figcaption strong {
     aspect-ratio: 16 / 9;
 }
 
-.kg-image-card {
-    margin: 4vmin auto; /* Add vertical margin */
-    /* Border & overflow removed from figure */
+.gh-content > .kg-image-card {
+    margin: 2.4rem auto 0;
+}
+
+/* Labels belong with their image; the next response gets a modest separation. */
+.gh-content > p + .kg-image-card {
+    margin-top: var(--content-flow-space);
+}
+
+.gh-content > .kg-image-card + :not(h2, h3, h4, h5, h6) {
+    margin-top: 2.4rem;
 }
 
 .kg-image-card img {
     margin: auto;
     display: block; /* Ensure image behaves as block */
     border-radius: var(--radius); /* Apply radius to image */
-    border: 3px solid var(--color-primary); /* Increased border thickness */
-}
-
-/* Style image captions */
-.kg-image-card figcaption {
-    color: var(--secondary-accent-color, #D0B8FB); /* Use secondary accent for caption */
-    font-size: 0.9em;
-    text-align: center;
-    margin-top: 0.5em;
-    padding: 0 1.5rem; /* Keep horizontal padding */
+    border: 1px solid var(--color-primary);
 }
 
 /* Apply border-radius directly to the image, not the figure */
 .gh-content > .gh-feature-image {
-    /* border-radius: var(--radius); */ /* Removed */
-    /* overflow: hidden; */ /* Removed */
-    /* Ensure it doesn't have extra margin causing layout shifts */
-    margin-top: 0;
-    margin-bottom: 4vmin; /* Match default content spacing */
+    margin: 0 auto;
+}
+
+.gh-content > .gh-feature-image + * {
+    margin-top: var(--content-card-space);
 }
 /* Apply radius and overflow hidden directly to the image */
 .gh-content > .gh-feature-image img { /* Match increased specificity */
@@ -263,7 +264,7 @@ figcaption strong {
 }
 
 
-/* Card captions - General (These might conflict/override, review)
+/* Wide and full-width card captions
 /* ---------------------------------------------------------- */
 
 .kg-width-full.kg-card-hascaption {

@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.5.2] - 2026-10-31
+
+### Fixed
+- Replace viewport-dependent article gaps with a consistent reading rhythm for paragraphs, headings, images, and other editor cards.
+- Keep image labels and captions close to their images, with modest separation before the next response.
+- Stop arbitrary element IDs from changing content margins.
+- Make image, gallery, and feature captions readable at 16px, left aligned, and able to wrap long source links.
+- Refine image borders and keep feature-caption text outside image clipping.
+
+### Added
+- Regression checks for captioned, captionless, consecutive, wide, and full-width images at mobile, desktop, and 2560px display sizes.
+
 ## [1.5.1] - 2026-10-31
 
 ### Fixed

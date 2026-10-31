@@ -23,7 +23,9 @@
 
 Version 1.5.1 adds Chromium, Firefox, and WebKit projects in CI, automated axe checks, ten HTML validation scenarios, keyboard image zoom and ToC regression checks, and responsive/editor-card fallbacks. A separate Ghost 6.72.0 instance also exercised native routes, search results, Portal signup UI, comments, and guest access to a members-only article. See [SUBMISSION-AUDIT.md](SUBMISSION-AUDIT.md) for scope and remaining manual checks.
 
-Screenshots in `docs/screenshots/` and `assets/screenshot-*.jpg` depict Nightfall Journal, a fictional publication rendered from the v1.5.1 templates with sample articles and original SVG artwork. Regenerate them with `npm run screenshots`. They use the local fixture adapter, not a running Ghost installation, and do not contain the live blog’s content. Early design images and local Ghost documentation snapshots remain available, labeled as archives, outside the upload ZIP.
+Version 1.5.2 replaces viewport-sized content gaps with a stable reading rhythm and readable, left-aligned captions. Browser regressions cover image labels, long source links, missing/consecutive captions, and wide/full images at 390, 1440, and 2560px. The suite now has 29 scenarios per browser engine and 11 rendered HTML scenarios.
+
+Screenshots in `docs/screenshots/` and `assets/screenshot-*.jpg` depict Nightfall Journal, a fictional publication rendered from the v1.5.2 templates with sample articles and original SVG artwork. Regenerate them with `npm run screenshots`. They use the local fixture adapter, not a running Ghost installation, and do not contain the live blog’s content. Early design images and local Ghost documentation snapshots remain available, labeled as archives, outside the upload ZIP.
 
 ## Dependencies
 

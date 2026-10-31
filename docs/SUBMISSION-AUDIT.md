@@ -1,10 +1,12 @@
-# Ghost submission audit — updated for 1.5.1
+# Ghost submission audit — updated for 1.5.2
 
 The confirmed layout, heading, landmark, keyboard, and demo-framing defects from the original review have been corrected. Automated checks now cover substantially more of the checklist. Marketplace acceptance remains a curated decision; the remaining manual verification is listed below.
 
 Source: [Ghost’s submission requirements](https://ghost.org/themes/submit/), reviewed on 31 October 2026.
 
 ## Verified repairs
+
+- Article image labels, captions, and following text use bounded/rem-based spacing, including 2560px displays. Captions are 16px and left aligned; long source links wrap within the figure.
 
 - Article columns now fit 390, 768, 900, 1024, and 1440px viewports. Long unbroken titles and wide tables stay within the viewport. Wide/full editor cards can use the space to the right while leaving the outline clear.
 - The homepage has a publication H1. Spotlight cards use H2, feed cards H3, and archive cards H2. Navigation landmarks have distinct accessible names.
@@ -15,7 +17,7 @@ Source: [Ghost’s submission requirements](https://ghost.org/themes/submit/), r
 
 ## Validation evidence
 
-The browser suite has 26 scenarios per engine, covering Chromium, Firefox, and WebKit in CI on Node 22 and 24. Local Chromium/Firefox checks cover responsive articles, axe accessibility checks for home/article/legacy auth pages, ToC scrolling and focus, image zoom, pagination and failure recovery, no-JavaScript pagination, missing content, long text, editor cards, and membership status messages. Ten rendered template scenarios have HTML/landmark validation. Six release-safeguard tests protect publication. Source and ZIP pass GScan 5/6; Ghost 6 still reports the two retained social-helper deprecations for Ghost 5 compatibility.
+The browser suite has 29 scenarios per engine, covering Chromium, Firefox, and WebKit in CI on Node 22 and 24. Local Chromium/Firefox checks cover responsive articles, axe accessibility checks for home/article/legacy auth pages, ToC scrolling and focus, image zoom, pagination and failure recovery, no-JavaScript pagination, missing content, long text, editor cards, and membership status messages. Eleven rendered template scenarios have HTML/landmark validation. Six release-safeguard tests protect publication. Source and ZIP pass GScan 5/6; Ghost 6 still reports the two retained social-helper deprecations for Ghost 5 compatibility.
 
 An isolated **Ghost 6.72.0** instance used a separate empty SQLite database, private loopback port, fictional owner/content, and blocked outgoing mail. Sixteen public sample posts plus a members-only test post exercised native templates. No production blog database was copied or modified. Verified:
 
@@ -50,7 +52,7 @@ GHOST_TEST_URL=http://127.0.0.1:2369 npm run test:ghost
 | Linked navigation | Native home/post/archive/page routes and pagination exercised in real Ghost. |
 | No SEO tricks | None found in the reviewed templates/scripts. |
 | Image alt attributes | Template images have alt/name/title fallbacks. Editor content remains the publisher’s responsibility. |
-| Valid HTML | Ten rendered scenarios checked, including archives, static pages, empty content, editor cards, and legacy auth forms. |
+| Valid HTML | Eleven rendered scenarios checked, including archives, static pages, empty content, editor cards, and legacy auth forms. |
 | Keyboard navigation | Menu, article outline, image zoom, and focus return covered. Third-party Portal/search open successfully; complete assistive-technology testing remains manual. |
 | Color contrast | Sample default-color pages and legacy status states pass axe. Custom colors, arbitrary images, and every third-party service state cannot be certified from those samples. |
 | Editor content styling | Wide/full image, embed, table, code, and caption cases covered. Test the complete Ghost editor-card set before submission. |
@@ -60,7 +62,7 @@ GHOST_TEST_URL=http://127.0.0.1:2369 npm run test:ghost
 
 ## Remaining manual submission steps
 
-1. Install the exact released 1.5.1 ZIP on the public demo before submitting it. Its server framing policy is already corrected; the temporary staging tests do not deploy a new theme to the public blog.
+1. Verify that the public demo uses the exact released 1.5.2 ZIP before submitting it. Its server framing policy is already corrected. Automatic GitHub releases do not deploy themes to a Ghost publication.
 2. Confirm the latest two versions of the branded browsers requested by Ghost, including real Safari. CI’s WebKit is useful coverage but is not a claim that every Safari/iOS version was tested.
 3. Exercise paid Stripe checkout with an appropriately configured test publication and inspect the complete editor-card set and chosen custom colors. No payments, emails, or real member accounts were created during these checks.
 4. Review the final ZIP, demo, support details, and public download link, then submit the Ghost form. No marketplace application has been sent.
