@@ -27,6 +27,8 @@ for (const shape of ['portrait', 'landscape', 'square']) {
             await expect(dialog.getByRole('button', {name: 'Close image'})).toBeFocused();
             await page.keyboard.press('Escape');
             await expect(dialog).not.toBeVisible();
+            await expect(thumbnail).toHaveAttribute('aria-expanded', 'false');
+            await expect(page.locator('html')).not.toHaveClass(/gh-image-viewer-open/);
             await expect(thumbnail).toBeFocused();
             const after = await thumbnail.boundingBox();
             expect(after.width).toBeCloseTo(before.width, 0);
@@ -58,12 +60,18 @@ test('viewer closes immediately during loading and reports an image load failure
     await expect(thumbnail).toHaveAttribute('aria-expanded', 'false');
 });
 
-test('viewer reflows on resize and closes when its background is clicked', async ({page}) => {
+test('viewer supports rapid reopen, resize and background dismissal', async ({page}) => {
     await page.setViewportSize({width: 1440, height: 1000});
     await page.goto('/demo/article/cropped-zoom/');
     await page.getByTestId('cropped-image').click();
     const dialog = page.getByRole('dialog');
     await expect(dialog.getByRole('img')).toBeVisible();
+    await page.getByTestId('cropped-image').evaluate(image => {
+        document.querySelector('.gh-image-viewer-close').click();
+        image.click();
+    });
+    await expect(dialog.getByRole('img')).toBeVisible();
+    await expect(page.getByTestId('cropped-image')).toHaveAttribute('aria-expanded', 'true');
     await page.setViewportSize({width: 390, height: 844});
     const bounds = await dialog.getByRole('img').evaluate(image => image.getBoundingClientRect().toJSON());
     expect(bounds.width / bounds.height).toBeCloseTo(0.4, 2);

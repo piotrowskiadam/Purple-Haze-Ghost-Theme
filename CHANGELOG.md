@@ -6,6 +6,7 @@
 - Display zoomed images at their natural proportions, centered within the viewport, including cropped portrait, landscape, and square thumbnails.
 - Avoid copying thumbnail dimensions or card styles into the full-image viewer.
 - Support immediate Escape while an image is loading, resize, background-click dismissal, and focus return.
+- Release scroll locking synchronously when closing, without resizing the underlying page.
 - Use image captions or project headings as accessible labels when image alt text is empty.
 
 ### Added

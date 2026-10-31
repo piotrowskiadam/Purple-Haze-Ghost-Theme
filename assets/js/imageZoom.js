@@ -49,11 +49,7 @@ export default function imageZoom() {
         viewer.src = image.dataset.zoomSrc || image.getAttribute('src') || image.currentSrc;
     }
 
-    close.addEventListener('click', () => dialog.close());
-    dialog.addEventListener('click', event => {
-        if (event.target === dialog || event.target === viewer) dialog.close();
-    });
-    dialog.addEventListener('close', () => {
+    function reset() {
         const original = source;
         source = null;
         viewer.onload = null;
@@ -62,6 +58,25 @@ export default function imageZoom() {
         document.documentElement.classList.remove('gh-image-viewer-open');
         original?.setAttribute('aria-expanded', 'false');
         original?.focus({preventScroll: true});
+    }
+
+    function dismiss() {
+        dialog.close();
+        // Native close events are queued; release the layout lock synchronously.
+        reset();
+    }
+
+    close.addEventListener('click', dismiss);
+    dialog.addEventListener('cancel', event => {
+        event.preventDefault();
+        dismiss();
+    });
+    dialog.addEventListener('click', event => {
+        if (event.target === dialog || event.target === viewer) dismiss();
+    });
+    dialog.addEventListener('close', () => {
+        // A queued event from a previous close must not reset a newly opened viewer.
+        if (!dialog.open) reset();
     });
     images.forEach(image => {
         const description = image.alt.trim()
