@@ -61,7 +61,7 @@ const posts = Array.from({length: 3}, (_, index) => ({
 }));
 export function render(path = '/', {demo = false} = {}) {
     const page = path.includes('/page/2') ? 2 : 1;
-    const context = path.includes('/article') ? 'post' : path.includes('/author/') ? 'author' : path.includes('/tag/') ? 'tag' : path.includes('/about/') ? 'page' : path.includes('/signin/') ? 'signin' : path.includes('/signup/') ? 'signup' : 'home';
+    const context = path.includes('/article') ? 'post' : path.includes('/author/') ? 'author' : path.includes('/tag/') ? 'tag' : path.includes('/about/') || path.includes('/projects/') ? 'page' : path.includes('/signin/') ? 'signin' : path.includes('/signup/') ? 'signup' : 'home';
     const data = {
         context, demo, meta_title: 'Purple Haze', featuredPosts: [posts[0]],
         author: {name: 'Alex Morgan'}, tag: {name: 'Technology'},
@@ -80,6 +80,33 @@ export function render(path = '/', {demo = false} = {}) {
     if (path.includes('/no-image/')) {delete data.post.feature_image; data.post.tags = [];}
     if (path.includes('/no-headings/')) data.post.html = '<p>A short article without any headings.</p>';
     if (path.includes('/long-title/')) data.post.title = 'AnUnusuallyLongTitle'.repeat(14);
+    if (path.includes('/cropped-zoom/')) {
+        const [width, height] = path.includes('/landscape/') ? [1000, 400] : path.includes('/square/') ? [600, 600] : [400, 1000];
+        const portrait = 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}"><rect width="100%" height="100%" fill="#281c52"/><circle cx="50%" cy="50%" r="100" fill="#d0b8fb"/></svg>`);
+        data.post.html = `<style>.gh-content .kg-header-card-content {max-width: 400px} .gh-content .kg-header-card-image {width: 100%; height: 200px; object-fit: cover}</style>
+            <div class="kg-card kg-header-card"><div class="kg-header-card-content">
+                <img class="kg-header-card-image" data-testid="cropped-image" src="${portrait}" width="400" height="1000" alt="Portrait artwork cropped to a landscape preview">
+            </div></div>`;
+    }
+    if (path.includes('/projects/')) {
+        data.post.title = 'Projects';
+        delete data.post.feature_image;
+        delete data.post.feature_image_caption;
+        delete data.post.custom_excerpt;
+        data.post.html = [
+            {name: 'Vertical field notes', width: 400, height: 1000},
+            {name: 'Square artwork', width: 600, height: 600}
+        ].map(({name, width, height}) => {
+            const src = 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}"><rect width="100%" height="100%" fill="#281c52"/><circle cx="50%" cy="50%" r="100" fill="#d0b8fb"/></svg>`);
+            return `<div class="kg-card kg-header-card kg-v2 kg-layout-split kg-width-full kg-swapped" style="background-color: #000">
+                <div class="kg-header-card-content"><picture><img class="kg-header-card-image" src="${src}" alt=""></picture>
+                    <div class="kg-header-card-text kg-align-center"><h2 class="kg-header-card-heading"><a href="https://example.com/project">${name}</a></h2>
+                        <p class="kg-header-card-subheading" style="color: #fff">A fictional project demonstrating the reusable portfolio layout.</p>
+                        <a class="kg-header-card-button" href="https://example.com/project">Explore the project</a>
+                    </div>
+                </div></div>`;
+        }).join('<hr>');
+    }
     if (path.includes('/image-rhythm/')) {
         data.post.feature_image_caption = 'Sample feature image with a readable caption.';
         data.post.html = `
@@ -112,6 +139,6 @@ export function render(path = '/', {demo = false} = {}) {
         url: demo ? '/demo' : '/', members_enabled: false
     }, custom: {}}};
     hbs.registerHelper('content', function () { return safe(this.html); });
-    const body = template(context === 'home' ? 'index.hbs' : ['signin', 'signup'].includes(context) ? `members/${context}.hbs` : `${context}.hbs`)(data, options);
+    const body = template(path.includes('/projects/') ? 'custom-projects.hbs' : context === 'home' ? 'index.hbs' : ['signin', 'signup'].includes(context) ? `members/${context}.hbs` : `${context}.hbs`)(data, options);
     return template('default.hbs')({...data, body}, options);
 }

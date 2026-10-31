@@ -6,7 +6,7 @@ A dark Ghost theme built for long reads, with purple accents and a sticky table 
 
 ![Purple Haze on desktop](docs/screenshots/home-desktop.png)
 
-Screenshots show **Nightfall Journal**, a fictional publication rendered locally from the **v1.5.2** theme templates. Article titles, author names, and artwork are sample content. These previews use a lightweight template fixture, rather than a running Ghost installation.
+Screenshots show **Nightfall Journal**, a fictional publication rendered locally from the **v1.6.0** theme templates. Article titles, author names, and artwork are sample content. These previews use a lightweight template fixture, rather than a running Ghost installation.
 
 ## A table of contents that follows the reader
 
@@ -26,7 +26,7 @@ The outline is generated automatically from your article’s H2 and H3 headings,
 - Infinite scrolling with ordinary pagination links as a fallback.
 - Ghost search, member signup through Portal, subscription forms, and native comments.
 - English and Polish theme translations, including reading-time labels.
-- An optional **About** template for static pages.
+- Optional **About** and **Projects** templates for static pages.
 
 <details>
 <summary>Mobile screenshot</summary>
@@ -61,6 +61,14 @@ The homepage spotlights the newest featured post on its first page. The chronolo
 Set the publication language to **English** or **Polish** to use the included translations. The theme loads Roboto from Google Fonts. Ghost provides the search, Portal, editor-card assets, and comments integrations; availability depends on your publication settings. Select **About** in a page’s template settings to use `custom-about.hbs`.
 
 The `members/` templates are retained for installations with custom membership routes. A normal installation uses Ghost Portal and does not need custom routes. Test any existing membership routes and paid checkout separately before upgrading.
+
+## Projects page
+
+Choose **Projects** in a page’s template settings, then add native Ghost **Header** cards with a **split** layout. The theme presents them as aligned image/text rows on desktop and a single column on smaller screens. Text, buttons, and links stay editable in Ghost. Square artwork is shown complete; other previews use a consistent crop. Clicking any image opens its full source proportions in a centered viewer.
+
+The layout uses your publication’s colors and works on any page URL. It needs no page-specific code injection. Other page templates keep their own layout.
+
+![Projects template with fictional sample content](docs/screenshots/projects-desktop.png)
 
 ## Development
 

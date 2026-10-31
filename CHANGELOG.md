@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.6.0] - 2026-10-31
+
+### Fixed
+- Display zoomed images at their natural proportions, centered within the viewport, including cropped portrait, landscape, and square thumbnails.
+- Avoid copying thumbnail dimensions or card styles into the full-image viewer.
+- Support immediate Escape while an image is loading, resize, background-click dismissal, and focus return.
+- Use image captions or project headings as accessible labels when image alt text is empty.
+
+### Added
+- Optional Projects page template with the responsive portfolio layout, using editable native Ghost split header cards and publication colors.
+- Complete square artwork inside portfolio thumbnails, with uncropped full-image previews for every shape.
+- Native image dialog with a close button and translated loading/error messages.
+- Browser regressions for cropped images, source proportions, centering, loading failures, resize, and the Projects template.
+
+### Removed
+- Medium Zoom dependency, whose cloned preview dimensions distorted cropped images.
+
 ## [1.5.2] - 2026-10-31
 
 ### Fixed

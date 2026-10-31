@@ -40,5 +40,8 @@
     "Go to post": "Przejdź do wpisu",
     "Primary navigation": "Nawigacja główna",
     "Adjacent articles": "Sąsiednie artykuły",
-    "Zoom image": "Powiększ obraz"
+    "Zoom image": "Powiększ obraz",
+    "Close image": "Zamknij podgląd obrazu",
+    "Loading image…": "Wczytywanie obrazu…",
+    "The image could not be loaded.": "Nie udało się wczytać obrazu."
 }

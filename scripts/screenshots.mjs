@@ -21,7 +21,8 @@ try {
         await page.goto(base + path, {waitUntil: 'networkidle'});
         await page.evaluate(async () => {
             await document.fonts.ready;
-            await Promise.all([...document.images].map(image => image.decode()));
+            // The closed viewer has an empty image slot, not a resource to decode.
+            await Promise.all([...document.images].filter(image => image.currentSrc || image.getAttribute('src')).map(image => image.decode()));
         });
         assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'Preview overflows the viewport');
         assert.equal(await page.locator('.gh-head-logo').textContent().then(value => value.trim()), 'Nightfall Journal');
@@ -35,6 +36,10 @@ try {
     await open('/demo/article/', 1440, 1150);
     assert.equal(await page.locator('.gh-toc-list a').count(), 4);
     await page.screenshot({path: 'docs/screenshots/post-desktop.png'});
+    await open('/demo/projects/', 1440, 1100);
+    await page.screenshot({path: 'docs/screenshots/projects-desktop.png', fullPage: true});
+    await open('/demo/projects/', 390, 844);
+    await page.screenshot({path: 'docs/screenshots/projects-mobile.png', fullPage: true});
     assert.deepEqual(errors, [], 'Preview JavaScript errors');
     console.log('Captured fictional Nightfall Journal: desktop, mobile, and article previews.');
 } finally {

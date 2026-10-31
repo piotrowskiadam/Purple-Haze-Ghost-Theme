@@ -1,0 +1,189 @@
+/* Optional Projects template: native Ghost split cards remain editable. */
+.gh-article.gh-portfolio {
+    padding-bottom: 3.2rem;
+}
+
+.gh-portfolio .gh-header,
+.gh-portfolio .gh-content.gh-canvas {
+    display: block;
+    width: calc(100% - clamp(4rem, 8vw, 9.6rem));
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 0;
+}
+
+.gh-portfolio .gh-header {
+    margin-top: 3.2rem;
+    margin-bottom: 4.8rem;
+    text-align: left;
+}
+
+.gh-portfolio .gh-title {
+    margin: 0;
+    font-size: clamp(3.6rem, 4vw, 5.4rem);
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    text-align: left;
+}
+
+.gh-portfolio .gh-content > hr {
+    display: none;
+}
+
+.gh-portfolio .gh-content > .kg-header-card.kg-layout-split {
+    display: block;
+    width: 100%;
+    min-height: 0;
+    margin: 0;
+    padding: 4.8rem 0;
+    border-top: 1px solid var(--color-border, #333);
+    background: transparent !important; /* Overrides the editor's inline black. */
+}
+
+.gh-portfolio .kg-header-card.kg-layout-split .kg-header-card-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas: "image text";
+    gap: clamp(3.2rem, 5vw, 8rem);
+    align-items: center;
+    width: 100%;
+    min-height: 0;
+}
+
+.gh-portfolio .kg-layout-split .kg-header-card-content > picture {
+    grid-area: image;
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-height: 40rem;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--color-primary, #281c52) 20%, var(--color-bg, #040404));
+}
+
+.gh-portfolio .gh-content .kg-header-card.kg-layout-split.kg-v2 .kg-header-card-content picture .kg-header-card-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    margin: 0;
+    aspect-ratio: auto;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Preserve square artwork in full, without publication-specific selectors. */
+.gh-portfolio .gh-content .kg-header-card.kg-layout-split.kg-v2 .kg-header-card-content picture .kg-header-card-image[data-portfolio-fit="contain"] {
+    object-fit: contain;
+}
+
+.gh-portfolio .kg-header-card.kg-layout-split .kg-header-card-text {
+    grid-area: text;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+.gh-portfolio .gh-content .kg-header-card.kg-layout-split h2.kg-header-card-heading {
+    margin: 0;
+    font-family: var(--gh-font-heading);
+    font-size: clamp(2.8rem, 3vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+}
+
+.gh-portfolio .kg-layout-split .kg-header-card-heading > br:last-child {
+    display: none;
+}
+
+.gh-portfolio .kg-header-card.kg-layout-split .kg-header-card-heading a {
+    color: var(--color-base, #fffefe);
+    text-decoration: none;
+    box-shadow: none;
+    text-underline-offset: 0.15em;
+    text-decoration-thickness: 1px;
+}
+
+.gh-portfolio .kg-header-card.kg-layout-split .kg-header-card-heading a:hover {
+    color: var(--secondary-accent-color, #d0b8fb);
+    text-decoration: underline;
+}
+
+.gh-portfolio .gh-content .kg-header-card.kg-layout-split .kg-header-card-subheading {
+    max-width: 48ch;
+    margin: 2rem 0 0;
+    color: var(--color-secondary-text, #d0d0d0) !important;
+    font-family: var(--gh-font-body);
+    font-size: 1.7rem;
+    font-weight: 400;
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+}
+
+.gh-portfolio .gh-content .kg-header-card.kg-layout-split.kg-v2 .kg-header-card-button {
+    display: inline-flex;
+    width: auto;
+    max-width: 100%;
+    min-height: 44px;
+    height: auto;
+    margin: 2.4rem 0 0;
+    padding: 1.2rem 1.8rem;
+    border-radius: var(--radius, 1rem);
+    background: var(--color-primary, #281c52);
+    font-family: var(--gh-font-body);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0;
+    white-space: normal;
+    text-align: left;
+    transition: background-color 160ms ease-out;
+}
+
+.gh-portfolio .gh-content .kg-header-card.kg-layout-split .kg-header-card-button:hover {
+    opacity: 1;
+    background: color-mix(in srgb, var(--color-primary, #281c52) 80%, var(--secondary-accent-color, #d0b8fb));
+}
+
+.gh-portfolio .kg-header-card.kg-layout-split a:focus-visible {
+    outline: 2px solid var(--secondary-accent-color, #d0b8fb);
+    outline-offset: 5px;
+}
+
+@media (max-width: 860px) {
+    .gh-portfolio .gh-header {
+        margin-top: 2.4rem;
+        margin-bottom: 3.2rem;
+    }
+
+    .gh-portfolio .gh-content > .kg-header-card.kg-layout-split {
+        padding-block: 3.2rem;
+    }
+
+    .gh-portfolio .kg-header-card.kg-layout-split .kg-header-card-content {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas: "image" "text";
+        gap: 2.4rem;
+    }
+
+    .gh-portfolio .kg-layout-split .kg-header-card-content > picture {
+        max-height: 32rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gh-portfolio .gh-content .kg-header-card.kg-layout-split .kg-header-card-button {
+        transition: none;
+    }
+}

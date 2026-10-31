@@ -25,6 +25,8 @@ production stylesheet in assets/built/index.css using: npm run dev
 @import "ghost/badge.css";
 @import "ghost/pagination.css";
 @import "ghost/comments.css";
+@import "components/image-viewer.css";
+@import "components/portfolio.css";
 @import "components/toc.css"; /* Add ToC styles */
 
 
