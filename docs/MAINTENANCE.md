@@ -38,4 +38,4 @@ These packages are build/validation dependencies and are not included as server-
 
 Follow [MARKETPLACE.md](MARKETPLACE.md) before submission: demo iframe headers, deployment of the exact candidate, browser matrix, full editor-card coverage, real Ghost membership checks, HTML validation, and social-helper migration. The legacy `members/` templates are retained for existing custom routes; their paid checkout flow needs a real Ghost test.
 
-GitHub metadata suggestions are prepared there. No remote tags were deleted, releases rewritten, repository settings changed, marketplace form submitted, or blog deployed during this review.
+The detailed checklist review is in [SUBMISSION-AUDIT.md](SUBMISSION-AUDIT.md). GitHub metadata suggestions are prepared in MARKETPLACE.md. [The release workflow](RELEASING.md) now publishes new manifest versions after successful main-branch validation. Historical releases and tags are preserved; marketplace submission and blog deployment remain separate steps.

@@ -20,7 +20,8 @@
         "pretest": "npm run build",
         "test:browser": "playwright test",
         "check:zip": "gscan -z purple-haze.zip --v5 && gscan -z purple-haze.zip --v6",
-        "screenshots": "node scripts/screenshots.mjs"
+        "screenshots": "node scripts/screenshots.mjs",
+        "test:release": "node --test tests/release.test.mjs"
     },
     "author": {
         "name": "Adam Piotrowski",

@@ -76,6 +76,7 @@ Run the theme inside a [local Ghost installation](https://docs.ghost.org/install
 ```bash
 npm run build          # Production CSS and JavaScript
 npm test               # Build and run Ghost 5 + Ghost 6 compatibility checks
+npm run test:release   # Verify release publication safeguards
 npx playwright install chromium
 npm run test:browser   # Browser regression checks against template fixtures
 npm run screenshots    # Regenerate the fictional publication previews
@@ -94,7 +95,7 @@ Edit `assets/css/`, `assets/js/`, and `.hbs` templates. The compiled files in `a
 | `locales/` | Theme translations |
 | `tests/` | Browser fixtures and interaction regressions |
 
-[Release process](docs/RELEASING.md) · [Marketplace preparation](docs/MARKETPLACE.md) · [Contributor notes](AI_AGENT_NOTES.md)
+[Release process](docs/RELEASING.md) · [Marketplace preparation](docs/MARKETPLACE.md) · [Submission audit](docs/SUBMISSION-AUDIT.md) · [Contributor notes](AI_AGENT_NOTES.md)
 
 ## Support and license
 

@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.5.0] - Unreleased
+## [1.5.0] - 2026-10-31
 
 ### Fixed
 - Keep native archive pagination complete, including featured posts, with a manual fallback when automatic loading fails.
@@ -21,6 +21,7 @@
 ### Added
 - Desktop, mobile, and article screenshots of the fictional Nightfall Journal publication, with a reproducible capture command.
 - Ghost 5/6 validation, browser regression checks, CI artifacts, and an allowlisted upload package.
+- Automatic GitHub releases from successful main-branch validation, with version and archive checks.
 
 ## [1.4.80] - 2025-04-08
 

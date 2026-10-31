@@ -22,6 +22,7 @@ jobs:
       - run: npm ci
       - run: node scripts/check-version.mjs
       - run: npm test
+      - run: npm run test:release
       - run: npx playwright install --with-deps chromium
       - run: npm run test:browser
       - run: npm run zip
@@ -30,3 +31,26 @@ jobs:
         with:
           name: purple-haze-node-${{ matrix.node }}
           path: purple-haze.zip
+
+  release:
+    needs: validate
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: purple-haze-release
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: 22
+      - uses: actions/download-artifact@v8.0.2
+        with:
+          name: purple-haze-node-22
+          path: .
+      - name: Publish validated theme version
+        run: node scripts/release.mjs
+        env:
+          GH_TOKEN: ${{ github.token }}
