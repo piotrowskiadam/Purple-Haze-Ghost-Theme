@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "assets/css/components/portfolio.css"
+        ],
+        "createdAt": "2026-11-16T12:03:45.499Z",
+        "reason": "Agent: the user requested more visible horizontal dividers with tapered ends and a thicker center on 2026-11-16; this 3px top pseudo-element implements that requested separator."
+      }
+    ]
+  }
+}
