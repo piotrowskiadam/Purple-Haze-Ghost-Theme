@@ -109,7 +109,16 @@
     }
 }
 
-/* Post Tags in Footer */
+/* Shared tag cloud for posts and pages. */
+.gh-page-footer {
+    margin-top: 3.2rem;
+}
+
+.gh-page-footer .gh-post-tags {
+    min-width: 0;
+    margin-top: 0;
+}
+
 .gh-post-tags {
     margin-top: 1.5rem;
     display: flex;
@@ -120,6 +129,7 @@
 
 .gh-post-tags .gh-tag {
     display: inline-block;
+    max-width: 100%;
     padding: 0.4em 0.8em;
     border: none; /* Remove border */
     border-radius: 4px;
@@ -127,10 +137,16 @@
     color: var(--secondary-accent-color); /* Light Purple Text (#D0B8FB) */
     font-size: 1.3rem;
     font-weight: 600; /* Match card tag weight */
-    line-height: 1;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
     text-decoration: none;
     text-transform: uppercase; /* Match card tag style */
     transition: background-color 0.2s ease-in-out;
+}
+
+.gh-post-tags .gh-tag:focus-visible {
+    outline: 2px solid var(--secondary-accent-color);
+    outline-offset: 3px;
 }
 
 .gh-post-tags .gh-tag:hover {

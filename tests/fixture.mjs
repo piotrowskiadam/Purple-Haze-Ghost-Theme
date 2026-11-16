@@ -134,11 +134,17 @@ export function render(path = '/', {demo = false} = {}) {
         <figure class="kg-card kg-image-card kg-width-full"><img src="/demo-assets/rhythm.svg" alt="Full width geometric artwork"></figure>
         <figure class="kg-card kg-embed-card"><iframe src="about:blank" title="Sample embedded content"></iframe></figure>
         <table><caption>Sample measurements</caption><thead><tr><th scope="col">Item</th><th scope="col">Value</th></tr></thead><tbody><tr><td>Long item</td><td>${'unbrokentext'.repeat(40)}</td></tr></tbody></table>`;
+    if (path.includes('/no-tags/')) data.post.tags = [];
+    if (path.includes('/long-tags/')) data.post.tags = [
+        ...posts[0].tags,
+        {name: 'A long topic name that should wrap on a small screen', url: '/tag/long-topic/'},
+        {name: 'UnbrokenTopicName'.repeat(8), url: '/tag/unbroken-topic/'}
+    ];
     const options = {data: {page: {show_title_and_feature_image: true}, site: {
         title: demo ? 'Nightfall Journal' : 'Purple Haze', locale: demo ? 'en' : 'pl',
         url: demo ? '/demo' : '/', members_enabled: false
     }, custom: {}}};
     hbs.registerHelper('content', function () { return safe(this.html); });
-    const body = template(path.includes('/projects/') ? 'custom-projects.hbs' : context === 'home' ? 'index.hbs' : ['signin', 'signup'].includes(context) ? `members/${context}.hbs` : `${context}.hbs`)(data, options);
+    const body = template(path.includes('/projects/') ? 'custom-projects.hbs' : path.includes('/about/custom/') ? 'custom-about.hbs' : context === 'home' ? 'index.hbs' : ['signin', 'signup'].includes(context) ? `members/${context}.hbs` : `${context}.hbs`)(data, options);
     return template('default.hbs')({...data, body}, options);
 }

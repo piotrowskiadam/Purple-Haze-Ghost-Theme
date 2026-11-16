@@ -10,6 +10,13 @@
     --secondary-accent-color: #D0B8FB; /* Secondary Accent (Light Purple for links/tags) */
     --color-border: #333333; /* Border for dark theme */
     --color-bg: #040404; /* Darker Background */
+    --content-divider-background: linear-gradient(
+        90deg,
+        transparent,
+        var(--secondary-accent-color) 30%,
+        var(--secondary-accent-color) 70%,
+        transparent
+    );
     --color-success: #80b912; /* Keep default success */
     --color-error: #f05230; /* Keep default error */
     --color-primary-rgb: 40, 28, 82; /* RGB for primary color */

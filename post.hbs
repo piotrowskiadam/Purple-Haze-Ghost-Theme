@@ -82,13 +82,7 @@
                 <div class="gh-post-authors">
                     {{t "Written by"}} {{#foreach authors}}<a href="{{url}}">{{name}}</a>{{/foreach}}
                 </div>
-                {{#if tags}}
-                <div class="gh-post-tags">
-                    {{#foreach tags}}
-                        <a class="gh-tag gh-tag-{{id}}" href="{{url}}">{{name}}</a>
-                    {{/foreach}}
-                </div>
-                {{/if}}
+                {{> "tags"}}
                 {{#if comments}}
             <section class="gh-post-comments">
                 {{comments}}

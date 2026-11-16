@@ -1,0 +1,7 @@
+{{#if tags}}
+<div class="gh-post-tags">
+    {{#foreach tags visibility="public"}}
+        <a class="gh-tag gh-tag-{{id}}" href="{{url}}">{{name}}</a>
+    {{/foreach}}
+</div>
+{{/if}}

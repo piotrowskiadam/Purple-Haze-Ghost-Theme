@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.7.0] - 2026-11-16
+
+### Added
+- Display the same linked tag cloud below static pages, About pages, Projects pages, and blog posts using shared template partials.
+- Wrap long tag names within the content width on narrow screens and provide a visible keyboard focus indicator.
+
+### Changed
+- Make horizontal rules more visible with the publication's secondary accent color and a slim, tapered shape, 3px thick at the center.
+- Apply the same divider treatment between split cards in the optional Projects template, retaining the responsive layout and editor separators.
+- Include the build dependency security updates already merged on main.
+
 ## [1.6.0] - 2026-10-31
 
 ### Fixed

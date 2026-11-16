@@ -21,6 +21,7 @@ The outline is generated automatically from your article’s H2 and H3 headings,
 - **Sticky table of contents with active-section highlighting**, generated automatically from article headings.
 - Dark background, purple accents, and configurable navigation and link colors.
 - Responsive post grid, tag archives, author archives, and an optional featured-post spotlight.
+- Matching tag clouds below posts and static pages, including the About and Projects templates, with wrapping labels on mobile.
 - Syntax highlighting for JavaScript, CSS, HTML, Bash, and JSON.
 - Keyboard-accessible image zoom and horizontally scrollable tables in articles.
 - Infinite scrolling with ordinary pagination links as a fallback.
